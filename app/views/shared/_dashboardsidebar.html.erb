@@ -1,0 +1,13 @@
+<div class="sidebar-body">
+
+  <h1>Sidebar</h1>
+
+  <ul>
+    <%= link_to "Account", user_dashboard_path(current_user) %>
+
+    <%= link_to "My garage(s)", user_dashboard_my_garages_path(current_user) %>
+
+    <%= link_to "My rent agreements", user_dashboard_my_garages_bookings_path(current_user) %>
+  </ul>
+
+</div>
