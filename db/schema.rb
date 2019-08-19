@@ -10,10 +10,94 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_08_19_120713) do
+ActiveRecord::Schema.define(version: 2019_08_19_123816) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "bikes", force: :cascade do |t|
+    t.bigint "user_id"
+    t.string "type"
+    t.string "size"
+    t.integer "bike_tag"
+    t.string "bike_image"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_bikes_on_user_id"
+  end
+
+  create_table "bookings", force: :cascade do |t|
+    t.bigint "bike_id"
+    t.bigint "garage_id"
+    t.string "status"
+    t.date "start_date"
+    t.date "end_date"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["bike_id"], name: "index_bookings_on_bike_id"
+    t.index ["garage_id"], name: "index_bookings_on_garage_id"
+  end
+
+  create_table "chats", force: :cascade do |t|
+    t.bigint "booking_id"
+    t.bigint "user_id"
+    t.text "content"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["booking_id"], name: "index_chats_on_booking_id"
+    t.index ["user_id"], name: "index_chats_on_user_id"
+  end
+
+  create_table "feature_presences", force: :cascade do |t|
+    t.bigint "garage_id"
+    t.bigint "feature_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["feature_id"], name: "index_feature_presences_on_feature_id"
+    t.index ["garage_id"], name: "index_feature_presences_on_garage_id"
+  end
+
+  create_table "features", force: :cascade do |t|
+    t.string "name"
+    t.text "description"
+    t.string "icon_image"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "garages", force: :cascade do |t|
+    t.bigint "user_id"
+    t.string "name"
+    t.text "description"
+    t.integer "street_number"
+    t.string "street_address"
+    t.string "city"
+    t.string "country"
+    t.integer "capacity_reg_bikes"
+    t.integer "capacity_large_bikes"
+    t.string "profile_image"
+    t.integer "ratings"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_garages_on_user_id"
+  end
+
+  create_table "image_galleries", force: :cascade do |t|
+    t.bigint "garage_id"
+    t.string "image_url"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["garage_id"], name: "index_image_galleries_on_garage_id"
+  end
+
+  create_table "reviews", force: :cascade do |t|
+    t.bigint "booking_id"
+    t.text "content"
+    t.integer "rating"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["booking_id"], name: "index_reviews_on_booking_id"
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -23,8 +107,26 @@ ActiveRecord::Schema.define(version: 2019_08_19_120713) do
     t.datetime "remember_created_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "first_name"
+    t.string "last_name"
+    t.string "payment_info"
+    t.string "profile_image"
+    t.string "street_number"
+    t.string "street"
+    t.string "city"
+    t.string "country"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "bikes", "users"
+  add_foreign_key "bookings", "bikes"
+  add_foreign_key "bookings", "garages"
+  add_foreign_key "chats", "bookings"
+  add_foreign_key "chats", "users"
+  add_foreign_key "feature_presences", "features"
+  add_foreign_key "feature_presences", "garages"
+  add_foreign_key "garages", "users"
+  add_foreign_key "image_galleries", "garages"
+  add_foreign_key "reviews", "bookings"
 end
