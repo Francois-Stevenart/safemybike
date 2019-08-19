@@ -1,4 +1,6 @@
 class Garage < ApplicationRecord
+  mount_uploader :profile_image, PhotoUploader
+
   belongs_to :user
   has_many :bookings
   has_many :reviews, through: :bookings
