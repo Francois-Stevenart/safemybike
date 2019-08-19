@@ -1,0 +1,9 @@
+.dashboard-container {
+  display: flex;
+  align-items: flex-start;
+}
+
+.dashboard-main {
+  flex-grow: 1;
+  padding: 20px;
+}

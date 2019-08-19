@@ -1,9 +1,13 @@
 Rails.application.routes.draw do
   devise_for :users
   root to: 'pages#landing'
+  get "garages/index", to: "garages#index"
 
   resources :users, only: [] do
-    resources :garages, except: [:destroy] do
+    get "dashboard", to: "users#show"
+    get "dashboard/my_garages", to: "users#mygarages"
+    get "dashboard/my_garages_bookings", to: "users#mygaragesbookings"
+    resources :garages, except: [:index, :destroy] do
       resources :bookings, only: [:new, :edit, :create, :update] do
         resources :chat, only: [:new, :create]
       end
