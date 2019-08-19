@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_08_19_123816) do
+ActiveRecord::Schema.define(version: 2019_08_19_150633) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -23,6 +23,7 @@ ActiveRecord::Schema.define(version: 2019_08_19_123816) do
     t.string "bike_image"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "name"
     t.index ["user_id"], name: "index_bikes_on_user_id"
   end
 
@@ -76,7 +77,6 @@ ActiveRecord::Schema.define(version: 2019_08_19_123816) do
     t.integer "capacity_reg_bikes"
     t.integer "capacity_large_bikes"
     t.string "profile_image"
-    t.integer "ratings"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_garages_on_user_id"
