@@ -1,0 +1,2 @@
+class FeaturePresencesController < ApplicationController
+end
