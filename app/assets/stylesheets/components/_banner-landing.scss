@@ -1,0 +1,24 @@
+#banner-landing {
+  position: relative;
+  height: 70vh;
+  border-bottom: 1px solid rgba(228, 233, 237, 1);
+  box-shadow: -1px 11px 15px -4px rgba(189,189,189,1);
+}
+
+#search-landing {
+  position: absolute;
+  display: flex;
+  width: 25%;
+  top:40%;
+  left: 40%;
+  i {
+    font-size: 40px;
+    color: #4ED191;
+    margin-right: 5%;
+  }
+  input {
+    border-radius: 25px;
+    width: 80%;
+    height: 5vh;
+  }
+}
