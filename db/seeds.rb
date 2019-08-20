@@ -6,8 +6,6 @@ User.destroy_all
 FeaturePresence.destroy_all
 Feature.destroy_all
 
-
-
 puts 'Creating master user...'
 
 master_user = User.new(first_name: 'Federico', last_name: 'Pooface', email: 'master@user.com', password: 'master', password_confirmation: 'master')
@@ -79,7 +77,9 @@ i = 0
     city: addresses[i][:city],
     country: addresses[i][:country],
     capacity_reg_bikes: rand(1..6),
-    capacity_large_bikes: rand(1..2)
+    capacity_large_bikes: rand(1..2),
+    price_regular_bike: rand(15..22),
+    price_large_bike: rand(25..32)
   )
   garage.user = master_user
   garage.remote_profile_image_url = garage_images[i]

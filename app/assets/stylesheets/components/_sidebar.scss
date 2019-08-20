@@ -1,5 +1,5 @@
 .sidebar {
-  min-width: 250px;
+  min-width: 175px;
   position: sticky;
   top: 0px;
 }
@@ -9,5 +9,22 @@
 }
 
 .tabs {
+  padding: 0;
   list-style-type: none;
+}
+.sidebar-tab {
+  padding: 12px;
+  text-align: center;
+  color: $white;
+  background-color: $green;
+  opacity: 0.9;
+  &:hover {
+    background-color: $green;
+    opacity: 1;
+  }
+}
+
+.tab-active {
+  background-color: $darkgreen;
+  opacity: 1;
 }
