@@ -28,6 +28,14 @@ class GaragesController < ApplicationController
     @garage = Garage.find(params[:id])
     @booking = Booking.new
     @bike = Bike.new
+    @markers = [@garage].map do |garage|
+      {
+        lat: garage.latitude,
+        lng: garage.longitude,
+        infoWindow: render_to_string(partial: "info_window", locals: { garage: garage }),
+        image_url: helpers.asset_url("/map_marker.png")
+      }
+    end
   end
 
   def garage_params
