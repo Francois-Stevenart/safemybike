@@ -17,11 +17,13 @@ const addMarkersToMap = (map, markers) => {
     const element = document.createElement('div');
     element.className = 'marker';
     element.style.background = `white url('${marker.image_url}')`;
-    element.style.backgroundSize = 'cover';
-    element.style.borderRadius = '20px';
-    element.style.padding = '20px 0';
+    element.style.backgroundSize = '85%';
+    element.style.backgroundPosition = 'center';
+    element.style.backgroundRepeat = 'no-repeat';
+    element.style.borderRadius = '7px 7px 0 0';
+    element.style.padding = '10px 0';
     element.style.width = '40px';
-    element.style.height = '20px';
+    element.style.height = '30px';
 
     // Pass the element as an argument to the new marker
     new mapboxgl.Marker(element)
