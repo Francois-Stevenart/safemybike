@@ -3,7 +3,9 @@ require 'faker'
 puts 'Deleting all database content...'
 
 User.destroy_all
+FeaturePresence.destroy_all
 Feature.destroy_all
+
 
 
 puts 'Creating master user...'
@@ -13,7 +15,17 @@ master_user.save
 puts 'email: master@user.com'
 puts 'password: master'
 
-puts 'Creating a bunch of garages'
+puts 'Creating garage feature list...'
+
+Feature.new(name: 'bicycle rack', icon_image: '<i class="fas fa-stream"></i>').save!
+Feature.new(name: 'charging station', icon_image: '<i class="fas fa-charging-station"></i>').save!
+Feature.new(name: 'tire pump', icon_image: '<i class="fas fa-wind"></i>').save!
+Feature.new(name: 'electric tire pump', icon_image: '<i class="fas fa-bolt"></i>').save!
+Feature.new(name: 'accessible through pin-code', icon_image: '<i class="fas fa-lock"></i>').save!
+Feature.new(name: 'camera security', icon_image: '<i class="fas fa-video"></i>').save!
+
+
+puts 'Creating a bunch of garages...'
 
 garage_images = [
   'https://res.cloudinary.com/di1eyazrv/image/upload/v1566230623/safemybike/14_grdt5w.jpg',
@@ -39,6 +51,8 @@ addresses = [
 
 description = 'A residential garage is a walled, roofed structure for storing a vehicle or vehicles that may be part of or attached to a home ("attached garage"), or a separate outbuilding or shed ("detached garage"). Residential garages typically have space for one or two cars, although three-car garages are used. When a garage is attached to a house, the garage typically has an entry door into the house. Garages normally have a wide door which can be raised to permit the entry and exit of a vehicle, and then closed to secure the vehicle. A garage protects a vehicle from precipitation, and, if it is equipped with a locking garage door, it also protects the vehicle(s) from theft and vandalism. Garages are also used for a variety of projects including painting, woodworking and assembling of projects.'
 
+features = Feature.all
+
 i = 0
 8.times do
   garage = Garage.new(
@@ -55,6 +69,15 @@ i = 0
   garage.remote_profile_image_url = garage_images[i]
   garage.save!
   i += 1
+  o = 0
+  rand(2..6).times do
+    feature_presence = FeaturePresence.new
+    feature_presence.garage = garage
+    feature_presence.feature = features[o]
+    feature_presence.save!
+    feature_presence
+    o += 1
+  end
 end
 
 puts 'Success! Database seeded!'
