@@ -8,7 +8,7 @@ Rails.application.routes.draw do
     get "dashboard", to: "users#show"
     member do
       get "dashboard/my_garages", to: "users#mygarages"
-      get "dashboard/my_garages_bookings", to: "users#mygaragesbookings"
+      get "dashboard/my_bookings", to: "users#mybookings"
     end
     resources :garages, except: [:index, :destroy] do
       resources :bookings, only: [:new, :edit, :create, :update] do
