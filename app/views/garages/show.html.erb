@@ -1,6 +1,10 @@
-<h1>Garages#show</h1>
-<p>Find me in app/views/garages/show.html.erb</p>
-
+<div
+  id="map"
+  class="garage-map"
+  style="width: 100%;
+  height: 300px;"
+  data-markers="<%= @markers.to_json %>"
+  data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>"></div>
 <div class="row">
   <div class="col-12 col-md-8">
     <h2><%= @garage.name %></h2>

@@ -132,5 +132,19 @@ i = 0
   end
 end
 
+puts 'Creating bookings...'
+
+garages = master_user.garages
+bikes = Bike.all
+statuses = %w(pending rejected accepted paid active done)
+
+statuses.each do |status|
+  date = Faker::Date.between(from: Date.today, to: 1.month.from_now)
+  booking = Booking.new(start_date: date, status: status)
+  booking.garage = garages.sample
+  booking.bike = bikes.sample
+  booking.save!
+end
+
 puts 'Success! Database seeded!'
 
