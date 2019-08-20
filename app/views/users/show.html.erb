@@ -6,16 +6,17 @@
 
   <div class="dashboard-main">
 
-      <% if current_user.owner_bookings.where(:status == "pending") %>
+      <% if @user.owner_bookings.where(status: "pending").any? %>
         <div class="card-dashboard">
-          <h2>Pending requests :</h2>
-          <% current_user.owner_bookings.where(:status == "pending").each do |request| %>
+          <h2>Pending requests:</h2>
+          <% @user.owner_bookings.where(status: "pending").each do |booking| %>
             <div class="card-dashboard-request">
-              <p>FROM: <%= request.bike.user.first_name %> <%= request.bike.user.last_name %></p>
-              <p>FOR: <%= request.garage.name %></p>
-              <p> <%= request.garage.street_number %> <%= request.garage.street_address %></p>
-              <%= link_to "Accept", accept_user_path(current_user, request), class: "btn btn-flat" %>
-              <%= link_to "Decline", "#", class: "btn btn-flat" %>
+              <p>FROM: <%= booking.bike.user.first_name %> <%= booking.bike.user.last_name %></p>
+              <p>For your garage: <%= booking.garage.name %></p>
+              <p> <%= booking.garage.street_number %> <%= booking.garage.street_address %></p>
+              <p>Status : <%= booking.status %></p>
+              <%= link_to "Accept", accept_user_path(@user, booking), class: "btn btn-flat" %>
+              <%= link_to "Decline", reject_user_path(@user, booking), class: "btn btn-flat" %>
               <%= link_to "Profile", "#", class: "btn btn-flat" %>
               </p>
             </div>
@@ -26,42 +27,42 @@
       <div class="card-dashboard">
         <div class="account-headline row">
           <div class="account-body col-12 col-md-7">
-            <h2><%= current_user.first_name %>'s Profile</h2>
+            <h2><%= @user.first_name %>'s Profile</h2>
             <div class="account-info">
               <p class="info">First name:</p>
-              <p><%= current_user.first_name %></p>
+              <p><%= @user.first_name %></p>
             </div>
             <div class="account-info">
               <p class="info">Last name:</p>
-              <p><%= current_user.last_name %></p>
+              <p><%= @user.last_name %></p>
             </div>
             <div class="account-info">
               <p class="info">Email:</p>
-              <p><%= current_user.email %></p>
+              <p><%= @user.email %></p>
             </div>
             <div class="account-info">
               <p class="info">Address:</p>
-              <p><%= current_user.street_number %> <%= current_user.street %></p>
+              <p><%= @user.street_number %> <%= @user.street %></p>
             </div>
             <div class="account-info">
               <p class="info">City:</p>
-              <p><%= current_user.city %></p>
+              <p><%= @user.city %></p>
             </div>
             <div class="account-info">
               <p class="info">Country</p>
-              <p><%= current_user.country %></p>
+              <p><%= @user.country %></p>
             </div>
             <div class="account-info">
               <p class="info">Payment info:</p>
-              <p><%= current_user.payment_info %></p>
+              <p><%= @user.payment_info %></p>
             </div>
 
-            <%= link_to "Edit my profile", edit_user_path(current_user), class: "btn btn-flat" %>
+            <%= link_to "Edit my profile", edit_user_path(@user), class: "btn btn-flat" %>
           </div>
 
         <div class="account-pic col-12 col-md-5">
-          <% unless current_user.profile_image.blank? %>
-            <%= cl_image_tag(current_user.profile_image, height: 200, width: 200, crop: :fill, class: "avatar-very-large") %>
+          <% unless @user.profile_image.blank? %>
+            <%= cl_image_tag(@user.profile_image, height: 200, width: 200, crop: :fill, class: "avatar-very-large") %>
           <% end %>
         </div>
       </div>

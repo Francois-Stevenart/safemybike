@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_action :set_user, only: [:edit, :update, :mygarages, :mybookings]
+  before_action :set_user, only: [:show, :edit, :update, :mygarages, :mybookings]
 
   def show
   end
