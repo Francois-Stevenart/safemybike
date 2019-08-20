@@ -17,12 +17,13 @@
           <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
             Create a new bike
           </button>
+          <%= f.button :submit %>
         <% else %>
+          <p>Create a bike before selecting a booking:</p>
           <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
             Create a new bike
           </button>
         <% end %>
-        <%= f.button :submit %>
       <% end %>
     </div>
     <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
