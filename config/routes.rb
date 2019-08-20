@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   root to: 'pages#landing'
   get "garages/index", to: "garages#index"
 
-  resources :users, only: [] do
+  resources :users, only: [:edit, :update] do
     get "dashboard", to: "users#show"
     get "dashboard/my_garages", to: "users#mygarages"
     get "dashboard/my_garages_bookings", to: "users#mygaragesbookings"
