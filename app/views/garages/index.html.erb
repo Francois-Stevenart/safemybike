@@ -1,6 +1,14 @@
 <h1>Garages#index</h1>
 <p>Find me in app/views/garages/index.html.erb</p>
 
+<% @garages.each do |garage| %>
+  <p><%= link_to garage.name, user_garage_path(current_user, garage.id) %></p>
+  <p><%= garage.street_address %>, <%= garage.city %></p>
+  <p><%= garage.price_regular_bike %></p>
+  <p><%= garage.price_large_bike %></p>
+  <p><%= garage.price_large_bike %></p>
+<% end %>
+
 <%= link_to "Back", root_path, class: "btn btn-flat" %>
 <div
   id="map"

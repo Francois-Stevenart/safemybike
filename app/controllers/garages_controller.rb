@@ -1,7 +1,8 @@
 class GaragesController < ApplicationController
+  skip_before_action :authenticate_user!, only: :index
   def index
+    @garages = Garage.all
     @garages = Garage.geocoded #returns garages with coordinates
-
     @markers = @garages.map do |garage|
       {
         lat: garage.latitude,
@@ -13,5 +14,7 @@ class GaragesController < ApplicationController
   end
 
   def show
+    @garage = Garage.find(params[:id])
+    @booking = Booking.new
   end
 end

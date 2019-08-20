@@ -17,14 +17,18 @@ puts 'password: master'
 
 puts 'The master user goes out and buys a series of expensive bikes...'
 
+bike_names = %w(EddyMerckx-bike Cowboy Cowgirl Tandem HippyBike OldAndUgly)
+
+i = 0
 6.times do
   bike = Bike.new(
-    name: Faker::TvShows::SouthPark.character,
+    name: bike_names[i],
     bike_size: ['regular', 'cargo'].sample,
     bike_type: ['electric', 'non-electric'].sample
     )
   bike.user = master_user
   bike.save!
+  i += 1
 end
 
 puts 'Creating garage feature list...'
@@ -93,5 +97,4 @@ i = 0
 end
 
 puts 'Success! Database seeded!'
-
 
