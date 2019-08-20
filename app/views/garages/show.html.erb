@@ -18,6 +18,8 @@
             Create a new bike
           </button>
           <%= f.button :submit %>
+          <div><h4>Regular bike price: <%= @garage.price_regular_bike %> € /month</h4></div>
+          <div><h4>Large bike price: <%= @garage.price_large_bike %> € /month</h4></div>
           <div class="bike-price"></div>
         <% else %>
           <p>Create a bike before selecting a booking:</p>
@@ -58,9 +60,9 @@
     let largeBikePrice = <%= @garage.price_large_bike.to_i %>;
     let price_to_pay = ""
       if (bikesize === "cargo") {
-        price_to_pay = "Price/month: " + largeBikePrice + " €";
+        price_to_pay = "Your bike price/month: " + largeBikePrice + " €";
       } else if (bikesize === "regular") {
-        price_to_pay = "Price/month: " + regularBikePrice + " €";
+        price_to_pay = "Your bike price/month: " + regularBikePrice + " €";
       } else {
         price_to_pay = "";
       }
