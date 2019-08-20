@@ -10,15 +10,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_08_20_081836) do
+ActiveRecord::Schema.define(version: 2019_08_20_100037) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "bikes", force: :cascade do |t|
     t.bigint "user_id"
-    t.string "type"
-    t.string "size"
+    t.string "bike_type"
+    t.string "bike_size"
     t.integer "bike_tag"
     t.string "bike_image"
     t.datetime "created_at", null: false
@@ -81,6 +81,8 @@ ActiveRecord::Schema.define(version: 2019_08_20_081836) do
     t.datetime "updated_at", null: false
     t.integer "price_regular_bike_cents", default: 0, null: false
     t.integer "price_large_bike_cents", default: 0, null: false
+    t.float "latitude"
+    t.float "longitude"
     t.index ["user_id"], name: "index_garages_on_user_id"
   end
 

@@ -5,6 +5,6 @@ class Bike < ApplicationRecord
   has_many :bookings
 
   validates :name, presence: true, uniqueness: true
-  validates :size, inclusion: { in: %w(regular cargo) }
-  validates :type, inclusion: { in: %w(electric non-electric) }
+  validates :bike_size, inclusion: { in: %w(regular cargo) }
+  validates :bike_type, inclusion: { in: %w(electric non-electric) }
 end
