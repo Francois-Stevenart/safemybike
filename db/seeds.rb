@@ -6,12 +6,35 @@ User.destroy_all
 FeaturePresence.destroy_all
 Feature.destroy_all
 
+puts '-'*40
+
 puts 'Creating master user...'
 
 master_user = User.new(first_name: 'Federico', last_name: 'Pooface', email: 'master@user.com', password: 'master', password_confirmation: 'master')
 master_user.save
 puts 'email: master@user.com'
 puts 'password: master'
+
+puts '-'*40
+
+puts 'Creating owner user...'
+
+owner_user = User.new(first_name: 'Franky', last_name: 'Doodoo', email: 'owner@user.com', password: 'master', password_confirmation: 'master')
+owner_user.save
+
+puts 'email: owner@user.com'
+puts 'password: master'
+
+puts '-'*40
+
+puts 'Creating renter user...'
+
+renter_user = User.new(first_name: 'Eddy', last_name: 'King', email: 'renter@user.com', password: 'master', password_confirmation: 'master')
+renter_user.save
+puts 'email: renter@user.com'
+puts 'password: master'
+
+puts '-'*40
 
 puts 'The master user goes out and buys a series of expensive bikes...'
 
@@ -28,6 +51,15 @@ i = 0
   bike.save!
   i += 1
 end
+
+puts 'The renter user goes out and buys a cool electric bike and a huge cargo bike...'
+
+bike = Bike.new(name: 'E-Bike', bike_size: 'regular', bike_type: 'electric')
+bike.user = renter_user
+bike.save!
+bike = Bike.new(name: 'Cargo Bike', bike_size: 'cargo', bike_type: 'non-electric')
+bike.user = renter_user
+bike.save!
 
 puts 'Creating garage feature list...'
 
@@ -81,7 +113,11 @@ i = 0
     price_regular_bike: rand(15..22),
     price_large_bike: rand(25..32)
   )
-  garage.user = master_user
+  if i < 7
+    garage.user = master_user
+  else
+    garage.user = owner_user
+  end
   garage.remote_profile_image_url = garage_images[i]
   garage.save!
   i += 1
