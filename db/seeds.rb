@@ -98,4 +98,3 @@ end
 
 puts 'Success! Database seeded!'
 
-
