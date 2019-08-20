@@ -1,0 +1,15 @@
+.custom-form {
+  background-color: white;
+  border-radius: 10px;
+  padding: 25px 35px;
+  max-width: 600px;
+  margin: 30px 0px;
+  h2 {
+    text-align: center;
+    color: $green;
+    }
+  label {
+    color: $darkgreen;
+  }
+}
+
