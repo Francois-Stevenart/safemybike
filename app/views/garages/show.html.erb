@@ -3,14 +3,17 @@
 
 <div class="row">
   <div class="col-12 col-md-8">
-    <h2>Bike Name</h2>
-    <p>This is a description. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation.</p>
-    <p>This is a feature</p>
-    <p>A second feature</p>
+    <h2><%= @garage.name %></h2>
+    <p><%= @garage.description %></p>
+    <p>capacity regular bikes: <%= @garage.capacity_reg_bikes %></p>
+    <p>capacity large bikes: <%= @garage.capacity_large_bikes %></p>
   </div>
   <div class="col-12 col-md-8">
     <div>
-      <h3>Booking form</h3>
+      <%= simple_form_for [current_user, @garage, @booking] do |f| %>
+        <%= f.input :start_date, as: :date, html5: true %>
+        <%= f.button :submit %>
+      <% end %>
     </div>
   </div>
 </div>
