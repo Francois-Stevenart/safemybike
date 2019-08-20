@@ -15,6 +15,18 @@ master_user.save
 puts 'email: master@user.com'
 puts 'password: master'
 
+puts 'The master user goes out and buys a series of expensive bikes...'
+
+6.times do
+  bike = Bike.new(
+    name: Faker::TvShows::SouthPark.character,
+    bike_size: ['regular', 'cargo'].sample,
+    bike_type: ['electric', 'non-electric'].sample
+    )
+  bike.user = master_user
+  bike.save!
+end
+
 puts 'Creating garage feature list...'
 
 Feature.new(name: 'bicycle rack', icon_image: '<i class="fas fa-stream"></i>').save!
@@ -81,3 +93,4 @@ i = 0
 end
 
 puts 'Success! Database seeded!'
+
