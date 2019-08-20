@@ -1,16 +1,17 @@
-<div class="sidebar-body">
+<div class="sidebar-body" data-controller="tab">
 
   <ul class="tabs">
+
     <%= link_to user_dashboard_path(current_user) do %>
-      <li class="sidebar-tab tab-active">Account</li>
+      <li class="sidebar-tab" data-target="tab.bar">Account</li>
     <% end %>
 
     <%= link_to dashboard_my_garages_user_path(current_user) do %>
-      <li class="sidebar-tab">My garage(s)</li>
+      <li class="sidebar-tab" data-target="tab.bar">My garage(s)</li>
     <% end %>
 
     <%= link_to dashboard_my_bookings_user_path(current_user) do %>
-      <li class="sidebar-tab">My rent agreements</li>
+      <li class="sidebar-tab" data-target="tab.bar">My rent agreements</li>
     <% end %>
   </ul>
 
