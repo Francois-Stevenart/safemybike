@@ -1,5 +1,7 @@
 class Garage < ApplicationRecord
   mount_uploader :profile_image, PhotoUploader
+  monetize :price_regular_bike_cents
+  monetize :price_large_bike_cents
 
   belongs_to :user
   has_many :bookings
