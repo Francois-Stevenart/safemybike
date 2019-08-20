@@ -9,6 +9,8 @@ Rails.application.routes.draw do
     member do
       get "dashboard/my_garages", to: "users#mygarages"
       get "dashboard/my_bookings", to: "users#mybookings"
+      get "bookings/:id/accept", to: "bookings#accept_request", as: "accept"
+      get "bookings/:id/reject", to: "bookings#reject_request", as: "reject"
     end
     resources :garages, except: [:index, :destroy] do
       resources :bookings, only: [:new, :edit, :create, :update] do
