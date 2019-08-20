@@ -4,9 +4,18 @@
     <%= render 'shared/dashboardsidebar'%>
   </div>
 
-  <div>
-    <h1>Dashboard</h1>
-    <h2>My garages list and details tab</h2>
+  <div class="dashboard-main">
+    <h2>My garages list:</h2>
+
+    <% current_user.garages.each do |garage| %>
+      <div class="card-dashboard">
+        <p>Name: <%= garage.name %></p>
+        <p>Address: <%= garage.street_number %> <%= garage.street_address %>, <%= garage.city %>, <%= garage.country %></p>
+        <p>Capacity: <%= garage.capacity_reg_bikes %> regular bikes | <%= garage.capacity_large_bikes %> large bikes</p>
+        <%= link_to "Show", user_garage_path(current_user, garage) %>
+      </div>
+    <% end %>
+
   </div>
 
 </div>

@@ -5,11 +5,11 @@
       <li>Account</li>
     <% end %>
 
-    <%= link_to user_dashboard_my_garages_path(current_user) do %>
+    <%= link_to dashboard_my_garages_user_path(current_user) do %>
       <li>My garage(s)</li>
     <% end %>
 
-    <%= link_to user_dashboard_my_garages_bookings_path(current_user) do %>
+    <%= link_to dashboard_my_garages_bookings_user_path(current_user) do %>
       <li>My rent agreements</li>
     <% end %>
   </ul>
