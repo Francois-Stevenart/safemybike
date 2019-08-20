@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   get "garages/index", to: "garages#index"
 
   resources :users, only: [:edit, :update] do
+    resources :bikes, only: [:create, :new]
     get "dashboard", to: "users#show"
     get "dashboard/my_garages", to: "users#mygarages"
     get "dashboard/my_garages_bookings", to: "users#mygaragesbookings"

@@ -16,5 +16,6 @@ class GaragesController < ApplicationController
   def show
     @garage = Garage.find(params[:id])
     @booking = Booking.new
+    @bike = Bike.new
   end
 end
