@@ -1,19 +1,24 @@
-<h1>Garages#index</h1>
-<p>Find me in app/views/garages/index.html.erb</p>
-
-<% @garages.each do |garage| %>
-  <p><%= link_to garage.name, user_garage_path(current_user, garage.id) %></p>
-  <p><%= garage.street_address %>, <%= garage.city %></p>
-  <p><%= garage.price_regular_bike %></p>
-  <p><%= garage.price_large_bike %></p>
-  <p><%= garage.price_large_bike %></p>
-<% end %>
-
-<%= link_to "Back", root_path, class: "btn btn-flat" %>
 <div
   id="map"
   style="width: 100%;
-  height: 600px;"
+  height: 45vh;"
   data-markers="<%= @markers.to_json %>"
   data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>"
 ></div>
+<div class="index-cards">
+  <% @garages.each do |garage| %>
+    <%= link_to user_garage_path(garage.user, garage), class: 'index-card' do %>
+      <div class="index-card-img-top" style="background-image: url(<%= cl_image_path garage.profile_image %>);"></div>
+      <div class="index-card-body">
+        <h5 class="index-card-title"><%= garage.name %></h5>
+        <p class="index-card-text"><%= garage.street_address %>, <%= garage.city %></p>
+        <h6 class="price-tag">€<%= garage.price_regular_bike %>/month</h6>
+      </div>
+    <% end %>
+  <% end %>
+</div>
+
+
+
+
+<%= link_to "Back", root_path, class: "btn btn-flat" %>

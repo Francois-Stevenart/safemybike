@@ -1,0 +1,49 @@
+.index-card {
+  width: 240px;
+  height: 100%;
+  margin: 10px;
+  border-radius: 3px;
+  background-color: $white;
+  box-shadow: 1px 1px 10px lightgrey;
+  &:hover {
+    box-shadow: 1px 1px 10px $green;
+    text-decoration: none;
+  }
+}
+
+.index-card-img-top {
+  height: 120px;
+  background-size: 100%;
+  border-radius: 3px 3px 0 0;
+}
+
+.index-card-body {
+  position: relative;
+  padding: 10px;
+}
+
+h5, p {
+  margin: 0;
+  text-decoration: none;
+  color: $dark;
+}
+
+h5 {
+  font-size: 1em;
+  font-weight: bold;
+}
+p {
+  font-size: 0.75em;
+}
+
+.price-tag {
+  position: absolute;
+  top: -10px;
+  right: 10px;
+  background-color: $green;
+  color: $white;
+  font-size: 1em;
+  border-radius: 20px;
+  margin: 0;
+  padding: 4px;
+}
