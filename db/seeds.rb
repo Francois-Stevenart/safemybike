@@ -81,14 +81,3 @@ i = 0
 end
 
 puts 'Success! Database seeded!'
-
-garage = Garage.new(
-    name: "test",
-    description: "test description",
-    street_number: "test number",
-    street_address: "test address",
-    city: "test city",
-    country: "test country",
-    capacity_reg_bikes: rand(1..6),
-    capacity_large_bikes: rand(1..2)
-  )
