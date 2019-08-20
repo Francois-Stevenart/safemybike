@@ -10,14 +10,15 @@
   </div>
   <div class="col-12 col-md-8">
     <div>
-      <%= simple_form_for [current_user, @garage, @booking] do |f| %>
+      <%= simple_form_for [current_user, @garage, @booking], html: {id: :appear_price} do |f| %>
         <%= f.input :start_date, as: :date, html5: true %>
         <% if current_user.bikes.exists? %>
-          <%= f.input :bike_id, collection: current_user.bikes %>
+          <%= f.input :bike_id, collection: current_user.bikes.map{|bike| [bike.name, bike.bike_size]}, input_html: { :class => "selected-type" } %>
           <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
             Create a new bike
           </button>
           <%= f.button :submit %>
+          <div class="bike-price"></div>
         <% else %>
           <p>Create a bike before selecting a booking:</p>
           <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
@@ -49,3 +50,20 @@
     </div>
   </div>
 </div>
+<script>
+  const typeSelectInput = document.querySelector('.selected-type');
+  typeSelectInput.addEventListener('change', e => {
+    let bikesize = e.target.value
+    let regularBikePrice = <%= @garage.price_regular_bike.to_i %>;
+    let largeBikePrice = <%= @garage.price_large_bike.to_i %>;
+    let price_to_pay = ""
+      if (bikesize === "cargo") {
+        price_to_pay = "Price/month: " + largeBikePrice + " €";
+      } else if (bikesize === "regular") {
+        price_to_pay = "Price/month: " + regularBikePrice + " €";
+      } else {
+        price_to_pay = "";
+      }
+    document.querySelector('.bike-price').textContent = price_to_pay;
+    });
+</script>

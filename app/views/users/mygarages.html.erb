@@ -7,7 +7,7 @@
   <div class="dashboard-main">
     <h2>My garages list:</h2>
 
-    <% current_user.garages.each do |garage| %>
+    <% @garages.each do |garage| %>
       <div class="card-dashboard">
         <p>Name: <%= garage.name %></p>
         <p>Address: <%= garage.street_number %> <%= garage.street_address %>, <%= garage.city %>, <%= garage.country %></p>

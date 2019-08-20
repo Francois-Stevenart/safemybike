@@ -1,0 +1,38 @@
+<div class="dashboard-container">
+
+  <div class="sidebar">
+    <%= render 'shared/dashboardsidebar'%>
+  </div>
+
+  <div class="dashboard-main">
+    <h2>Rent agreements tab</h2>
+
+    <div>
+      <% if @owner_bookings.any? %>
+        <h3>Bookings on my garages:</h3>
+        <% @owner_bookings.each do |owner_booking| %>
+          <div class="card-dashboard">
+            <p>Garage: <%= owner_booking.garage.name %></p>
+            <p>Bike: <%= owner_booking.bike.name %> | by: <%= owner_booking.bike.user.first_name %></p>
+            <p>Location: <%= owner_booking.garage.street_number %> <%= owner_booking.garage.street_address %></p>
+            <p>Status: <%= owner_booking.status %></p>
+          </div>
+        <% end %>
+      <% end %>
+    </div>
+
+    <div>
+      <% if @biker_bookings.any? %>
+        <h3>Bookings for my bikes:</h3>
+        <% @biker_bookings.each do |biker_booking| %>
+          <div class="card-dashboard">
+            <p>Bike: <%= biker_booking.bike.name %></p>
+            <p>Garage: <%= biker_booking.garage.name %> | Owner: <%= biker_booking.garage.user.first_name %></p>
+            <p>Location: <%= biker_booking.garage.street_number %> <%= biker_booking.garage.street_address %></p>
+            <p>Status: <%= biker_booking.status %></p>
+          </div>
+        <% end %>
+      <% end %>
+    </div>
+
+</div>
