@@ -6,8 +6,10 @@ Rails.application.routes.draw do
   resources :users, only: [:edit, :update] do
     resources :bikes, only: [:create, :new]
     get "dashboard", to: "users#show"
-    get "dashboard/my_garages", to: "users#mygarages"
-    get "dashboard/my_garages_bookings", to: "users#mygaragesbookings"
+    member do
+      get "dashboard/my_garages", to: "users#mygarages"
+      get "dashboard/my_garages_bookings", to: "users#mygaragesbookings"
+    end
     resources :garages, except: [:index, :destroy] do
       resources :bookings, only: [:new, :edit, :create, :update] do
         resources :chat, only: [:new, :create]
