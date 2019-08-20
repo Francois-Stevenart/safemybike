@@ -1,13 +1,16 @@
 class UsersController < ApplicationController
-  before_action :set_user, only: [:edit, :update, :mygarages]
+  before_action :set_user, only: [:edit, :update, :mygarages, :mybookings]
 
   def show
   end
 
   def mygarages
+    @garages = @user.garages
   end
 
-  def mygaragesbookings
+  def mybookings
+    @owner_bookings = @user.owner_bookings
+    @biker_bookings = @user.biker_bookings
   end
 
   def edit
