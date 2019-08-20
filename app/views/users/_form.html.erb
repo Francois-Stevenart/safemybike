@@ -1,0 +1,32 @@
+<div class="row justify-content-center">
+  <div class="col-12 col-sm-8 col-md-6 custom-form">
+
+    <h2>Edit your profile:</h2>
+
+    <%= simple_form_for(current_user) do |f| %>
+      <%= f.input :email,
+                  required: true,
+                  autofocus: true,
+                  input_html: { autocomplete: "email" }%>
+      <%= f.input :password,
+                  required: true,
+                  hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length),
+                  input_html: { autocomplete: "new-password" } %>
+      <%= f.input :password_confirmation,
+                  required: true,
+                  input_html: { autocomplete: "new-password" } %>
+      <%= f.input :street,
+                  required: false %>
+      <%= f.input :street_number,
+                  required: false %>
+      <%= f.input :city,
+                  required: false %>
+      <%= f.select :country,
+                  required: false %>
+      <%= f.input :profile_image %>
+      <%= f.input :profile_image_cache, as: :hidden %>
+      <%= f.button :submit, class: 'btn btn-flat' %>
+    <% end %>
+
+  </div>
+</div>

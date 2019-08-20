@@ -1,0 +1,42 @@
+.card-account {
+  border-radius: 10px;
+  margin: 10px 25px;
+  border: solid 1px $green;
+  margin: 25px;
+  padding: 20px 20px 50px 50px;
+}
+
+.account-headline {
+  display: flex;
+  justify-content: space-between;
+  align-items: top;
+}
+
+.account-body {
+  flex: 1 0 auto;
+  h2 {
+    margin: 10px 0px 25px 0px;
+  }
+  .btn {
+    margin-top: 30px;
+  }
+}
+
+.account-info {
+  padding: 10px 0px 0px 0px;
+  margin: 0px;
+  border-bottom: 1px solid $dark;
+  display: flex;
+  .info {
+    font-weight: bold;
+    width: 160px;
+  }
+}
+
+.account-pic {
+  padding-left: 50px;
+  display: flex;
+  justify-content: center;
+  min-width: 250px;
+  margin-top: 30px;
+}

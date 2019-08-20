@@ -4,9 +4,52 @@
     <%= render 'shared/dashboardsidebar'%>
   </div>
 
-  <div>
-    <h1>Dashboard</h1>
-    <h2>My account info tab</h2>
+  <div class="dashboard-main">
+
+      <div class="card-account">
+        <div class="account-headline row">
+          <div class="account-body col-12 col-md-7">
+            <h2><%= current_user.first_name %>'s Account</h2>
+            <div class="account-info">
+              <p class="info">First name:</p>
+              <p><%= current_user.first_name %></p>
+            </div>
+            <div class="account-info">
+              <p class="info">Last name:</p>
+              <p><%= current_user.last_name %></p>
+            </div>
+            <div class="account-info">
+              <p class="info">Email:</p>
+              <p><%= current_user.email %></p>
+            </div>
+            <div class="account-info">
+              <p class="info">Address:</p>
+              <p><%= current_user.street_number %> <%= current_user.street %></p>
+            </div>
+            <div class="account-info">
+              <p class="info">City:</p>
+              <p><%= current_user.city %></p>
+            </div>
+            <div class="account-info">
+              <p class="info">Country</p>
+              <p><%= current_user.country %></p>
+            </div>
+            <div class="account-info">
+              <p class="info">Payment info:</p>
+              <p><%= current_user.payment_info %></p>
+            </div>
+
+            <%= link_to "Edit my profile", edit_user_path(current_user), class: "btn btn-flat" %>
+          </div>
+
+        <div class="account-pic col-12 col-md-5">
+          <% unless current_user.profile_image.blank? %>
+            <%= cl_image_tag(current_user.profile_image, height: 200, width: 200, crop: :fill, class: "avatar-very-large") %>
+          <% end %>
+        </div>
+      </div>
+    </div>
+
   </div>
 
 </div>
