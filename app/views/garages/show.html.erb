@@ -12,6 +12,7 @@
     <div>
       <%= simple_form_for [current_user, @garage, @booking] do |f| %>
         <%= f.input :start_date, as: :date, html5: true %>
+        <%= f.input :bike_id, collection: current_user.bikes %>
         <%= f.button :submit %>
       <% end %>
     </div>
