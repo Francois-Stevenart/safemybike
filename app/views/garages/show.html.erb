@@ -17,7 +17,9 @@
       <%= simple_form_for [current_user, @garage, @booking], html: {id: :appear_price} do |f| %>
         <%= f.input :start_date, as: :date, html5: true %>
         <% if current_user.bikes.exists? %>
-          <%= f.input :bike_id, collection: current_user.bikes.map{|bike| [bike.name, bike.bike_size]}, input_html: { :class => "selected-type" } %>
+          <div id="array_bike_node" data-bikes="<%= current_user.bikes.map{|bike|{ id: bike.id, size: bike.bike_size  } }.to_json  %>" > </div>
+          <%= f.input :bike_id, collection: current_user.bikes.map{|bike| [bike.name, bike.id] }, input_html: { :class => "selected-type" }  %>
+
           <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
             Create a new bike
           </button>
@@ -58,8 +60,11 @@
 </div>
 <script>
   const typeSelectInput = document.querySelector('.selected-type');
+  const array_bikes = JSON.parse(document.querySelector("#array_bike_node").dataset.bikes)
+  console.log(typeof(array_bikes))
   typeSelectInput.addEventListener('change', e => {
-    let bikesize = e.target.value
+    let id = Number(e.target.value)
+    let bikesize = array_bikes.find((bike) => { console.log(bike) ;  return bike.id === id  }).size
     let regularBikePrice = <%= @garage.price_regular_bike.to_i %>;
     let largeBikePrice = <%= @garage.price_large_bike.to_i %>;
     let price_to_pay = ""

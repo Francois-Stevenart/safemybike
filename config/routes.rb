@@ -14,8 +14,8 @@ Rails.application.routes.draw do
       get "bookings/:id/reject", to: "bookings#reject_request", as: "reject"
     end
     resources :garages, except: [:index, :destroy] do
-      resources :bookings, only: [:new, :edit, :create, :update] do
-        resources :chat, only: [:new, :create]
+      resources :bookings, only: [:new, :edit, :create, :update, :show] do
+        resources :chats, only: [ :new, :create ]
       end
     end
   end
