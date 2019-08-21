@@ -12,8 +12,9 @@ class BookingsController < ApplicationController
 
   def show
     @booking = Booking.find(params[:id])
-    @chat = Chat.new
     @garage = Garage.find(@booking.garage_id)
+    @chat = Chat.new
+    @chats = Chat.where(booking_id: @booking)
   end
 
   private
