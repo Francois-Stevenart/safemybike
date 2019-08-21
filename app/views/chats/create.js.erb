@@ -1,0 +1,18 @@
+addMessage = (name, content) => {
+  let div_n = document.createElement("div")
+  div_n.classList.add("message-content-left")
+  let name_element = document.createElement("p")
+  let content_element = document.createElement("p")
+  name_element.innerText = name
+  content_element.innerText = content
+  div_n.appendChild(name_element)
+  div_n.appendChild(content_element)
+  document.querySelector("#chat-messages").appendChild(div_n)
+  document.querySelector("#chat_content").value = ""
+  let objDiv = document.querySelector("#chat-messages")
+  objDiv.scrollTop = objDiv.scrollHeight;
+}
+
+
+addMessage("<%= @chat.user.first_name%> <%= @chat.user.last_name %>",  "<%= j raw @chat.content %>")
+

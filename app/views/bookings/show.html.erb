@@ -1,7 +1,26 @@
 <h1>Hello World</h1>
 <p><%= @booking.status %></p>
 
-<%= simple_form_for [current_user, @garage, @booking, @chat] do |f| %>
-  <%= f.input :content %>
-  <%= f.button :submit %>
-<% end %>
+<div id="chatbox">
+  <div id="chat-messages">
+    <% @chats.each do |message| %>
+      <% if message.user.first_name == current_user.first_name %>
+        <div class="message-content-left">
+          <p><%= message.user.first_name %> <%= message.user.last_name %>:</p>
+          <p><%= message.content %></p>
+        </div>
+      <% else %>
+        <div class="message-content-right">
+          <p><%= message.user.first_name %> <%= message.user.last_name %>:</p>
+          <p><%= message.content %></p>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
+  <div id="form-send-message">
+    <%= simple_form_for([current_user, @garage, @booking, @chat], remote: true) do |f| %>
+      <%= f.input :content %>
+      <%= f.button :submit %>
+    <% end %>
+  </div>
+</div>
