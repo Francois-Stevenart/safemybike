@@ -92,6 +92,10 @@
             <p>For your bike: <%= booking.bike.name %></p>
             <p>Status : <%= booking.status %></p>
             <%= link_to "Contact owner", "#" %>
+            <%= form_tag orders_path do %>
+              <%= hidden_field_tag 'booking_id', booking.id %>
+              <%= submit_tag 'Purchase', class: 'btn btn-primary' %>
+            <% end %>
             </p>
           </div>
         <% end %>
