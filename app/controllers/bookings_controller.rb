@@ -8,6 +8,8 @@ class BookingsController < ApplicationController
   def create
     @booking = Booking.new(booking_params)
     @booking.garage_id = params[:garage_id]
+    @booking.price = @booking.garage.price_large_bike if @booking.bike.bike_size == "cargo"
+    @booking.price = @booking.garage.price_regular_bike if @booking.bike.bike_size == "regular"
     @booking.save
     redirect_to user_garage_path(current_user, @booking.garage_id)
   end
