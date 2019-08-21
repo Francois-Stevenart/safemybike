@@ -6,7 +6,6 @@
 
   <div class="dashboard-main">
     <div class="card-dashboard">
-      <h2>Home dashboard</h2>
 
   <!-- Display received requests as an owner: -->
       <% if @owner_requests.any? %>
@@ -21,6 +20,7 @@
               <%= link_to "Accept", accept_user_path(@user, booking), class: "btn btn-flat" %>
               <%= link_to "Decline", reject_user_path(@user, booking), class: "btn btn-flat" %>
               <%= link_to "Profile", "#", class: "btn btn-flat" %>
+              <%= link_to "Contact biker", user_garage_booking_path(@user, booking.garage, booking) %>
               </p>
             </div>
           <% end %>
@@ -46,7 +46,7 @@
             <p>For your garage: <%= booking.garage.name %></p>
             <p> <%= booking.garage.street_number %> <%= booking.garage.street_address %></p>
             <p>Status : <%= booking.status %></p>
-            <%= link_to "Contact biker", "#" %>
+            <%= link_to "Contact biker", user_garage_booking_path(@user, booking.garage, booking) %>
           </div>
         <% end %>
       <% end %>
@@ -64,6 +64,7 @@
               <p>For your bike: <%= booking.bike.name %></p>
               <p>Status : <%= booking.status %></p>
               <%= link_to "Cancel", cancel_request_user_path(@user, booking), class: "btn btn-flat" %>
+              <%= link_to "Contact owner", user_garage_booking_path(@user, booking.garage, booking) %>
               </p>
             </div>
           <% end %>
@@ -91,11 +92,16 @@
             <p>For his garage <%= booking.garage.name %>, located : <%= booking.garage.street_number %> <%= booking.garage.street_address %></p>
             <p>For your bike: <%= booking.bike.name %></p>
             <p>Status : <%= booking.status %></p>
+
             <%= link_to "Contact owner", "#" %>
             <%= form_tag orders_path do %>
               <%= hidden_field_tag 'booking_id', booking.id %>
               <%= submit_tag 'Purchase', class: 'btn btn-primary' %>
             <% end %>
+
+            <%= link_to "Cancel", cancel_request_user_path(@user, booking), class: "btn btn-flat" %>
+            <%= link_to "Contact owner", user_garage_booking_path(@user, booking.garage, booking) %>
+
             </p>
           </div>
         <% end %>

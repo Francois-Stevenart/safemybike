@@ -18,7 +18,7 @@
               <p>Status: <%= biker_booking.status %></p>
               <div><%= link_to "Accept", "#" %></div>
               <div><%= link_to "Reject", "#" %></div>
-              <div><%= link_to "Contact user", user_garage_booking_path(current_user, biker_booking.garage, biker_booking) %></div>
+              <div><%= link_to "Contact owner", user_garage_booking_path(current_user, biker_booking.garage, biker_booking) %></div>
             </div>
           <% end %>
         <% end %>
@@ -32,7 +32,7 @@
               <p>Bike: <%= biker_booking.bike.name %> | by: <%= biker_booking.bike.user.first_name %></p>
               <p>Location: <%= biker_booking.garage.street_number %> <%= biker_booking.garage.street_address %></p>
               <p>Status: <%= biker_booking.status %></p>
-              <div><%= link_to "Contact user", user_garage_booking_path(current_user, biker_booking.garage, biker_booking) %></div>
+              <div><%= link_to "Contact owner", user_garage_booking_path(current_user, biker_booking.garage, biker_booking) %></div>
             </div>
           <% end %>
         <% end %>
