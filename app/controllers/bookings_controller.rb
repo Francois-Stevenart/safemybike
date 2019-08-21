@@ -10,15 +10,18 @@ class BookingsController < ApplicationController
     @booking.garage_id = params[:garage_id]
     @booking.price = @booking.garage.price_large_bike if @booking.bike.bike_size == "cargo"
     @booking.price = @booking.garage.price_regular_bike if @booking.bike.bike_size == "regular"
-    @booking.save
-    redirect_to user_garage_path(current_user, @booking.garage_id)
+    if @booking.save
+      redirect_to user_garage_path(current_user, @booking.garage_id)
+    else
+      raise
+    end
   end
 
   def show
     @booking = Booking.find(params[:id])
     @garage = Garage.find(@booking.garage_id)
     @chat = Chat.new
-    @chats = Chat.where(booking_id: @booking)
+    @chats = Chat.where(booking_id: @booking).order(created_at: :asc)
   end
 
   def accept_request
