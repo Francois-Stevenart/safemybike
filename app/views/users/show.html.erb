@@ -6,25 +6,7 @@
 
   <div class="dashboard-main">
 
-      <% if @user.owner_bookings.where(status: "pending").any? %>
-        <div class="card-dashboard">
-          <h2>Pending requests:</h2>
-          <% @user.owner_bookings.where(status: "pending").each do |booking| %>
-            <div class="card-dashboard-request">
-              <p>FROM: <%= booking.bike.user.first_name %> <%= booking.bike.user.last_name %></p>
-              <p>For your garage: <%= booking.garage.name %></p>
-              <p> <%= booking.garage.street_number %> <%= booking.garage.street_address %></p>
-              <p>Status : <%= booking.status %></p>
-              <%= link_to "Accept", accept_user_path(@user, booking), class: "btn btn-flat" %>
-              <%= link_to "Decline", reject_user_path(@user, booking), class: "btn btn-flat" %>
-              <%= link_to "Profile", "#", class: "btn btn-flat" %>
-              </p>
-            </div>
-          <% end %>
-        </div>
-      <% end %>
-
-      <div class="card-dashboard">
+       <div class="card-dashboard">
         <div class="account-headline row">
           <div class="account-body col-12 col-md-7">
             <h2><%= @user.first_name %>'s Profile</h2>

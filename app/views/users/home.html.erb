@@ -5,7 +5,27 @@
   </div>
 
   <div class="dashboard-main">
-    <h2>Home dashboard</h2>
+    <div class="card-dashboard">
+      <h2>Home dashboard</h2>
+
+      <% if @user.owner_bookings.where(status: "pending").any? %>
+
+          <h3>Pending requests:</h3>
+          <% @user.owner_bookings.where(status: "pending").each do |booking| %>
+            <div class="card-dashboard-request">
+              <p>FROM: <%= booking.bike.user.first_name %> <%= booking.bike.user.last_name %></p>
+              <p>For your garage: <%= booking.garage.name %></p>
+              <p> <%= booking.garage.street_number %> <%= booking.garage.street_address %></p>
+              <p>Status : <%= booking.status %></p>
+              <%= link_to "Accept", accept_user_path(@user, booking), class: "btn btn-flat" %>
+              <%= link_to "Decline", reject_user_path(@user, booking), class: "btn btn-flat" %>
+              <%= link_to "Profile", "#", class: "btn btn-flat" %>
+              </p>
+            </div>
+          <% end %>
+      <% end %>
+    </div>
+
   </div>
 
 </div>
