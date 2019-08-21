@@ -4,7 +4,7 @@
   top: 0px;
 }
 .sidebar-body {
-  background-color: white;
+  background-color: $green;
   height: 100vh;
 }
 
@@ -19,8 +19,6 @@
   padding: 12px;
   text-align: center;
   color: $white;
-  background-color: $green;
-  opacity: 0.9;
   &:hover {
     background-color: $darkgreen;
     opacity: 1;
