@@ -95,11 +95,13 @@ i = 3
   user.remote_profile_image_url = user_images[i]
   user.save!
   i += 1
+  print '👤'
 end
 
+puts ''
 bike_names = %w(EddyMerckx-bike Cowboy Cowgirl Tandem HippyBike OldAndUgly)
 
-puts 'The master user goes out and buys a series of expensive bikes... 🚲🚲🚲🚲🚲🚲'
+puts 'The master user goes out and buys a series of expensive bikes... 🚲'
 
 i = 0
 6.times do
@@ -112,9 +114,11 @@ i = 0
   bike.remote_bike_image_url = bike_images.sample
   bike.save!
   i += 1
+  print '🚲'
 end
 
-puts 'The renter user goes out and buys a cool electric bike and a huge cargo bike... 🚲🚲'
+puts ''
+puts 'The renter user goes out and buys a cool electric bike and a huge cargo bike... 🚲'
 
 bike = Bike.new(name: 'E-Bike', bike_size: 'regular', bike_type: 'electric')
 bike.user = renter_user
@@ -125,7 +129,7 @@ bike.user = renter_user
 bike.remote_bike_image_url = bike_images.sample
 bike.save!
 
-puts 'The other 7 users all go out and buy a bike... 🚲🚲🚲🚲🚲🚲🚲'
+puts 'The other 7 users all go out and buy a bike... 🚲'
 
 bike_names = %w(TwoWheeler MasterCylinder TomBoonenBike EvenepoelBike BenoitPoocycle 6-wheeled-monster CarcoFishBike)
 
@@ -142,8 +146,10 @@ users.last(7).each do |user|
   bike.remote_bike_image_url = bike_images.sample
   bike.save!
   i += 1
+  print '🚲'
 end
 
+puts ''
 puts 'Creating garage feature list... ⛽'
 
 Feature.new(name: 'bicycle rack', icon_image: '<i class="fas fa-stream"></i>').save!
@@ -191,8 +197,10 @@ i = 0
     feature_presence
     o += 1
   end
+  print '🏠'
 end
 
+puts ''
 puts 'Creating bookings... 🗓️'
 
 garages = master_user.garages
@@ -206,8 +214,26 @@ garages.each do |garage|
     booking.garage = garage
     booking.bike = bikes.sample
     booking.save!
+    print '🗓️ '
   end
 end
 
+puts ''
+puts "Pulling reviews out of my buttocks... ⌨️"
+
+bookings = Booking.all
+
+bookings.each do |booking|
+  date = Faker::Date.between(from: 2.year.ago, to: 1.month.ago)
+  review = Review.create(
+    content:    Faker::TvShows::NewGirl.quote,
+    rating:     rand(3..5)
+    )
+  review.booking = booking
+  review.save
+  print '⌨️ '
+end
+
+puts ''
 puts 'Success! Database seeded! ✨💥🔥'
 
