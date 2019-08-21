@@ -42,7 +42,7 @@ bike_images = [
   'https://res.cloudinary.com/di1eyazrv/image/upload/v1566382648/17-05-23-Nordhavn-DSC_8579_vuiuwm.jpg'
 ]
 
-puts 'Deleting all database content...'
+puts 'Deleting all database content... 🙅‍♂️'
 
 User.destroy_all
 FeaturePresence.destroy_all
@@ -51,7 +51,7 @@ Booking.destroy_all
 
 puts '-'*40
 
-puts 'Creating master user...'
+puts 'Creating master user... 🤴'
 
 master_user = User.new(first_name: 'Federico', last_name: 'Pooface', email: 'master@user.com', password: 'master', password_confirmation: 'master')
 master_user.remote_profile_image_url = user_images[0]
@@ -61,7 +61,7 @@ puts 'password: master'
 
 puts '-'*40
 
-puts 'Creating owner user...'
+puts 'Creating owner user... 🏠'
 
 owner_user = User.new(first_name: 'Franky', last_name: 'Doodoo', email: 'owner@user.com', password: 'master', password_confirmation: 'master')
 owner_user.remote_profile_image_url = user_images[1]
@@ -72,7 +72,7 @@ puts 'password: master'
 
 puts '-'*40
 
-puts 'Creating renter user...'
+puts 'Creating renter user... 🤸'
 
 renter_user = User.new(first_name: 'Eddy', last_name: 'King', email: 'renter@user.com', password: 'master', password_confirmation: 'master')
 renter_user.remote_profile_image_url = user_images[2]
@@ -82,7 +82,7 @@ puts 'password: master'
 
 puts '-'*40
 
-puts 'Creating 7 more users...'
+puts 'Creating 7 more users... 👨‍👩‍👧‍👦'
 
 i = 3
 7.times do
@@ -99,7 +99,7 @@ end
 
 bike_names = %w(EddyMerckx-bike Cowboy Cowgirl Tandem HippyBike OldAndUgly)
 
-puts 'The master user goes out and buys a series of expensive bikes...'
+puts 'The master user goes out and buys a series of expensive bikes... 🚲🚲🚲🚲🚲🚲'
 
 i = 0
 6.times do
@@ -114,7 +114,7 @@ i = 0
   i += 1
 end
 
-puts 'The renter user goes out and buys a cool electric bike and a huge cargo bike...'
+puts 'The renter user goes out and buys a cool electric bike and a huge cargo bike... 🚲🚲'
 
 bike = Bike.new(name: 'E-Bike', bike_size: 'regular', bike_type: 'electric')
 bike.user = renter_user
@@ -125,7 +125,7 @@ bike.user = renter_user
 bike.remote_bike_image_url = bike_images.sample
 bike.save!
 
-puts 'The other 7 users all go out and buy a bike.'
+puts 'The other 7 users all go out and buy a bike... 🚲🚲🚲🚲🚲🚲🚲'
 
 bike_names = %w(TwoWheeler MasterCylinder TomBoonenBike EvenepoelBike BenoitPoocycle 6-wheeled-monster CarcoFishBike)
 
@@ -144,7 +144,7 @@ users.last(7).each do |user|
   i += 1
 end
 
-puts 'Creating garage feature list...'
+puts 'Creating garage feature list... ⛽'
 
 Feature.new(name: 'bicycle rack', icon_image: '<i class="fas fa-stream"></i>').save!
 Feature.new(name: 'charging station', icon_image: '<i class="fas fa-charging-station"></i>').save!
@@ -154,7 +154,7 @@ Feature.new(name: 'accessible through pin-code', icon_image: '<i class="fas fa-l
 Feature.new(name: 'camera security', icon_image: '<i class="fas fa-video"></i>').save!
 
 
-puts 'Creating a bunch of garages...'
+puts 'Creating a bunch of garages... 🏗️'
 
 description = 'A residential garage is a walled, roofed structure for storing a vehicle or vehicles that may be part of or attached to a home ("attached garage"), or a separate outbuilding or shed ("detached garage"). Residential garages typically have space for one or two cars, although three-car garages are used. When a garage is attached to a house, the garage typically has an entry door into the house. Garages normally have a wide door which can be raised to permit the entry and exit of a vehicle, and then closed to secure the vehicle. A garage protects a vehicle from precipitation, and, if it is equipped with a locking garage door, it also protects the vehicle(s) from theft and vandalism. Garages are also used for a variety of projects including painting, woodworking and assembling of projects.'
 
@@ -193,7 +193,7 @@ i = 0
   end
 end
 
-puts 'Creating bookings...'
+puts 'Creating bookings... 🗓️'
 
 garages = master_user.garages
 bikes = Bike.all
@@ -209,5 +209,5 @@ garages.each do |garage|
   end
 end
 
-puts 'Success! Database seeded!'
+puts 'Success! Database seeded! ✨💥🔥'
 
