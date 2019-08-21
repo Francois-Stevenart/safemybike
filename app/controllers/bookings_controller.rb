@@ -1,5 +1,5 @@
 class BookingsController < ApplicationController
-  before_action :set_booking, only: [:accept_request, :reject_request]
+  before_action :set_booking, only: [:accept_request, :reject_request, :cancel_request, :destroy]
 
   def new
     @booking = Booking.new
@@ -18,15 +18,24 @@ class BookingsController < ApplicationController
     @chat = Chat.new
     @garage = Garage.find(@booking.garage_id)
   end
-  
+
   def accept_request
     @booking.status = "accepted"
-    @booking.save ? (redirect_to user_dashboard_path(current_user)) : raise
+    @booking.save ? (redirect_to dashboard_home_user_path(current_user)) : raise
   end
 
   def reject_request
     @booking.status = "rejected"
-    @booking.save ? (redirect_to user_dashboard_path(current_user)) : raise
+    @booking.save ? (redirect_to dashboard_home_user_path(current_user)) : raise
+  end
+
+  def cancel_request
+    @booking.status = "cancelled_request"
+    @booking.save ? (redirect_to dashboard_home_user_path(current_user)) : raise
+  end
+
+  def destroy
+    @booking.destroy ? (redirect_to dashboard_home_user_path(current_user)) : raise
   end
 
   private

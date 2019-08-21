@@ -2,7 +2,16 @@ class UsersController < ApplicationController
   before_action :set_user, only: [:home, :show, :edit, :update, :mygarages, :mybookings]
 
   def home
-  end
+     @owner_requests = @user.owner_bookings.where(" status = ? OR status = ?  ", "pending", "cancelled_request")
+     @owner_pending_requests = @user.owner_bookings.where(" status = ? ", "pending")
+     @owner_cancelled_requests = @user.owner_bookings.where(" status = ? ", "cancelled_request")
+     @owner_in_progress_bookings = @user.owner_bookings.where(" status = ? OR status = ?  ", "accepted", "paid")
+     @owner_accepted_bookings = @user.owner_bookings.where(" status = ? ", "accepted")
+
+     @biker_pending_requests = @user.biker_bookings.where(" status = ? ", "pending")
+     @biker_rejected_requests = @user.biker_bookings.where(" status = ? ", "rejected")
+     @biker_in_progress_bookings = @user.biker_bookings.where(" status = ? OR status = ?  ", "accepted", "paid")
+   end
 
   def show
   end
