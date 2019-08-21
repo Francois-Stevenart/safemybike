@@ -1,2 +1,8 @@
-<h2><%= garage.name %></h2>
-<p><%= garage.address %></p>
+<%= link_to user_garage_path(garage.user, garage), class: 'index-card' do %>
+  <div class="index-card-img-top" style="background-image: url(<%= cl_image_path garage.profile_image %>);"></div>
+  <div class="index-card-body">
+    <h5 class="index-card-title"><%= garage.name %></h5>
+    <p class="index-card-text"><%= garage.street_address %>, <%= garage.city %></p>
+    <h6 class="price-tag">€<%= garage.price_regular_bike %>/month</h6>
+  </div>
+<% end %>

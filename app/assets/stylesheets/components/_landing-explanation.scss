@@ -58,3 +58,44 @@
     padding-top: 1vh;
   }
 }
+
+@media(max-width: 992px) {
+  .row-landing {
+    grid-template-columns: 1fr 1fr;
+  }
+  .line-corner-left {
+    background-color: white;
+    height: 0px;
+  }
+  #explanation {
+    height: 10%;
+  }
+}
+
+@media(max-width: 768px) {
+  .row-landing {
+    grid-template-columns: 1fr;
+    padding-left: 2vw;
+  }
+  .line-corner-left {
+    background-color: white;
+    height: 0px;
+  }
+  #explanation {
+    height: 10%;
+    width: 90vw;
+    padding-top: 5vh;
+    padding-bottom: 5vh;
+  }
+  .explanation-text {
+    display: block;
+    width: 85vw;
+  }
+  .step-number {
+    margin: 0 auto;
+    margin-bottom: 3vh;
+  }
+  .line {
+    height: 10vh;
+  }
+}
