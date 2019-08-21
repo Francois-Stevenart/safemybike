@@ -2,7 +2,11 @@
 
   <ul class="tabs">
 
-    <%= link_to user_dashboard_path(current_user) do %>
+    <%= link_to dashboard_home_user_path(current_user) do %>
+      <li class="sidebar-tab" data-target="tab.bar">Home</li>
+    <% end %>
+
+    <%= link_to dashboard_my_account_user_path(current_user) do %>
       <li class="sidebar-tab" data-target="tab.bar">Account</li>
     <% end %>
 

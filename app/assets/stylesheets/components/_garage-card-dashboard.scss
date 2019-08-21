@@ -1,3 +1,13 @@
+.card-dashboard, .card-dashboard-request {
+  border: 1px solid $green;
+  border-radius: 10px;
+  margin: 20px 25px;
+}
+
+.card-dashboard-request {
+  max-width: 400px;
+}
+
 .garage-card-dashboard {
   position: relative;
   background-color: $white;
@@ -113,4 +123,3 @@ input[type='checkbox'] {
   border-bottom-right-radius: 7px;
   padding: .5rem 1rem;
 }
-
