@@ -6,7 +6,8 @@ Rails.application.routes.draw do
   resources :users, only: [:edit, :update] do
     resources :bikes, only: [:create, :new]
     member do
-      get "dashboard", to: "users#show"
+      get "dashboard/home", to: "users#home"
+      get "dashboard/my_account", to: "users#show"
       get "dashboard/my_garages", to: "users#mygarages"
       get "dashboard/my_bookings", to: "users#mybookings"
       get "bookings/:id/accept", to: "bookings#accept_request", as: "accept"
