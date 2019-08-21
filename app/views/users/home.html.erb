@@ -92,8 +92,16 @@
             <p>For his garage <%= booking.garage.name %>, located : <%= booking.garage.street_number %> <%= booking.garage.street_address %></p>
             <p>For your bike: <%= booking.bike.name %></p>
             <p>Status : <%= booking.status %></p>
+
+            <%= link_to "Contact owner", "#" %>
+            <%= form_tag orders_path do %>
+              <%= hidden_field_tag 'booking_id', booking.id %>
+              <%= submit_tag 'Purchase', class: 'btn btn-primary' %>
+            <% end %>
+
             <%= link_to "Cancel", cancel_request_user_path(@user, booking), class: "btn btn-flat" %>
             <%= link_to "Contact owner", user_garage_booking_path(@user, booking.garage, booking) %>
+
             </p>
           </div>
         <% end %>
