@@ -1,15 +1,23 @@
-<%= simple_form_for [current_user, @garage] do |f| %>
-  <%= f.input :name %>
-  <%= f.input :description %>
-  <%= f.input :street_number %>
-  <%= f.input :street_address %>
-  <%= f.input :city %>
-  <%= f.input :country %>
-  <%= f.input :capacity_reg_bikes %>
-  <%= f.input :capacity_large_bikes %>
-  <%= f.input :price_regular_bike %>
-  <%= f.input :price_large_bike %>
-  <%= f.input :profile_image %>
-  <%= f.input :profile_image_cache, as: :hidden %>
-  <%= f.button :submit %>
-<% end %>
+<div class="row justify-content-center">
+  <div class="col-12 col-sm-10 custom-form">
+
+    <h2>Register your garage:</h2>
+
+    <%= simple_form_for [current_user, @garage] do |f| %>
+      <%= f.input :name %>
+      <%= f.input :description %>
+      <%= f.input :street_number %>
+      <%= f.input :street_address %>
+      <%= f.input :city %>
+      <%= f.input :country %>
+      <%= f.input :capacity_reg_bikes, label: 'Capacity for regular bikes' %>
+      <%= f.input :capacity_large_bikes, label: 'Capacity for large bikes (e.g. cargo bikes)' %>
+      <%= f.input :price_regular_bike, label: 'Price for regular bikes'  %>
+      <%= f.input :price_large_bike, label: 'Price for large bikes'  %>
+      <%= f.input :profile_image, label: 'Upload a photo of your garage:'  %>
+      <%= f.input :profile_image_cache, as: :hidden %>
+      <%= f.button :submit, class: "btn btn-flat" %>
+    <% end %>
+
+  </div>
+</div>

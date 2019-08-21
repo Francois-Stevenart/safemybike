@@ -1,18 +1,42 @@
-<div class="dashboard-container" data-index="1">
+<div class="dashboard-container" data-index="2">
 
   <div class="sidebar">
     <%= render 'shared/dashboardsidebar'%>
   </div>
 
   <div class="dashboard-main">
-    <h2>My garages list:</h2>
+    <h2>my garages</h2>
 
     <% @garages.each do |garage| %>
-      <div class="card-dashboard">
-        <p>Name: <%= garage.name %></p>
-        <p>Address: <%= garage.street_number %> <%= garage.street_address %>, <%= garage.city %>, <%= garage.country %></p>
-        <p>Capacity: <%= garage.capacity_reg_bikes %> regular bikes | <%= garage.capacity_large_bikes %> large bikes</p>
-        <%= link_to "Show", user_garage_path(current_user, garage) %>
+      <div class="garage-card-dashboard">
+        <div class="top-content">
+          <%= link_to user_garage_path(garage.user, garage), class: 'garage-card-link' do %>
+            <div class="garage-card-image" style="background-image: url(<%= cl_image_path garage.profile_image %>);"></div>
+          <% end %>
+          <div class="garage-card-info">
+            <h5><%= garage.name %></h5>
+            <p><%= garage.street_address %> <%= garage.street_number %>, <%= garage.city %></p>
+            <p>Capacity: <%= garage.capacity_reg_bikes %> regular | <%= garage.capacity_large_bikes %> large</p>
+            <div class="top-right-buttons">
+              <%= link_to "profile", user_garage_path(current_user, garage), class: 'btn-flat' %>
+              <%= link_to "edit", user_garage_path(current_user, garage), class: 'btn-flat' %>
+              <%= link_to "delete", user_garage_path(current_user, garage), class: 'btn-flat red' %>
+            </div>
+          </div>
+        </div>
+        <div class="wrap-collabsible">
+          <input id="collapsible-<%=garage.id %>" class="toggle" type="checkbox">
+          <label for="collapsible-<%=garage.id %>" class="lbl-toggle expand">expand to show bookings </label>
+          <div class="collapsible-content">
+            <div class="content-inner">
+              <% garage.bookings.each do |booking| %>
+                <p><%= booking.bike.user.first_name %> <%= booking.bike.user.last_name %> stores his bike <%= booking.bike.name %></p>
+                <p>Status: <%= booking.status %></p>
+                <p>Start date: <%= booking.start_date %> / price: €20/month</p>
+              <% end %>
+            </div>
+          </div>
+        </div>
       </div>
     <% end %>
 

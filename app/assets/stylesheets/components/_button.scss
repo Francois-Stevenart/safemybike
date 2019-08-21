@@ -1,13 +1,26 @@
 .btn-flat {
+  display: inline-block;
   color: $white;
   padding: 8px 24px;
   border-radius: 4px;
   background: $green;
   transition: background 0.3s ease;
   margin-bottom: 10px;
+  &:hover {
+    text-decoration: none;
+  }
 }
 
 .btn-flat:hover {
   background: #46b880;
   color: white;
+}
+
+.red {
+  background: $red;
+  opacity: 0.8;
+  &:hover {
+    background: $red;
+    opacity: 1;
+  }
 }
