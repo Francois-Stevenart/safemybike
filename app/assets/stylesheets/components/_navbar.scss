@@ -8,10 +8,14 @@
 }
 
 .navbar-lewagon .navbar-brand img {
-  width: 40px;
+  width: 35px;
 }
 
 h6 {
   color: $green;
   margin: 0;
+}
+.navbar-brand {
+  display: flex;
+  align-items: center;
 }

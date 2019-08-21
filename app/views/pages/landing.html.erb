@@ -1,10 +1,13 @@
 <div id="banner-landing">
   <div id="search-landing">
-    <i class="fas fa-search-location"></i> <input type="field">
+    <%=  cl_image_tag('/map_marker.png') %>
+    <h1>SafeMyBike</h1>
+    <%= link_to "click here to safe your bike!", garages_index_path, class: "btn btn-flat" %>
   </div>
+  <div class="arrow bounce-top"><i class="fas fa-angle-double-down"></i></div>
 </div>
 
-<%= link_to "Search (to be implemented)", garages_index_path, class: "btn btn-flat" %>
+
 
 <div id="explanation">
   <h2>Explanation</h2>
