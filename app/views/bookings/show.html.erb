@@ -1,0 +1,7 @@
+<h1>Hello World</h1>
+<p><%= @booking.status %></p>
+
+<%= simple_form_for [current_user, @garage, @booking, @chat] do |f| %>
+  <%= f.input :content %>
+  <%= f.button :submit %>
+<% end %>

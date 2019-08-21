@@ -11,8 +11,8 @@ Rails.application.routes.draw do
       get "dashboard/my_bookings", to: "users#mybookings"
     end
     resources :garages, except: [:index, :destroy] do
-      resources :bookings, only: [:new, :edit, :create, :update] do
-        resources :chat, only: [:new, :create]
+      resources :bookings, only: [:new, :edit, :create, :update, :show] do
+        resources :chats, only: [ :new, :create ]
       end
     end
   end
