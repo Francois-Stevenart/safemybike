@@ -4,7 +4,7 @@ class Garage < ApplicationRecord
   monetize :price_large_bike_cents
 
   belongs_to :user
-  has_many :bookings
+  has_many :bookings, dependent: :destroy
   has_many :reviews, through: :bookings
   has_many :feature_presences, dependent: :destroy
   has_many :features, through: :feature_presences

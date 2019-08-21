@@ -30,6 +30,10 @@
           <div class="collapsible-content">
             <div class="content-inner">
               <% garage.bookings.each do |booking| %>
+                <div class="bike-booking-card">
+                  <%= cl_image_tag(booking.bike.user.profile_image, width: 40, height: 40, crop: :fill, :class => "avatar-bordered") %>
+                  <%= cl_image_tag(booking.bike.bike_image, width: 40, height: 40, crop: :fill, :class => "avatar-bordered") %>
+                </div>
                 <p><%= booking.bike.user.first_name %> <%= booking.bike.user.last_name %> stores his bike <%= booking.bike.name %></p>
                 <p>Status: <%= booking.status %></p>
                 <p>Start date: <%= booking.start_date %> / price: €20/month</p>
