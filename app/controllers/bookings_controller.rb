@@ -12,14 +12,13 @@ class BookingsController < ApplicationController
     redirect_to user_garage_path(current_user, @booking.garage_id)
   end
 
-
   def show
     @booking = Booking.find(params[:id])
     @garage = Garage.find(@booking.garage_id)
     @chat = Chat.new
     @chats = Chat.where(booking_id: @booking)
   end
-  
+
   def accept_request
     @booking.status = "accepted"
     @booking.save ? (redirect_to user_dashboard_path(current_user)) : raise

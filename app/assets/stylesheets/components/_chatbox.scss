@@ -1,0 +1,28 @@
+#chatbox {
+  border: 1px solid black;
+  width: 50vw;
+  margin-left: 10vw;
+  margin-top: 5vw;
+  padding: 2em;
+}
+
+#chat-messages {
+  margin-bottom: 5vh;
+  overflow: scroll;
+  height: 40vh;
+}
+
+.message-content-left, .message-content-right {
+  padding: 1vh;
+  border: 1px solid black;
+  margin-top: 10px;
+  word-wrap: break-word;
+}
+
+.message-content-right {
+  margin-left: 70%;
+}
+
+.message-content-left {
+  margin-right: 70%;
+}
