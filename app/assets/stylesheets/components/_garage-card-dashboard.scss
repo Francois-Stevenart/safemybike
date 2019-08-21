@@ -63,6 +63,44 @@
     }
   }
 }
+
+
+.bike-booking-card {
+  display: flex;
+  align-items: center;
+  padding: 8px 15px;
+  margin-bottom: 8px;
+  border-radius: 3px;
+  background-color: white;
+  box-shadow: 1px 1px 10px lightgrey;
+  .top-right-buttons {
+      width: 220px;
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      .btn-flat {
+        margin-left: 5px;
+      }
+    }
+  .avatar-bordered {
+    margin-right: 5px;
+  }
+  .bike-booking-card-info {
+    display: flex;
+    flex-grow: 1;
+    padding-left: 20px;
+    p {
+      padding: 0;
+      margin: 0;
+      font-size: 1em;
+      &.tag {
+        padding: 1px 8px;
+        margin-left: 10px;
+      }
+    }
+  }
+}
+
 .wrap-collabsible {
   width: 100%;
   bottom: 0;

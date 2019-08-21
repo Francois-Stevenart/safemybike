@@ -33,10 +33,16 @@
                 <div class="bike-booking-card">
                   <%= cl_image_tag(booking.bike.user.profile_image, width: 40, height: 40, crop: :fill, :class => "avatar-bordered") %>
                   <%= cl_image_tag(booking.bike.bike_image, width: 40, height: 40, crop: :fill, :class => "avatar-bordered") %>
+                  <div class="bike-booking-card-info">
+                    <p><%= booking.bike.user.first_name %> <%= booking.bike.user.last_name %> stores his bike <%= booking.bike.name %></p>
+                    <p class='tag'>Status: <%= booking.status %></p>
+                    <p class='tag'>€20/month</p>
+                  </div>
+                  <div class="top-right-buttons">
+                    <%= link_to "booking page", user_garage_path(current_user, garage), class: 'btn-flat' %>
+                    <%= link_to "cancel", user_garage_path(current_user, garage), class: 'btn-flat red' %>
+                  </div>
                 </div>
-                <p><%= booking.bike.user.first_name %> <%= booking.bike.user.last_name %> stores his bike <%= booking.bike.name %></p>
-                <p>Status: <%= booking.status %></p>
-                <p>Start date: <%= booking.start_date %> / price: €20/month</p>
               <% end %>
             </div>
           </div>
