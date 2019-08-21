@@ -1,77 +1,17 @@
 require 'faker'
 
-puts 'Deleting all database content...'
-
-User.destroy_all
-FeaturePresence.destroy_all
-Feature.destroy_all
-
-puts '-'*40
-
-puts 'Creating master user...'
-
-master_user = User.new(first_name: 'Federico', last_name: 'Pooface', email: 'master@user.com', password: 'master', password_confirmation: 'master')
-master_user.save
-puts 'email: master@user.com'
-puts 'password: master'
-
-puts '-'*40
-
-puts 'Creating owner user...'
-
-owner_user = User.new(first_name: 'Franky', last_name: 'Doodoo', email: 'owner@user.com', password: 'master', password_confirmation: 'master')
-owner_user.save
-
-puts 'email: owner@user.com'
-puts 'password: master'
-
-puts '-'*40
-
-puts 'Creating renter user...'
-
-renter_user = User.new(first_name: 'Eddy', last_name: 'King', email: 'renter@user.com', password: 'master', password_confirmation: 'master')
-renter_user.save
-puts 'email: renter@user.com'
-puts 'password: master'
-
-puts '-'*40
-
-puts 'The master user goes out and buys a series of expensive bikes...'
-
-bike_names = %w(EddyMerckx-bike Cowboy Cowgirl Tandem HippyBike OldAndUgly)
-
-i = 0
-6.times do
-  bike = Bike.new(
-    name: bike_names[i],
-    bike_size: ['regular', 'cargo'].sample,
-    bike_type: ['electric', 'non-electric'].sample
-    )
-  bike.user = master_user
-  bike.save!
-  i += 1
-end
-
-puts 'The renter user goes out and buys a cool electric bike and a huge cargo bike...'
-
-bike = Bike.new(name: 'E-Bike', bike_size: 'regular', bike_type: 'electric')
-bike.user = renter_user
-bike.save!
-bike = Bike.new(name: 'Cargo Bike', bike_size: 'cargo', bike_type: 'non-electric')
-bike.user = renter_user
-bike.save!
-
-puts 'Creating garage feature list...'
-
-Feature.new(name: 'bicycle rack', icon_image: '<i class="fas fa-stream"></i>').save!
-Feature.new(name: 'charging station', icon_image: '<i class="fas fa-charging-station"></i>').save!
-Feature.new(name: 'tire pump', icon_image: '<i class="fas fa-wind"></i>').save!
-Feature.new(name: 'electric tire pump', icon_image: '<i class="fas fa-bolt"></i>').save!
-Feature.new(name: 'accessible through pin-code', icon_image: '<i class="fas fa-lock"></i>').save!
-Feature.new(name: 'camera security', icon_image: '<i class="fas fa-video"></i>').save!
-
-
-puts 'Creating a bunch of garages...'
+user_images = [
+  'https://avatars0.githubusercontent.com/u/52085295?v=4',
+  'https://avatars0.githubusercontent.com/u/51639218?v=4',
+  'https://avatars2.githubusercontent.com/u/51084422?v=4',
+  'https://avatars3.githubusercontent.com/u/51128673?v=4',
+  'https://avatars1.githubusercontent.com/u/52044985?v=4',
+  'https://avatars2.githubusercontent.com/u/51087021?v=4',
+  'https://avatars2.githubusercontent.com/u/52207783?v=4',
+  'https://avatars0.githubusercontent.com/u/50140032?v=4',
+  'https://avatars2.githubusercontent.com/u/43496861?v=4',
+  'https://nbocdn.akamaized.net/Assets/Images_Upload/2011/10/06/21-25810-actualite-apple-steve-jobs.jpg'
+]
 
 garage_images = [
   'https://res.cloudinary.com/di1eyazrv/image/upload/v1566230623/safemybike/14_grdt5w.jpg',
@@ -94,6 +34,94 @@ addresses = [
   {street_number: '23', street_address: 'Brabançonnelaan', city: 'Brussel', country: 'Belgium'},
   {street_number: '31', street_address: 'Verheydenstraat', city: 'Anderlecht', country: 'Belgium'}
 ]
+
+bike_images = [
+  'https://res.cloudinary.com/di1eyazrv/image/upload/v1566382554/snyu0wiuerf4vbgdkeib.jpg',
+  'https://res.cloudinary.com/di1eyazrv/image/upload/v1566382578/222_tg6fc9.jpg',
+  'https://res.cloudinary.com/di1eyazrv/image/upload/v1566382600/SCOTT-E-SUB-TOUR-ELECTRIC-BIKE-BLACK-GREEN-01-e1473165258167_vz2mxw.jpg',
+  'https://res.cloudinary.com/di1eyazrv/image/upload/v1566382648/17-05-23-Nordhavn-DSC_8579_vuiuwm.jpg'
+]
+
+
+puts 'Deleting all database content...'
+
+User.destroy_all
+FeaturePresence.destroy_all
+Feature.destroy_all
+Booking.destroy_all
+
+puts '-'*40
+
+puts 'Creating master user...'
+
+master_user = User.new(first_name: 'Federico', last_name: 'Pooface', email: 'master@user.com', password: 'master', password_confirmation: 'master')
+master_user.remote_profile_image_url = user_images.sample
+master_user.save!
+puts 'email: master@user.com'
+puts 'password: master'
+
+puts '-'*40
+
+puts 'Creating owner user...'
+
+owner_user = User.new(first_name: 'Franky', last_name: 'Doodoo', email: 'owner@user.com', password: 'master', password_confirmation: 'master')
+owner_user.remote_profile_image_url = user_images.sample
+owner_user.save!
+
+puts 'email: owner@user.com'
+puts 'password: master'
+
+puts '-'*40
+
+puts 'Creating renter user...'
+
+renter_user = User.new(first_name: 'Eddy', last_name: 'King', email: 'renter@user.com', password: 'master', password_confirmation: 'master')
+renter_user.remote_profile_image_url = user_images.sample
+renter_user.save!
+puts 'email: renter@user.com'
+puts 'password: master'
+
+puts '-'*40
+
+puts 'The master user goes out and buys a series of expensive bikes...'
+
+bike_names = %w(EddyMerckx-bike Cowboy Cowgirl Tandem HippyBike OldAndUgly)
+
+i = 0
+6.times do
+  bike = Bike.new(
+    name: bike_names[i],
+    bike_size: ['regular', 'cargo'].sample,
+    bike_type: ['electric', 'non-electric'].sample
+    )
+  bike.user = master_user
+  bike.remote_bike_image_url = bike_images.sample
+  bike.save!
+  i += 1
+end
+
+puts 'The renter user goes out and buys a cool electric bike and a huge cargo bike...'
+
+bike = Bike.new(name: 'E-Bike', bike_size: 'regular', bike_type: 'electric')
+bike.user = renter_user
+bike.remote_bike_image_url = bike_images.sample
+bike.save!
+bike = Bike.new(name: 'Cargo Bike', bike_size: 'cargo', bike_type: 'non-electric')
+bike.user = renter_user
+bike.remote_bike_image_url = bike_images.sample
+bike.save!
+
+puts 'Creating garage feature list...'
+
+Feature.new(name: 'bicycle rack', icon_image: '<i class="fas fa-stream"></i>').save!
+Feature.new(name: 'charging station', icon_image: '<i class="fas fa-charging-station"></i>').save!
+Feature.new(name: 'tire pump', icon_image: '<i class="fas fa-wind"></i>').save!
+Feature.new(name: 'electric tire pump', icon_image: '<i class="fas fa-bolt"></i>').save!
+Feature.new(name: 'accessible through pin-code', icon_image: '<i class="fas fa-lock"></i>').save!
+Feature.new(name: 'camera security', icon_image: '<i class="fas fa-video"></i>').save!
+
+
+puts 'Creating a bunch of garages...'
 
 description = 'A residential garage is a walled, roofed structure for storing a vehicle or vehicles that may be part of or attached to a home ("attached garage"), or a separate outbuilding or shed ("detached garage"). Residential garages typically have space for one or two cars, although three-car garages are used. When a garage is attached to a house, the garage typically has an entry door into the house. Garages normally have a wide door which can be raised to permit the entry and exit of a vehicle, and then closed to secure the vehicle. A garage protects a vehicle from precipitation, and, if it is equipped with a locking garage door, it also protects the vehicle(s) from theft and vandalism. Garages are also used for a variety of projects including painting, woodworking and assembling of projects.'
 
