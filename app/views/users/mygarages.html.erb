@@ -35,7 +35,7 @@
                   <%= cl_image_tag(booking.bike.bike_image, width: 40, height: 40, crop: :fill, :class => "avatar-bordered") %>
                   <div class="bike-booking-card-info">
                     <p><%= booking.bike.user.first_name %> <%= booking.bike.user.last_name %> stores his bike <%= booking.bike.name %></p>
-                    <p class='tag'>status: <%= booking.status %></p>
+                    <p class='tag'><%= booking.status %></p>
                     <p class='tag'>€20/month</p>
                   </div>
                   <div class="top-right-buttons">
