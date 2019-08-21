@@ -8,12 +8,13 @@
     <div class="card-dashboard">
       <h2>Home dashboard</h2>
 
-      <% if @user.owner_bookings.where(status: "pending").any? %>
-
-          <h3>Pending requests:</h3>
-          <% @user.owner_bookings.where(status: "pending").each do |booking| %>
+  <!-- Display received requests as an owner: -->
+      <% if @owner_requests.any? %>
+          <!-- display pending requests -->
+          <h3>Pending requests on your garages:</h3>
+          <% @owner_pending_requests.each do |booking| %>
             <div class="card-dashboard-request">
-              <p>FROM: <%= booking.bike.user.first_name %> <%= booking.bike.user.last_name %></p>
+              <p><%= booking.bike.user.first_name %> <%= booking.bike.user.last_name %> sent you a booking request</p>
               <p>For your garage: <%= booking.garage.name %></p>
               <p> <%= booking.garage.street_number %> <%= booking.garage.street_address %></p>
               <p>Status : <%= booking.status %></p>
@@ -23,9 +24,80 @@
               </p>
             </div>
           <% end %>
+          <!-- display requests cancelled by biker -->
+          <% @owner_cancelled_requests.each do |booking| %>
+            <div class="card-dashboard-request">
+              <p><%= booking.bike.user.first_name %> <%= booking.bike.user.last_name %> cancelled his request</p>
+              <p>For your garage: <%= booking.garage.name %></p>
+              <p> <%= booking.garage.street_number %> <%= booking.garage.street_address %></p>
+              <p>Status : <%= booking.status %></p>
+              <%= link_to "Hide", dismiss_cancel_request_user_path(@user, booking), method: :delete %>
+              </p>
+            </div>
+          <% end %>
       <% end %>
+
+    <!-- Display in-progress bookings as owner (accepted or paid but not active yet) -->
+      <% if @owner_in_progress_bookings.any? %>
+        <h3>Accepted requests to manage:</h3>
+        <% @owner_in_progress_bookings.each do |booking| %>
+          <div class="card-dashboard-request">
+            <p>You have accepted <%= booking.bike.user.first_name %> <%= booking.bike.user.last_name %>'s request</p>
+            <p>For your garage: <%= booking.garage.name %></p>
+            <p> <%= booking.garage.street_number %> <%= booking.garage.street_address %></p>
+            <p>Status : <%= booking.status %></p>
+            <%= link_to "Contact biker", "#" %>
+          </div>
+        <% end %>
+      <% end %>
+
+
+
+  <!-- Display pending requests as a biker: -->
+      <% if @biker_pending_requests.any? %>
+
+          <h3>Pending requests for your bike(s):</h3>
+          <% @biker_pending_requests.each do |booking| %>
+            <div class="card-dashboard-request">
+              <p>Request sent to: <%= booking.garage.user.first_name %> <%= booking.garage.user.last_name %></p>
+              <p>For his garage <%= booking.garage.name %>, located : <%= booking.garage.street_number %> <%= booking.garage.street_address %></p>
+              <p>For your bike: <%= booking.bike.name %></p>
+              <p>Status : <%= booking.status %></p>
+              <%= link_to "Cancel", cancel_request_user_path(@user, booking), class: "btn btn-flat" %>
+              </p>
+            </div>
+          <% end %>
+      <% end %>
+
+      <!-- display requests rejected by owner -->
+      <% @biker_rejected_requests.each do |booking| %>
+        <div class="card-dashboard-request">
+          <p><%= booking.garage.user.first_name %> <%= booking.garage.user.last_name %> has declined your request</p>
+          <p>For his garage <%= booking.garage.name %>, located : <%= booking.garage.street_number %> <%= booking.garage.street_address %></p>
+          <p>For your bike: <%= booking.bike.name %></p>
+          <p>Status : <%= booking.status %></p>
+          <%= link_to "Hide", dismiss_cancel_request_user_path(@user, booking), method: :delete %>
+          </p>
+        </div>
+      <% end %>
+
+    <!-- Display in-progress bookings as a biker: -->
+    <% if @biker_in_progress_bookings.any? %>
+
+        <h3>Your accepted requests:</h3>
+        <% @biker_in_progress_bookings.each do |booking| %>
+          <div class="card-dashboard-request">
+            <p><%= booking.garage.user.first_name %> <%= booking.garage.user.last_name %> has accepted your request</p>
+            <p>For his garage <%= booking.garage.name %>, located : <%= booking.garage.street_number %> <%= booking.garage.street_address %></p>
+            <p>For your bike: <%= booking.bike.name %></p>
+            <p>Status : <%= booking.status %></p>
+            <%= link_to "Contact owner", "#" %>
+            </p>
+          </div>
+        <% end %>
+    <% end %>
+
+
     </div>
-
   </div>
-
 </div>

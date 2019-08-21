@@ -12,6 +12,8 @@ Rails.application.routes.draw do
       get "dashboard/my_bookings", to: "users#mybookings"
       get "bookings/:id/accept", to: "bookings#accept_request", as: "accept"
       get "bookings/:id/reject", to: "bookings#reject_request", as: "reject"
+      get "bookings/:id/cancel_request", to: "bookings#cancel_request", as: "cancel_request"
+      delete "bookings/:id/dismiss_cancel_request", to: "bookings#destroy", as: "dismiss_cancel_request"
     end
     resources :garages, except: [:index, :destroy] do
       resources :bookings, only: [:new, :edit, :create, :update, :show] do

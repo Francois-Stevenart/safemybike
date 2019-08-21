@@ -5,5 +5,5 @@ class Booking < ApplicationRecord
   has_many :reviews, dependent: :destroy
 
   validates :start_date, presence: true
-  validates :status, inclusion: { in: %w(pending rejected accepted paid active done) }
+  validates :status, inclusion: { in: %w(pending rejected accepted cancelled_request paid active done) }
 end
