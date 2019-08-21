@@ -11,7 +11,7 @@ class BookingsController < ApplicationController
     @booking.price = @booking.garage.price_large_bike if @booking.bike.bike_size == "cargo"
     @booking.price = @booking.garage.price_regular_bike if @booking.bike.bike_size == "regular"
     if @booking.save
-      redirect_to user_garage_path(current_user, @booking.garage_id)
+      redirect_to dashboard_home_user_path(current_user)
     else
       raise
     end
