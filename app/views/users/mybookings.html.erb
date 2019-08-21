@@ -5,79 +5,31 @@
   </div>
 
   <div class="dashboard-main">
-    <h2>Rent agreements tab</h2>
-
-    <ul class="nav nav-pills">
-      <li class="active">
-        <a class="nav-link active" href="#1a" data-toggle="tab">Active</a>
-      </li>
-      <li>
-        <a class="nav-link" href="#2a" data-toggle="tab">Link</a>
-      </li>
-      <li>
-        <a class="nav-link" href="#3a" data-toggle="tab">Link</a>
-      </li>
-      <li>
-        <a class="nav-link" href="#4a" data-toggle="tab">Disabled</a>
-      </li>
-    </ul>
-
-    <div class="tab-content clearfix">
-      <div id="1a" class="tab-pane active">
-        <div>
-          <% if @owner_bookings.where(status: "pending").any? %>
-              <h3>Pending Bookings on my garages:</h3>
-              <% @owner_bookings.where(status: "pending").each do |owner_booking| %>
-                <div class="card-dashboard">
-                  <p>Garage: <%= owner_booking.garage.name %></p>
-                  <p>Bike: <%= owner_booking.bike.name %> | by: <%= owner_booking.bike.user.first_name %></p>
-                  <p>Location: <%= owner_booking.garage.street_number %> <%= owner_booking.garage.street_address %></p>
-                  <p>Status: <%= owner_booking.status %></p>
-                  <div><%= link_to "Accept", "#" %></div>
-                  <div><%= link_to "Reject", "#" %></div>
-                  <div><%= link_to "Contact user", "#" %></div>
-                </div>
-              <% end %>
-            </div>
-          <% end %>
-      </div>
-
-      <div id="2a" class="tab-pane">
-        <div>
-          <% if @owner_bookings.any? %>
-              <h3>Other Bookings on my garages:</h3>
-              <% @owner_bookings.where.not(status: "pending").each do |owner_booking| %>
-                <div class="card-dashboard">
-                  <p>Garage: <%= owner_booking.garage.name %></p>
-                  <p>Bike: <%= owner_booking.bike.name %> | by: <%= owner_booking.bike.user.first_name %></p>
-                  <p>Location: <%= owner_booking.garage.street_number %> <%= owner_booking.garage.street_address %></p>
-                  <p>Status: <%= owner_booking.status %></p>
-                </div>
-              <% end %>
-            </div>
-          <% end %>
-      </div>
-
+    <h2>Rent agreements</h2>
+    <div>
       <div>
         <% if @biker_bookings.where(status: "pending").any? %>
-          <h3>Pending Bookings for my bikes:</h3>
+          <h3>Pending Bookings on my bikes:</h3>
           <% @biker_bookings.where(status: "pending").each do |biker_booking| %>
             <div class="card-dashboard">
-              <p>Bike: <%= biker_booking.bike.name %></p>
-              <p>Garage: <%= biker_booking.garage.name %> | Owner: <%= biker_booking.garage.user.first_name %></p>
+              <p>Garage: <%= biker_booking.garage.name %></p>
+              <p>Bike: <%= biker_booking.bike.name %> | by: <%= biker_booking.bike.user.first_name %></p>
               <p>Location: <%= biker_booking.garage.street_number %> <%= biker_booking.garage.street_address %></p>
               <p>Status: <%= biker_booking.status %></p>
+              <div><%= link_to "Accept", "#" %></div>
+              <div><%= link_to "Reject", "#" %></div>
+              <div><%= link_to "Contact user", "#" %></div>
             </div>
           <% end %>
         <% end %>
       </div>
       <div>
         <% if @biker_bookings.any? %>
-          <h3>Other bookings for my bikes:</h3>
-          <% @biker_bookings.each do |biker_booking| %>
+          <h3>Other Bookings on my bikes:</h3>
+          <% @biker_bookings.where.not(status: "pending").each do |biker_booking| %>
             <div class="card-dashboard">
-              <p>Bike: <%= biker_booking.bike.name %></p>
-              <p>Garage: <%= biker_booking.garage.name %> | Owner: <%= biker_booking.garage.user.first_name %></p>
+              <p>Garage: <%= biker_booking.garage.name %></p>
+              <p>Bike: <%= biker_booking.bike.name %> | by: <%= biker_booking.bike.user.first_name %></p>
               <p>Location: <%= biker_booking.garage.street_number %> <%= biker_booking.garage.street_address %></p>
               <p>Status: <%= biker_booking.status %></p>
             </div>
@@ -87,6 +39,3 @@
     </div>
   </div>
 </div>
-
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
