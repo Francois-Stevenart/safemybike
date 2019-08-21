@@ -14,5 +14,5 @@ addMessage = (name, content) => {
 }
 
 
-addMessage( html("<%= @chat.user.first_name%> <%= @chat.user.last_name %>"),  html("<%=  @chat.content.gsub(/(?:\n\r?|\r\n?)/, '<br>') %>"))
+addMessage("<%= @chat.user.first_name%> <%= @chat.user.last_name %>",  "<%= j raw @chat.content %>")
 
