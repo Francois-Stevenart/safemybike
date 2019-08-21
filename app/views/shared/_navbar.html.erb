@@ -15,7 +15,7 @@
           <%= link_to "sign up your garage", new_user_garage_path(current_user), class: "nav-link" %>
         </li>
         <li class="nav-item active">
-          <%= link_to "dashboard", user_dashboard_path(current_user), class: "nav-link" %>
+          <%= link_to "dashboard", dashboard_home_user_path(current_user), class: "nav-link" %>
         </li>
         <li class="nav-item">
           <%= link_to "log out", destroy_user_session_path, method: :delete, class: "nav-link" %>
@@ -23,8 +23,8 @@
         <li class="nav-item dropdown">
           <%= cl_image_tag(current_user.profile_image, class: "avatar dropdown-toggle", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false) %>
           <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-            <%= link_to "sign up your garage", '#', class: "dropdown-item" %>
-            <%= link_to "dashboard", user_dashboard_path(current_user), class: "dropdown-item" %>
+            <%= link_to "sign up your garage", "#", class: "dropdown-item" %>
+            <%= link_to "dashboard", dashboard_home_user_path(current_user), class: "dropdown-item" %>
             <%= link_to "log out", destroy_user_session_path, method: :delete, class: "dropdown-item" %>
           </div>
         </li>
