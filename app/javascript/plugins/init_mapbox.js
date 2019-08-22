@@ -14,7 +14,7 @@ const addMarkersToMap = (map, markers) => {
   // Create a HTML element for your custom marker
     const element = document.createElement('div');
     element.className = 'marker';
-    element.style.background = `white url('${marker.image_url}')`;
+    element.style.background = `#4ED191 url('${marker.image_url}')`;
     element.style.backgroundSize = '85%';
     element.style.backgroundPosition= 'center';
     element.style.backgroundRepeat = 'no-repeat';

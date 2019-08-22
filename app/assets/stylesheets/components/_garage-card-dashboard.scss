@@ -39,6 +39,12 @@
   p {
     font-size: 1em;
   }
+  .top-right {
+    text-align: right;
+    .tag {
+      margin-top: 8px;
+    }
+  }
 }
 
 .bike-booking-card {

@@ -1,6 +1,6 @@
 .card-dashboard, .card-dashboard-request {
   width: 100%;
-  min-height: 100px;
+  min-height: 120px;
   display: flex;
   position: relative;
   background-color: $white;
@@ -52,5 +52,5 @@
 }
 
 .shadow {
-  box-shadow: 1px 1px 10px lightgrey;
+  box-shadow: 1px 1px 50px lightgrey;
 }
