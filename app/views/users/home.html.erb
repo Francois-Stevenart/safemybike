@@ -3,7 +3,7 @@
     <%= render 'shared/dashboardsidebar'%>
   </div>
   <!-- Display received requests as an owner: -->
-  <div class="dashboard-main">
+  <div class="dashboard-main" id="home-display">
     <h3>Pending requests:</h3>
       <% if @owner_pending_requests.any? %>
         <% @owner_pending_requests.each do |biker_booking| %>
