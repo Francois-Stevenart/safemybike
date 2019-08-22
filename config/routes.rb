@@ -16,6 +16,9 @@ Rails.application.routes.draw do
       delete "bookings/:id/dismiss_cancel_request", to: "bookings#destroy", as: "dismiss_cancel_request"
     end
     resources :garages, except: [:index, :destroy] do
+      member do
+        get "card", to: "garages#show_card"
+      end
       resources :bookings, only: [:new, :edit, :create, :update, :show] do
         resources :chats, only: [ :new, :create ]
       end

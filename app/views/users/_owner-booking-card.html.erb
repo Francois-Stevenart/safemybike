@@ -1,0 +1,52 @@
+<div class="card-dashboard shadow">
+  <%= link_to user_garage_path(booking.garage.user, booking.garage), class: 'garage-card-link' do %>
+    <div class="garage-card-image" style="background-image: url(<%= cl_image_path booking.garage.profile_image %>);">
+      <div class="bike-image avatar-bordered garage-card-avatar" style="background-image: url(<%= cl_image_path booking.bike.bike_image %>);"></div>
+    </div>
+  <% end %>
+  <div class="garage-card-info">
+    <% if booking.status == 'pending' %>
+       <p class="larger-text"><strong><%= booking.bike.user.first_name.capitalize %> <%= booking.bike.user.last_name.capitalize %></strong> sent you a request to rent <strong><%= booking.garage.name %></strong>.</p>
+      <p><strong><%= booking.bike.user.first_name.capitalize %> <%= booking.bike.user.last_name.capitalize %></strong> wants to safe his <strong><%= booking.bike.bike_size %> <%= booking.bike.bike_type %></strong> starting from <strong><%= booking.start_date %></strong>.</p>
+    <% elsif booking.status == 'rejected' %>
+      <p class="larger-text">You have rejected <strong><%= booking.bike.user.first_name.capitalize %> <%= booking.bike.user.last_name.capitalize %></strong>'s request to rent your garage <strong><%= booking.garage.name %></strong>.</p>
+    <% elsif booking.status == 'accepted' %>
+      <p class="larger-text">You have accepted <strong><%= booking.bike.user.first_name.capitalize %> <%= booking.bike.user.last_name.capitalize %></strong>'s request to rent your garage <strong><%= booking.garage.name %></strong>.</p>
+      <p>We are watiting for <strong><%= booking.garage.user.first_name.capitalize %> <%= booking.garage.user.last_name.capitalize %></strong> to process his payment information.</p>
+    <% elsif booking.status == 'paid' %>
+      <p class="larger-text"><strong><%= booking.bike.user.first_name.capitalize %> <%= booking.bike.user.last_name.capitalize %></strong>'s payment information has been processed!</p>
+      <p>You can now arrange the key exchange with <strong><%= booking.bike.user.first_name.capitalize %> <%= booking.bike.user.last_name.capitalize %></strong> thourgh our chatbox!</p>
+      <p>The rental starts on <strong><%= booking.start_date %></strong></p>
+    <% elsif booking.status == 'active' %>
+      <p class="larger-text">You are currently renting <strong><%= booking.garage.name %></strong> for your bike <strong><%= booking.bike.name %></strong>.</p>
+      <p>Garage owner <strong><%= booking.garage.user.first_name.capitalize %> <%= booking.garage.user.last_name.capitalize %></strong> says hi!</p>
+    <% elsif booking.status == 'cancelled_request' %>
+      <p class="larger-text">Garage owner <strong><%= booking.garage.user.first_name.capitalize %> <%= booking.garage.user.last_name.capitalize %></strong> has cancelled your request</p>
+      <p>for garage <strong><%= booking.garage.name %></strong> for your bike <strong><%= booking.bike.name %></strong>.</p>
+    <% elsif booking.status == 'done' %>
+      <p class="larger-text">Your rental of <strong><%= booking.garage.name %></strong> for your bike <strong><%= booking.bike.name %></strong> ended on <strong><%= booking.end_date %></strong>.</p>
+    <% else %>
+      <p class="larger-text">error</p>
+    <% end %>
+    <p><%= booking.garage.street_number %> <%= booking.garage.street_address %>, <%= booking.garage.city %></p>
+  </div>
+  <div class="top-right">
+    <% if %w(rejected cancelled_request done).include? booking.status %>
+      <p class="tag tag-item red-tag"><%= booking.status %></p>
+    <% else %>
+      <p class="tag tag-item"><%= booking.status %></p>
+    <% end %>
+    <p class='tag tag-item blue-tag'>€<%= booking.price %>/month</p>
+    <div class="garage-card-avatar avatar-bordered tag-item" style="background-image: url(<%= cl_image_path booking.garage.user.profile_image %>);"></div>
+  </div>
+  <div class="bottom-right buttons-container">
+    <% if %w(pending).include? booking.status %>
+      <%= link_to "accept", '#', class: 'btn-flat' %>
+      <%= link_to "reject", '#', class: 'btn-flat red' %>
+    <% end %>
+    <% if %w(accepted paid active).include? booking.status %>
+      <%= link_to "cancel", '#', class: 'btn-flat red' %>
+    <% end %>
+    <%= link_to "contact user", user_garage_booking_path(current_user, booking.garage, booking), class: 'btn-flat' %>
+  </div>
+</div>
