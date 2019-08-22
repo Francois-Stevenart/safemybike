@@ -4,7 +4,8 @@
     <%= render 'shared/dashboardsidebar'%>
   </div>
 
-  <div class="dashboard-main">
+  <div class="dashboard-main" id="home-display">
+
     <div class="card-dashboard">
 
   <!-- Display received requests as an owner: -->
@@ -105,9 +106,30 @@
             </p>
           </div>
         <% end %>
-    <% end %>
+      <% end %>
+    </div>
 
+    <!-- Display the income if he is an owner and how much he is paying if he has a bike -->
 
+    <div id = "return-rents">
+      <div id= "owner-income">
+        <% bookings = [] %>
+
+        <!-- Owner calculations -->
+        <% @owner_in_progress_bookings.each do |booking|  %>
+          <% bookings << booking.price %>
+        <% end %>
+        <h3> <%= bookings.sum == 0 ? 'No garages rent' : ("Your monthly income: " + bookings.sum.to_s) %> </h3>
+      </div>
+      <div id= "biker-price">
+        <% bookings = [] %>
+
+        <!-- Biker calculations -->
+        <% @biker_in_progress_bookings.each do |booking|  %>
+          <% bookings << booking.price %>
+        <% end %>
+        <h3> <%= bookings.sum == 0 ? 'You have no bike in a garage' : ("Your rent cost: " + bookings.sum.to_s) %> </h3>
+      </div>
     </div>
   </div>
 </div>
