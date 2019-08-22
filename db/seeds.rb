@@ -268,13 +268,17 @@ puts "Pulling reviews out of my buttocks... ⌨️"
 bookings = Booking.all
 
 bookings.each do |booking|
+  if booking.status == 'done'
+    booking.end_date = Faker::Date.between(from: 2.year.ago, to: 1.month.ago)
+  end
+  booking.save!
   date = Faker::Date.between(from: 2.year.ago, to: 1.month.ago)
   review = Review.create(
     content:    Faker::TvShows::NewGirl.quote,
     rating:     rand(3..5)
     )
   review.booking = booking
-  review.save
+  review.save!
   print '⌨️ '
 end
 
