@@ -1,17 +1,11 @@
 .dashboard-container {
   display: flex;
   align-items: flex-start;
+  width: 100%;
 }
 
 .dashboard-main {
+  width: 100%;
   flex-grow: 1;
   padding: 20px;
-}
-
-.card-dashboard {
-  border-radius: 10px;
-  margin: 10px 25px;
-  border: solid 1px $green;
-  margin: 25px;
-  padding: 20px 20px 50px 50px;
 }
