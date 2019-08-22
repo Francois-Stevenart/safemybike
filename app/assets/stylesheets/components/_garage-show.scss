@@ -1,10 +1,35 @@
 .garage-show-body {
+  text-align: justify;
   h2 {
-    padding: 20px 0px 6px 0px;
+    padding: 15px 0px 10px 0px;
   }
   h3 {
     font-size: 20px;
-    padding-bottom: 10px;
+    padding-bottom: 15px;
+  }
+}
+
+.garage-show-card {
+  background-color: white;
+  border-radius: 10px;
+  padding: 0px 20px;
+  margin: 30px 0px 20px 0px;
+  max-width: 400px;
+  i {
+    display: inline-block;
+    color: $green;
+    padding-right: 6px;
+  }
+  h4 {
+    color: $green;
+    font-size: 14px;
+    font-weight: bold;
+    display: inline-block;
+  }
+  p {
+    font-weight: bold;
+    margin: 10px 0px 10px 10px;
+    display: inline-block;
   }
 }
 
@@ -12,6 +37,7 @@
   img {
     width: 400px;
     height: 267px;
+    margin: 15px 0px 39px 0px;
     border-radius: 10px;
     border: 2px solid $white;
   }
@@ -21,6 +47,16 @@
   background-color: $green;
   border-radius: 10px;
   color: $white;
-  padding: 10px 25px;
+  padding: 25px 25px;
   margin: 20px 0px;
+  text-align: center;
+  h3 {
+    padding-bottom: 15px;
+  }
+}
+
+.show-price {
+  color: $white;
+  font-weight: bold;
+  font-size: 20px;
 }
