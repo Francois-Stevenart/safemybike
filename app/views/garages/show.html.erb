@@ -30,45 +30,55 @@
 
       <div class="garage-show-booking">
         <% if user_signed_in?%>
-        <%= simple_form_for [current_user, @garage, @booking], html: {id: :appear_price} do |f| %>
-          <%= f.input :start_date, as: :date, html5: true %>
-          <% if current_user.bikes.exists? %>
-
-            <!-- Check if the TOTAL capacity for the garage is == 0 then user cannot choose a bike-->
-
-            <% if @garage.capacity_left_regular <= 0 && @garage.capacity_left_large <= 0 %>
-              <h4>no spots left. please choose another garage</h4>
-
-            <!-- Check if the large bike capacity is == 0 then user cannot choose a large bike-->
-
-            <% elsif @garage.capacity_left_large <= 0 %>
-              <div id="array_bike_node" data-bikes="<%= current_user.bikes.where(bike_size: "regular").map{|bike|{ id: bike.id, size: bike.bike_size  } }.to_json  %>" > </div>
-              <%= f.input :bike_id, collection: current_user.bikes.where(bike_size: "regular").map{|bike| [bike.name, bike.id] }, input_html: { :class => "selected-type" }  %>
-              <%= f.button :submit %>
-            <!-- Check if the regular bike capacity is == 0 then user cannot choose a regular bike-->
-
-            <% elsif @garage.capacity_left_regular <= 0%>
-              <div id="array_bike_node" data-bikes="<%= current_user.bikes.where(bike_size: "cargo").map{|bike|{ id: bike.id, size: bike.bike_size  } }.to_json  %>" > </div>
-              <%= f.input :bike_id, collection: current_user.bikes.where(bike_size: "cargo").map{|bike| [bike.name, bike.id] }, input_html: { :class => "selected-type" }  %>
-              <%= f.button :submit %>
-            <!-- If both capacity are free user can choose any bike -->
-
-            <% else %>
-              <div id="array_bike_node" data-bikes="<%= current_user.bikes.map{|bike|{ id: bike.id, size: bike.bike_size  } }.to_json  %>" > </div>
-              <%= f.input :bike_id, collection: current_user.bikes.map{|bike| [bike.name, bike.id] }, input_html: { :class => "selected-type" }  %>
-              <%= f.button :submit %>
+          <%= simple_form_for [current_user, @garage, @booking], html: {id: :appear_price} do |f| %>
+            <% if @booking.errors.any? %>
+              <div class="errors-container">
+                <ul>
+                  <% @booking.errors.full_messages.each do |message| %>
+                    <li><%= message %></li>
+                  <% end %>
+                </ul>
+              </div>
             <% end %>
-            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
-              Create a new bike
-            </button>
-            <div><h4>Regular bike price: <%= @garage.price_regular_bike %> € /month</h4></div>
-            <div><h4>Large bike price: <%= @garage.price_large_bike %> € /month</h4></div>
-            <div class="bike-price"></div>
-          <% else %>
-            <p>Create a bike before selecting a booking:</p>
-            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
-              Create a new bike
-            </button>
+            <%= f.input :start_date, as: :date, html5: true %>
+            <% if current_user.bikes.exists? %>
+
+              <!-- Check if the TOTAL capacity for the garage is == 0 then user cannot choose a bike-->
+
+              <% if @garage.capacity_left_regular <= 0 && @garage.capacity_left_large <= 0 %>
+                <h4>no spots left. please choose another garage</h4>
+
+              <!-- Check if the large bike capacity is == 0 then user cannot choose a large bike-->
+
+              <% elsif @garage.capacity_left_large <= 0 %>
+                <div id="array_bike_node" data-bikes="<%= current_user.bikes.where(bike_size: "regular").map{|bike|{ id: bike.id, size: bike.bike_size  } }.to_json  %>" > </div>
+                <%= f.input :bike_id, collection: current_user.bikes.where(bike_size: "regular").map{|bike| [bike.name, bike.id] }, input_html: { :class => "selected-type" }, selected: 1  %>
+                <%= f.button :submit %>
+              <!-- Check if the regular bike capacity is == 0 then user cannot choose a regular bike-->
+
+              <% elsif @garage.capacity_left_regular <= 0%>
+                <div id="array_bike_node" data-bikes="<%= current_user.bikes.where(bike_size: "cargo").map{|bike|{ id: bike.id, size: bike.bike_size  } }.to_json  %>" > </div>
+                <%= f.input :bike_id, collection: current_user.bikes.where(bike_size: "cargo").map{|bike| [bike.name, bike.id] }, input_html: { :class => "selected-type" }, selected: 1  %>
+                <%= f.button :submit %>
+              <!-- If both capacity are free user can choose any bike -->
+
+              <% else %>
+                <div id="array_bike_node" data-bikes="<%= current_user.bikes.map{|bike|{ id: bike.id, size: bike.bike_size  } }.to_json  %>" > </div>
+                <%= f.input :bike_id, collection: current_user.bikes.map{|bike| [bike.name, bike.id] }, input_html: { :class => "selected-type" },selected: 1  %>
+                <%= f.button :submit %>
+              <% end %>
+              <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+                Create a new bike
+              </button>
+              <div><h4>Regular bike price: <%= @garage.price_regular_bike %> € /month</h4></div>
+              <div><h4>Large bike price: <%= @garage.price_large_bike %> € /month</h4></div>
+              <div class="bike-price"></div>
+            <% else %>
+              <p>Create a bike before selecting a booking:</p>
+              <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+                Create a new bike
+              </button>
+            <% end %>
           <% end %>
         <% else %>
           <h1>LOGIN IF YOU WANNA BOOK OR EDOUARD IS GOING TO GET MAD</h1>
