@@ -5,8 +5,8 @@
   <!-- Display received requests as an owner: -->
   <div class="dashboard-main" id="home-display">
     <h3>Pending requests:</h3>
-      <% if @owner_pending_requests.any? %>
-        <% @owner_pending_requests.each do |biker_booking| %>
+      <% if @user_pending_requests.any? %>
+        <% @user_pending_requests.each do |biker_booking| %>
           <div class="card-dashboard shadow">
             <%= link_to user_garage_path(biker_booking.garage.user, biker_booking.garage), class: 'garage-card-link' do %>
               <div class="garage-card-image" style="background-image: url(<%= cl_image_path biker_booking.garage.profile_image %>);">

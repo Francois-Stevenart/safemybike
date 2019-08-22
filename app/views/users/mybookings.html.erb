@@ -40,7 +40,7 @@
                 <div class="garage-card-avatar avatar-bordered tag-item" style="background-image: url(<%= cl_image_path biker_booking.garage.user.profile_image %>);"></div>
               </div>
               <div class="bottom-right buttons-container">
-                <% if %w(pending accepted).include? biker_booking.status %>
+                <% if %w(accepted).include? biker_booking.status %>
                   <%= link_to "enter payment", '#', class: 'btn-flat' %>
                 <% end %>
                 <%= link_to "contact owner", user_garage_booking_path(current_user, biker_booking.garage, biker_booking), class: 'btn-flat' %>
