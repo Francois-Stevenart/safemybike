@@ -18,19 +18,19 @@
         <% bookings = [] %>
 
         <!-- Owner calculations -->
-        <% @owner_in_progress_bookings.each do |booking|  %>
+        <% @income_bookings.each do |booking|  %>
           <% bookings << booking.price %>
         <% end %>
-        <h3> <%= bookings.sum == 0 ? 'No garages rent' : ("Monthly income from your garages: " + bookings.sum.to_s) %> </h3>
+        <h3> <%= bookings.sum == 0 ? 'No garages rent' : ("Monthly income from your garages: €" + bookings.sum.to_s) %> </h3>
       </div>
       <div id= "biker-price">
         <% bookings = [] %>
 
         <!-- Biker calculations -->
-        <% @biker_in_progress_bookings.each do |booking|  %>
+        <% @paying_bookings.each do |booking|  %>
           <% bookings << booking.price %>
         <% end %>
-        <h3> <%= bookings.sum == 0 ? 'You have no bike in a garage' : ("Monthly cost for your bike safes: " + bookings.sum.to_s) %> </h3>
+        <h3> <%= bookings.sum == 0 ? 'You have no bike in a garage' : ("Monthly cost for your bike safes: €" + bookings.sum.to_s) %> </h3>
       </div>
     </div>
   </div>

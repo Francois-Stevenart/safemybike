@@ -1,25 +1,22 @@
-<div
-  id="map"
-  class="index-map"
-  style="width: 100%;
-  height: 45vh;"
-  data-markers="<%= @markers.to_json %>"
-  data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>"
-></div>
-<div class="index-cards">
-  <% @garages.each do |garage| %>
-    <%= link_to user_garage_path(garage.user, garage), class: 'index-card' do %>
-      <div class="index-card-img-top" style="background-image: url(<%= cl_image_path garage.profile_image %>);"></div>
-      <div class="index-card-body">
-        <h5 class="index-card-title"><%= garage.name %></h5>
-        <p class="index-card-text"><%= garage.street_address %>, <%= garage.city %></p>
-        <h6 class="price-tag">€<%= garage.price_regular_bike %>/month</h6>
-      </div>
+<div class="search-page-container">
+  <div
+    id="map"
+    class="index-map"
+    style="width: 100%;
+    height: 100%;"
+    data-markers="<%= @markers.to_json %>"
+    data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>"
+  ></div>
+  <div class="index-cards">
+    <% @garages.each do |garage| %>
+      <%= link_to user_garage_path(garage.user, garage), class: 'index-card' do %>
+        <div class="index-card-img-top" style="background-image: url(<%= cl_image_path garage.profile_image %>);"></div>
+        <div class="index-card-body">
+          <h5 class="index-card-title"><%= garage.name %></h5>
+          <p class="index-card-text"><%= garage.street_address %>, <%= garage.city %></p>
+          <h6 class="price-tag">€<%= garage.price_regular_bike %>/month</h6>
+        </div>
+      <% end %>
     <% end %>
-  <% end %>
+  </div>
 </div>
-
-
-
-
-<%= link_to "Back", root_path, class: "btn btn-flat" %>
