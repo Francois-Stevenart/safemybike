@@ -3,8 +3,8 @@ class UsersController < ApplicationController
 
   def home
     @user_pending_requests = @user.biker_bookings.where(status: %w(pending rejected accepted paid))
-    @owner_in_progress_bookings = @user.owner_bookings.where(" status = ? OR status = ?  ", "accepted", "paid")
-    @biker_in_progress_bookings = @user.biker_bookings.where(" status = ? OR status = ?  ", "accepted", "paid")
+    @income_bookings = @user.owner_bookings.where(status: %w(paid active))
+    @paying_bookings = @user.biker_bookings.where(status: %w(paid active))
   end
 
   def show
