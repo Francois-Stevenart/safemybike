@@ -8,7 +8,7 @@
     <h2>my garages</h2>
 
     <% @garages.each do |garage| %>
-      <div class="garage-card-dashboard">
+      <div class="garage-card-dashboard shadow">
         <div class="top-content">
           <%= link_to user_garage_path(garage.user, garage), class: 'garage-card-link' do %>
             <div class="garage-card-image" style="background-image: url(<%= cl_image_path garage.profile_image %>);"></div>
@@ -17,7 +17,7 @@
             <h5><%= garage.name %></h5>
             <p><%= garage.street_address %> <%= garage.street_number %>, <%= garage.city %></p>
             <p>Capacity: <%= garage.capacity_reg_bikes %> regular | <%= garage.capacity_large_bikes %> large</p>
-            <div class="top-right-buttons">
+            <div class="top-right buttons-container">
               <%= link_to "garage page", user_garage_path(current_user, garage), class: 'btn-flat' %>
               <%= link_to "edit", user_garage_path(current_user, garage), class: 'btn-flat' %>
               <%= link_to "delete", user_garage_path(current_user, garage), class: 'btn-flat red' %>
@@ -38,7 +38,7 @@
                     <p class='tag'><%= booking.status %></p>
                     <p class='tag'>€20/month</p>
                   </div>
-                  <div class="top-right-buttons">
+                  <div class="buttons-container">
                     <%= link_to "booking page", user_garage_path(current_user, garage), class: 'btn-flat' %>
                     <%= link_to "cancel", user_garage_path(current_user, garage), class: 'btn-flat red' %>
                   </div>

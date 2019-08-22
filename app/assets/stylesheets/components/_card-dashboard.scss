@@ -1,0 +1,54 @@
+.card-dashboard, .card-dashboard-request {
+  display: flex;
+  position: relative;
+  background-color: $white;
+  border-radius: 5px;
+  background-color: $white;
+  box-shadow: 1px 1px 10px lightgrey;
+  margin-bottom: 10px;
+  a > .garage-card-image {
+    position: relative;
+    width: 150px;
+    height: 100%;
+    border-radius: 5px 0 0 5px;
+  }
+  .garage-card-info {
+    p {
+      font-size: 1em;
+    }
+    .larger-text {
+      font-size: 1.25em;
+    }
+  }
+  .top-right {
+    display: flex;
+    align-items: center;
+    .tag-item {
+      margin-left: 5px;
+    }
+  }
+}
+.garage-card-avatar {
+  background-size: cover;
+  background-position: center;
+  width: 40px;
+  height: 40px;
+}
+
+
+.bike-image {
+  position: absolute;
+  bottom: 5px;
+  right: 5px;
+  width: 50px;
+  height: 50px;
+}
+
+
+.card-dashboard-request {
+  max-width: 400px;
+}
+
+.shadow {
+  box-shadow: 1px 1px 10px lightgrey;
+}
