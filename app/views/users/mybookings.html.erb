@@ -10,74 +10,24 @@
       <div>
         <% if @biker_bookings.where(status: %w(pending rejected accepted paid)).any? %>
           <h3>Pending requests:</h3>
-          <% @biker_bookings.where(status: %w(pending rejected accepted paid)).each do |biker_booking| %>
-            <div class="card-dashboard shadow">
-              <%= link_to user_garage_path(biker_booking.garage.user, biker_booking.garage), class: 'garage-card-link' do %>
-                <div class="garage-card-image" style="background-image: url(<%= cl_image_path biker_booking.garage.profile_image %>);">
-                  <div class="bike-image avatar-bordered garage-card-avatar" style="background-image: url(<%= cl_image_path biker_booking.bike.bike_image %>);"></div>
-                </div>
-              <% end %>
-              <div class="garage-card-info">
-                <% if biker_booking.status == 'pending' %>
-                  <p class="larger-text">You sent a request to rent <strong><%= biker_booking.garage.name %></strong> for your bike <strong><%= biker_booking.bike.name %></strong></p>
-                  <p>Waiting for a response from garage owner  <strong><%= biker_booking.garage.user.first_name.capitalize %> <%= biker_booking.garage.user.last_name.capitalize %></strong></p>
-                <% elsif biker_booking.status == 'rejected' %>
-                  <p class="larger-text"><strong><%= biker_booking.garage.user.first_name.capitalize %> <%= biker_booking.garage.user.last_name.capitalize %></strong> has rejected your rental request for garage <strong><%= biker_booking.garage.name %></strong>.</p>
-                <% elsif biker_booking.status == 'accepted' %>
-                  <p class="larger-text"><strong><%= biker_booking.garage.user.first_name.capitalize %> <%= biker_booking.garage.user.last_name.capitalize %></strong> has accepted your rental request for garage <strong><%= biker_booking.garage.name %></strong>!</p>
-                  <p>Contact <strong><%= biker_booking.garage.user.first_name.capitalize %> <%= biker_booking.garage.user.last_name.capitalize %></strong> to arrange the key exchange. Don't forget to pay!</p>
-                <% elsif biker_booking.status == 'paid' %>
-                  <p class="larger-text"><strong><%= biker_booking.garage.user.first_name.capitalize %> <%= biker_booking.garage.user.last_name.capitalize %></strong> has accepted your rental request!</p>
-                  <p>Everything is good! You can safe your bike in <strong><%= biker_booking.garage.name %></strong> starting on <strong><%= biker_booking.start_date %></strong> </p>
-                <% else %>
-                  <p class="larger-text">error</p>
-                <% end %>
-                <p><%= biker_booking.garage.street_number %> <%= biker_booking.garage.street_address %>, <%= biker_booking.garage.city %></p>
-              </div>
-              <div class="top-right">
-                <p class='tag tag-item'><%= biker_booking.status %></p>
-                <p class='tag tag-item'>€<%= biker_booking.price %>/month</p>
-                <div class="garage-card-avatar avatar-bordered tag-item" style="background-image: url(<%= cl_image_path biker_booking.garage.user.profile_image %>);"></div>
-              </div>
-              <div class="bottom-right buttons-container">
-                <% if %w(accepted).include? biker_booking.status %>
-                  <%= link_to "enter payment", '#', class: 'btn-flat' %>
-                <% end %>
-                <%= link_to "contact owner", user_garage_booking_path(current_user, biker_booking.garage, biker_booking), class: 'btn-flat' %>
-                <% if %w(pending accepted paid active).include? biker_booking.status %>
-                  <%= link_to "cancel", '#', class: 'btn-flat red' %>
-                <% end %>
-              </div>
-            </div>
+          <% @biker_bookings.where(status: %w(pending rejected accepted paid)).each do |booking| %>
+            <%= render 'shared/booking-card', booking: booking %>
           <% end %>
         <% end %>
       </div>
-
       <div>
         <% if @biker_bookings.where(status: "active").any? %>
           <h3>Active rental agreements:</h3>
-          <% @biker_bookings.where(status: "active").each do |biker_booking| %>
-            <div class="card-dashboard shadow">
-              <%= link_to user_garage_path(biker_booking.garage.user, biker_booking.garage), class: 'garage-card-link' do %>
-                <div class="garage-card-image" style="background-image: url(<%= cl_image_path biker_booking.garage.profile_image %>);">
-                  <div class="bike-image avatar-bordered garage-card-avatar" style="background-image: url(<%= cl_image_path biker_booking.bike.bike_image %>);"></div>
-                </div>
-              <% end %>
-              <div class="garage-card-info">
-                <p class="larger-text">You are currently renting <strong><%= biker_booking.garage.name %></strong> for your bike <strong><%= biker_booking.bike.name %></strong></h5>
-                <p>from garage owner <strong><%= biker_booking.garage.user.first_name.capitalize %> <%= biker_booking.garage.user.last_name.capitalize %></strong></p>
-                <p><%= biker_booking.garage.street_number %> <%= biker_booking.garage.street_address %>, <%= biker_booking.garage.city %></p>
-              </div>
-              <div class="top-right">
-                <p class='tag tag-item'><%= biker_booking.status %></p>
-                <p class='tag tag-item'>€<%= biker_booking.price %>/month</p>
-                <div class="garage-card-avatar avatar-bordered tag-item" style="background-image: url(<%= cl_image_path biker_booking.garage.user.profile_image %>);"></div>
-              </div>
-              <div class="bottom-right buttons-container">
-                <%= link_to "cancel", '#', class: 'btn-flat red' %>
-                <%= link_to "contact owner", user_garage_booking_path(current_user, biker_booking.garage, biker_booking), class: 'btn-flat' %>
-              </div>
-            </div>
+          <% @biker_bookings.where(status: "active").each do |booking| %>
+            <%= render 'shared/booking-card', booking: booking %>
+          <% end %>
+        <% end %>
+      </div>
+      <div>
+        <% if @biker_bookings.where(status: %w(cancelled_request done)).any? %>
+          <h3>Past rental agreements:</h3>
+          <% @biker_bookings.where(status: %w(cancelled_request done)).each do |booking| %>
+            <%= render 'shared/booking-card', booking: booking %>
           <% end %>
         <% end %>
       </div>
