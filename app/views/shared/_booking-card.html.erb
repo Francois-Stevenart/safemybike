@@ -35,7 +35,7 @@
     <% else %>
       <p class="tag tag-item"><%= booking.status %></p>
     <% end %>
-    <p class='tag tag-item'>€<%= booking.price %>/month</p>
+    <p class='tag tag-item blue-tag'>€<%= booking.price %>/month</p>
     <div class="garage-card-avatar avatar-bordered tag-item" style="background-image: url(<%= cl_image_path booking.garage.user.profile_image %>);"></div>
   </div>
   <div class="bottom-right buttons-container">
