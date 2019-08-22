@@ -1,6 +1,26 @@
 <h1>Hello World</h1>
 <p><%= @booking.status %></p>
 
+<div class="container">
+  <div class="row">
+    <div class="col-sn-6 col-sn-offset-3">
+      <div class="chat-header"><h4>#<%= @booking.id %></h4></div>
+      <div class="messages">
+        <% @booking.chats.each do |message| %>
+          <%= render "chats/chat", message: message, user_is_messages_author: message.user == current_user %>
+        <% end %>
+      </div>
+      <div id="create-message">
+        <%= simple_form_for [ current_user, @garage, @booking, @chat ], remote: true do |f| %>
+          <%= f.input :content, label: false %>
+          <%= f.button :submit %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!--
 <div id="chatbox">
   <div id="chat-messages">
     <% @chats.each do |message| %>
@@ -23,4 +43,21 @@
       <%= f.button :submit %>
     <% end %>
   </div>
-</div>
+</div> -->
+<% content_for :after_js do %>
+  <script>
+    scrollLastMessageIntoView();
+    App['chat_room_<%= @booking.id %>'] = App.cable.subscriptions.create(
+      { channel: 'ChatRoomsChannel', booking_id: <%= @booking.id %> },
+      {
+        received: (data) => {
+          if (data.current_user_id !== <%= current_user.id %>) {
+            const messagesContainer = document.querySelector('.messages');
+            messagesContainer.insertAdjacentHTML('beforeend', data.message_partial);
+            scrollLastMessageIntoView();
+          }
+        }
+      }
+    )
+  </script>
+<% end %>
