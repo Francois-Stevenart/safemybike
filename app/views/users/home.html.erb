@@ -2,14 +2,21 @@
   <div class="sidebar">
     <%= render 'shared/dashboardsidebar'%>
   </div>
-  <!-- Display received requests as an owner: -->
+  <!-- Display pending requests as a biker: -->
   <div class="dashboard-main" id="home-display">
-    <h3>Pending requests:</h3>
-      <% if @user_pending_requests.any? %>
-        <% @user_pending_requests.each do |booking| %>
-          <%= render 'shared/booking-card', booking: booking %>
-        <% end %>
+    <% if @biker_pending_requests.any? %>
+    <h3>Pending rental requests for your bikes:</h3>
+      <% @biker_pending_requests.each do |booking| %>
+        <%= render 'biker-booking-card', booking: booking %>
       <% end %>
+    <% end %>
+  <!-- Display received requests as an owner: -->
+    <% if @owner_pending_requests.any? %>
+    <h3>Pending requests for your garages:</h3>
+      <% @owner_pending_requests.each do |booking| %>
+        <%= render 'owner-booking-card', booking: booking %>
+      <% end %>
+    <% end %>
 
     <!-- Display the income if he is an owner and how much he is paying if he has a bike -->
 

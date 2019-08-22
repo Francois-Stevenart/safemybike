@@ -40,11 +40,11 @@
   </div>
   <div class="bottom-right buttons-container">
     <% if %w(pending accepted).include? booking.status %>
-      <%= link_to "enter payment", '#', class: 'btn-flat' %>
+      <%= link_to "enter payment", '#', class: 'btn-flat blue-tag' %>
     <% end %>
-    <%= link_to "contact owner", user_garage_booking_path(current_user, booking.garage, booking), class: 'btn-flat' %>
     <% if %w(pending accepted paid active).include? booking.status %>
       <%= link_to "cancel", '#', class: 'btn-flat red' %>
     <% end %>
+    <%= link_to "contact owner", user_garage_booking_path(current_user, booking.garage, booking), class: 'btn-flat' %>
   </div>
 </div>
