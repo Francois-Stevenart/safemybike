@@ -22,8 +22,28 @@ class GaragesController < ApplicationController
   def create
     @garage = Garage.new(garage_params)
     @garage.user_id = params[:user_id]
-    @garage.save
-    redirect_to user_garage_path(current_user, @garage)
+    @garage.features <<  params[:garage][:feature_ids].compact.map{|id| Feature.find_by id: id }.compact.flatten
+    if @garage.save
+      redirect_to user_garage_path(current_user, @garage)
+    else
+      render :new
+    end
+  end
+
+  def edit
+    @garage = Garage.find(params[:id])
+  end
+
+  def update
+    @garage = Garage.find(params[:id])
+    @garage.update(garage_params)
+    @garage.feature_presences.destroy_all
+    @garage.features <<  params[:garage][:feature_ids].compact.map{|id| Feature.find_by id: id }.compact.flatten
+    if @garage.save
+      redirect_to user_garage_path(current_user, @garage)
+    else
+      render :new
+    end
   end
 
   def show
@@ -52,8 +72,10 @@ class GaragesController < ApplicationController
                                     :capacity_reg_bikes,
                                     :capacity_large_bikes,
                                     :price_regular_bike,
+                                    :feature_ids,
                                     :price_large_bike,
-                                    :profile_image
+                                    :profile_image,
+
                                   )
   end
 end
