@@ -28,6 +28,7 @@ class GaragesController < ApplicationController
 
   def show
     @garage = Garage.find(params[:id])
+    @features = @garage.features
     @booking = Booking.new
     @bike = Bike.new
     @markers = [@garage].map do |garage|

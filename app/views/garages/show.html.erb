@@ -10,7 +10,7 @@
 
   <div class="row">
 
-    <div class="col-12 col-md-8">
+    <div class="col-12 col-md-7 col-lg-8">
       <div class="garage-show-body">
         <h2><%= @garage.name %></h2>
         <h3><%= @garage.street_number %> <%= @garage.street_address %>, <%= @garage.city %>, <%= @garage.country %></h3>
@@ -23,6 +23,15 @@
         </div>
       </div>
 
+      <div class="garage-features">
+        <% @features.each do |feature| %>
+          <div class="garage-feature">
+            <p class="feature-icon"><%= render inline: feature.icon_image %></p>
+            <p><%= feature.name.capitalize %></p>
+          </div>
+        <% end %>
+      </div>
+
       <div class= "garage-show-photo">
         <%= cl_image_tag @garage.profile_image, width: 400, height: 267, crop: :fill %>
       </div>
@@ -30,7 +39,7 @@
     </div>
 
 
-    <div class="col-12 col-md-4">
+    <div class="col-12 col-md-5 col-lg-4">
 
       <div class="garage-show-booking">
 
