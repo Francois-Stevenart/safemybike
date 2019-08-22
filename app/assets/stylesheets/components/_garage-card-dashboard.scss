@@ -100,11 +100,12 @@
 .wrap-collabsible {
   width: 100%;
   bottom: 0;
+
+  input[type='checkbox'] {
+    display: none;
+  }
 }
 
-input[type='checkbox'] {
-  display: none;
-}
 
 .lbl-toggle {
   display: block;
