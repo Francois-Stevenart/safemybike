@@ -15,6 +15,7 @@ gem 'carrierwave', '~> 1.2'
 gem 'money-rails'
 gem 'stripe'
 gem 'country_select', '~> 4.0'
+gem 'coffee-rails'
 
 gem 'autoprefixer-rails'
 gem 'font-awesome-sass', '~> 5.6.1'

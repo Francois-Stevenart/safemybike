@@ -2,7 +2,7 @@ class ChatsController < ApplicationController
   def create
     @chat = Chat.new(chat_params)
     @chat.booking_id = params[:booking_id]
-    @chat.user_id = params[:user_id]
+    @chat.user = current_user
     if @chat.save
       respond_to do |format|
         format.html { redirect_to user_garage_booking_path(current_user, params[:garage_id], params[:booking_id]) }
