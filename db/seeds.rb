@@ -180,7 +180,7 @@ i = 0
     price_regular_bike: rand(15..22),
     price_large_bike: rand(25..32)
   )
-  if i < 7
+  if i < 4
     garage.user = master_user
   else
     garage.user = owner_user
@@ -199,13 +199,13 @@ i = 0
   end
   print '🏠'
 end
-
 puts ''
-puts 'Creating bookings... 🗓️'
 
-garages = master_user.garages
-bikes = Bike.all
-statuses = %w(pending rejected accepted paid active done)
+puts "Creating bookings for owner user's garages... 🗓️"
+
+garages = owner_user.garages
+bikes = Bike.where.not(user_id: master_user.id)
+statuses = Booking::STATUS_LIST
 
 garages.each do |garage|
   4.times do
@@ -213,12 +213,56 @@ garages.each do |garage|
     booking = Booking.new(start_date: date, status: statuses.sample)
     booking.garage = garage
     booking.bike = bikes.sample
+    booking.price = bike.bike_size == 'regular' ? garage.price_regular_bike : garage.price_regular_bike
     booking.save!
     print '🗓️ '
   end
 end
-
 puts ''
+
+puts "Creating bookings for master user's bikes... 🗓️"
+
+bikes = Bike.where(user_id: master_user.id)
+
+statuses.each do |status|
+  date = Faker::Date.between(from: Date.today, to: 1.month.from_now)
+  booking = Booking.new(start_date: date, status: status)
+  booking.garage = garages.sample
+  booking.bike = bikes.sample
+  booking.price = bike.bike_size == 'regular' ? booking.garage.price_regular_bike : booking.garage.price_regular_bike
+  booking.save!
+  print '🗓️ '
+end
+puts ''
+
+puts "Creating bookings for master user's garages... 🗓️"
+
+garages = master_user.garages
+bikes = Bike.where.not(user_id: master_user.id)
+garages.each do |garage|
+  4.times do
+    date = Faker::Date.between(from: Date.today, to: 1.month.from_now)
+    booking = Booking.new(start_date: date, status: 'active')
+    booking.garage = garage
+    booking.bike = bikes.sample
+    booking.price = bike.bike_size == 'regular' ? garage.price_regular_bike : garage.price_regular_bike
+    booking.save!
+    print '🗓️ '
+  end
+end
+puts ''
+
+statuses.each do |status|
+  date = Faker::Date.between(from: Date.today, to: 1.month.from_now)
+  booking = Booking.new(start_date: date, status: status)
+  booking.garage = garages.sample
+  booking.bike = bikes.sample
+  booking.price = bike.bike_size == 'regular' ? booking.garage.price_regular_bike : booking.garage.price_regular_bike
+  booking.save!
+  print '🗓️ '
+end
+puts ''
+
 puts "Pulling reviews out of my buttocks... ⌨️"
 
 bookings = Booking.all

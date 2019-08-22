@@ -1,9 +1,11 @@
 .dashboard-container {
   display: flex;
   align-items: flex-start;
+  width: 100%;
 }
 
 .dashboard-main {
+  width: 100%;
   flex-grow: 1;
   padding: 20px;
 }
