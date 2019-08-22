@@ -39,7 +39,7 @@
                     <p class='tag'>€20/month</p>
                   </div>
                   <div class="buttons-container">
-                    <%= link_to "booking page", user_garage_path(current_user, garage), class: 'btn-flat' %>
+                    <%= link_to "contact user", user_garage_booking_path(current_user, booking.garage, booking), class: 'btn-flat' %>
                     <%= link_to "cancel", user_garage_path(current_user, garage), class: 'btn-flat red' %>
                   </div>
                 </div>
