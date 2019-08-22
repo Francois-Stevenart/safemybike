@@ -6,3 +6,11 @@
   margin: 0 auto;
   justify-content: center;
 }
+ #home-display {
+  display:flex;
+  justify-content: space-evenly;
+ }
+
+.card-dashboard {
+  width: 45vw;
+}

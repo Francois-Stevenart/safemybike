@@ -7,13 +7,23 @@ class BookingsController < ApplicationController
 
   def create
     @booking = Booking.new(booking_params)
-    @booking.garage_id = params[:garage_id]
+    @garage = Garage.find params[:garage_id]
+    @booking.garage = @garage
     @booking.price = @booking.garage.price_large_bike if @booking.bike.bike_size == "cargo"
     @booking.price = @booking.garage.price_regular_bike if @booking.bike.bike_size == "regular"
     if @booking.save
       redirect_to dashboard_home_user_path(current_user)
     else
-      raise
+      @bike = Bike.new
+      @markers = [@garage].map do |garage|
+        {
+          lat: garage.latitude,
+          lng: garage.longitude,
+          infoWindow: render_to_string(partial: "garages/info_window", locals: { garage: garage }),
+          image_url: helpers.asset_url("/map_marker.png")
+        }
+      end
+      render "garages/show"
     end
   end
 
