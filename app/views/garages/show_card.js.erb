@@ -1,0 +1,5 @@
+const garageCardList = document.getElementById('garage-card-list');
+
+const card = '<%= j render "map_card", garage: @garage %>';
+console.log(card)
+garageCardList.insertAdjacentHTML('afterbegin', card);

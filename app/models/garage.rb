@@ -24,10 +24,10 @@ class Garage < ApplicationRecord
   end
 
   def capacity_left_regular
-    capacity_reg_bikes - self.bookings.where.not(status: ["rejected", "cancelled_request", "done"]).select{|booking|  booking.bike.bike_size == "regular" }.count
+    capacity_reg_bikes - self.bookings.where.not(status: ["rejected", "cancelled_by_owner", "cancelled_by_biker", "done"]).select{|booking|  booking.bike.bike_size == "regular" }.count
   end
 
   def capacity_left_large
-    capacity_large_bikes - self.bookings.where.not(status: ["rejected", "cancelled_request", "done"]).select{|booking|  booking.bike.bike_size == "cargo" }.count
+    capacity_large_bikes - self.bookings.where.not(status: ["rejected", "cancelled_by_owner", "cancelled_by_biker", "done"]).select{|booking|  booking.bike.bike_size == "cargo" }.count
   end
 end

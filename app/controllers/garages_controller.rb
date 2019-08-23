@@ -9,9 +9,19 @@ class GaragesController < ApplicationController
       {
         lat: garage.latitude,
         lng: garage.longitude,
+        id: garage.id,
+        user_id: garage.user_id,
         infoWindow: render_to_string(partial: "info_window", locals: { garage: garage }),
         image_url: helpers.asset_url('/map_marker.png')
       }
+    end
+  end
+
+  def show_card
+    @garage = Garage.find(params[:id])
+    respond_to do |format|
+      p format
+      format.js
     end
   end
 
@@ -78,4 +88,5 @@ class GaragesController < ApplicationController
 
                                   )
   end
+
 end

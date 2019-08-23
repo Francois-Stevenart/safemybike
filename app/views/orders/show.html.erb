@@ -3,3 +3,5 @@
   <li>Status: <%= @order.state %></li>
   <li>Amount: <%= humanized_money_with_symbol(@order.amount) %></li>
 <ul>
+
+<%= link_to "Back to my Dashboard", dashboard_home_user_path(current_user) %>

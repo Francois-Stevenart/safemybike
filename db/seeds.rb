@@ -53,7 +53,7 @@ puts '-'*40
 
 puts 'Creating master user... 🤴'
 
-master_user = User.new(first_name: 'Federico', last_name: 'Pooface', email: 'master@user.com', password: 'master', password_confirmation: 'master')
+master_user = User.new(first_name: 'Federico', last_name: 'Puface', email: 'master@user.com', password: 'master', password_confirmation: 'master')
 master_user.remote_profile_image_url = user_images[0]
 master_user.save!
 puts 'email: master@user.com'
