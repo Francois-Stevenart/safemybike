@@ -1,9 +1,6 @@
 <div class="card-dashboard shadow">
   <%= link_to user_garage_path(booking.garage.user, booking.garage), class: 'garage-card-link' do %>
     <div class="garage-card-image" style="background-image: url(<%= cl_image_path booking.garage.profile_image %>);">
-      <% unless booking.bike.bike_image.nil? %>
-        <div class="bike-image avatar-bordered garage-card-avatar" style="background-image: url(<%= cl_image_path booking.bike.bike_image %>);"></div>
-      <% end %>
     </div>
   <% end %>
   <div class="garage-card-info">
@@ -40,7 +37,12 @@
       <p class="tag tag-item"><%= booking.status %></p>
     <% end %>
     <p class='tag tag-item blue-tag'>€<%= booking.price %>/month</p>
-    <div class="garage-card-avatar avatar-bordered tag-item" style="background-image: url(<%= cl_image_path booking.bike.user.profile_image %>);"></div>
+    <% unless booking.bike.bike_image.blank? %>
+      <div class="garage-card-avatar avatar-bordered tag-item" style="background-image: url(<%= cl_image_path booking.bike.bike_image %>);"></div>
+    <% end %>
+    <% unless booking.bike.user.profile_image.blank? %>
+      <div class="garage-card-avatar avatar-bordered tag-item" style="background-image: url(<%= cl_image_path booking.bike.user.profile_image %>);"></div>
+    <% end %>
   </div>
   <div class="bottom-right buttons-container">
     <% if booking.status == 'pending'%>
