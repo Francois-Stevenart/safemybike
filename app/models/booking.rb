@@ -5,6 +5,7 @@ class Booking < ApplicationRecord
   belongs_to :garage
   has_many :chats, dependent: :destroy
   has_many :reviews, dependent: :destroy
+  has_one :order
 
   validates :start_date, presence: true
   validates :status, inclusion: { in:  STATUS_LIST }
