@@ -1,5 +1,5 @@
 class Booking < ApplicationRecord
-  STATUS_LIST = %w(pending rejected accepted cancelled_request paid active done)
+  STATUS_LIST = %w(pending rejected accepted cancelled_by_owner cancelled_by_biker paid active done)
 
   belongs_to :bike
   belongs_to :garage
