@@ -41,6 +41,10 @@
   }
   ul {
     list-style-type: none;
+    margin: 0;
+    li {
+      margin-left: 30px;
+    }
   }
 }
 
@@ -49,9 +53,4 @@
   text-decoration: none;
 }
 
-ul {
-  margin: 0;
-  li {
-    margin-left: 30px;
-  }
-}
+
