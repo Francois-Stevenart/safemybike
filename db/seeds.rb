@@ -281,7 +281,54 @@ bookings.each do |booking|
   review.save!
   print '⌨️ '
 end
-
 puts ''
+
+
+puts '-'*40
+puts 'Creating demo owner...'
+demo_owner_user = User.new(first_name: 'Steve', last_name: 'Jobs', email: 'demo_owner@user.com', password: 'master', password_confirmation: 'master')
+demo_owner_user.remote_profile_image_url = user_images[0]
+demo_owner_user.save!
+puts 'demo_owner@user.com'
+puts 'password: master'
+puts '-'*40
+
+puts 'Creating demo biker...'
+demo_biker_user = User.new(first_name: 'Tariq', last_name: 'Von Pitch', email: 'demo_biker@user.com', password: 'master', password_confirmation: 'master')
+demo_biker_user.remote_profile_image_url = user_images[9]
+demo_biker_user.save!
+puts 'demo_biker@user.com'
+puts 'password: master'
+puts '-'*40
+
+puts 'Creating demo owner...'
+
+garage = Garage.new(
+  name: Faker::Name.first_name,
+  description: description,
+  street_number: '23',
+  street_address: 'Philippe de Champagnestraat',
+  city: 'Brussel',
+  country: 'Belgium',
+  capacity_reg_bikes: rand(1..6),
+  capacity_large_bikes: rand(1..2),
+  price_regular_bike: rand(15..22),
+  price_large_bike: rand(25..32)
+)
+garage.user = demo_owner_user
+garage.remote_profile_image_url = 'https://res.cloudinary.com/di1eyazrv/image/upload/v1566564896/Car-garage-GettyImages-528098460-58a1fba93df78c475869ff29_cwbto4.jpg'
+garage.save!
+o = 0
+rand(2..6).times do
+  feature_presence = FeaturePresence.new
+  feature_presence.garage = garage
+  feature_presence.feature = features[o]
+  feature_presence.save!
+  feature_presence
+  o += 1
+  print '🏠'
+end
+puts ''
+
 puts 'Success! Database seeded! ✨💥🔥'
 
