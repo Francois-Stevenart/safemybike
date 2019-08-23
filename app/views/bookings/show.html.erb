@@ -26,8 +26,7 @@
             </div>
             <div id="create-message">
               <%= simple_form_for [ current_user, @garage, @booking, @chat ], remote: true do |f| %>
-                <%= f.input :content, label: false %>
-                <%= f.button :submit, 'Send', class: "btn btn-flat" %>
+                <%= f.input :content, label: false, class: "message-input" %>
               <% end %>
             </div>
 
@@ -66,5 +65,8 @@
         }
       }
     )
+
+
+
   </script>
 <% end %>

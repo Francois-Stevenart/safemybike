@@ -5,4 +5,6 @@ function scrollLastMessageIntoView() {
   if (lastMessage !== undefined) {
     lastMessage.scrollIntoView();
   }
+  document.querySelector("#chat_content").focus()
+
 }
