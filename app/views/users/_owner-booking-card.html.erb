@@ -43,7 +43,7 @@
     <div class="garage-card-avatar avatar-bordered tag-item" style="background-image: url(<%= cl_image_path booking.bike.user.profile_image %>);"></div>
   </div>
   <div class="bottom-right buttons-container">
-    <% if %w(pending).include? booking.status %>
+    <% if booking.status == 'pending'%>
       <%= link_to "accept", accept_user_path(@user, booking), class: 'btn-flat' %>
       <%= link_to "reject", reject_user_path(@user, booking), class: 'btn-flat red' %>
     <% end %>
