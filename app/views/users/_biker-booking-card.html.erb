@@ -45,7 +45,7 @@
     <% if %w(pending accepted).include? booking.status %>
      <%= form_tag orders_path do %>
        <%= hidden_field_tag 'booking_id', booking.id %>
-       <%= submit_tag 'Purchase', class: 'btn-flat blue-tag' %>
+       <%= submit_tag 'enter payment', class: 'btn-flat blue-tag' %>
      <% end %>
     <% end %>
     <% if %w(pending accepted paid active).include? booking.status %>
