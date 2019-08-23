@@ -301,7 +301,7 @@ puts 'demo_biker@user.com'
 puts 'password: master'
 puts '-'*40
 
-puts 'Creating demo owner...'
+puts 'Creating garage for demo owner...'
 
 garage = Garage.new(
   name: Faker::Name.first_name,
@@ -329,6 +329,20 @@ rand(2..6).times do
   print '🏠'
 end
 puts ''
+
+puts 'Creating active bookings for garage for demo owner...'
+
+bikes = Bike.all
+
+4.times do
+  date = Faker::Date.between(from: 1.year.ago, to: 1.month.ago)
+  booking = Booking.new(start_date: date, status: 'active')
+  booking.garage = garage
+  booking.bike = bikes.sample
+  booking.price = bike.bike_size == 'regular' ? garage.price_regular_bike : garage.price_regular_bike
+  booking.save!
+  print '🗓️ '
+end
 
 puts 'Success! Database seeded! ✨💥🔥'
 
