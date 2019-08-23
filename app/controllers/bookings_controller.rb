@@ -14,6 +14,7 @@ class BookingsController < ApplicationController
     if @booking.save
       redirect_to dashboard_home_user_path(current_user)
     else
+      @features = @garage.features
       @bike = Bike.new
       @markers = [@garage].map do |garage|
         {
