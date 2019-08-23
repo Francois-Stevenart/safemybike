@@ -3,7 +3,7 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  height: 180px;
+  height: 75px;
   padding: 0px 50px;
   color: rgba(0,0,0,0.3);
   border-top: 2px solid white;
@@ -11,7 +11,6 @@
 .footer-links {
   display: flex;
   align-items: center;
-  width: 70vw;
 }
 .footer-links a {
   color: $green;
@@ -28,7 +27,6 @@
 }
 
 .footer-text {
-  width: 30vw;
   min-width: 200px;
   line-height: 1.5;
   opacity: .8;
@@ -46,4 +44,11 @@
 .footer-text a:hover {
   opacity: 1;
   text-decoration: none;
+}
+
+ul {
+  margin: 0;
+  li {
+    margin-left: 30px;
+  }
 }
