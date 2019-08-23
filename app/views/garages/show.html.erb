@@ -56,7 +56,7 @@
                 </ul>
               </div>
             <% end %>
-            <%= f.input :start_date, as: :date, html5: true, label: "Desired start date" %>
+            <%= f.input :start_date, as: :string, required: false, input_html: {class: "datepicker"}, label: "Desired start date" %>
             <% if current_user.bikes.exists? %>
 
               <!-- Check if the TOTAL capacity for the garage is == 0 then user cannot choose a bike-->
