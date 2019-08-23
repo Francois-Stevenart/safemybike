@@ -36,7 +36,13 @@
       <div class="booking-reminder">
         <div class="chat-garage-image" style="background-image: url(<%= cl_image_path @booking.garage.profile_image %>);">
         </div>
-        <%= render 'shared/booking-card', booking: @booking %>
+
+        <% if @booking.bike.user == current_user %>
+          <%= render 'users/biker-booking-card', booking: @booking %>
+        <% else %>
+          <%= render 'users/owner-booking-card', booking: @booking %>
+        <% end %>
+
       </div>
 
     </div>
