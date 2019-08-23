@@ -1,0 +1,79 @@
+.wrapper {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  grid-gap: 30px;
+}
+
+
+.booking-reminder {
+  .card-dashboard {
+    border-top-right-radius: 0px;
+    border-top-left-radius: 0px;
+  }
+  .garage-card-link {
+    display: none;
+  }
+  .garage-card-info {
+    padding: 80px 25px 80px 25px;
+  }
+  .bottom-right {
+    bottom: 20px;
+    right: 30px;
+  }
+  .top-right {
+    top: 20px;
+    right: 30px;
+  }
+  .bottom-right a:nth-child(2){
+    display: none;
+  }
+  p.larger-text {
+    padding-bottom: 25px;
+  }
+}
+
+.chat-garage-image {
+  height: 160px;
+  background-size: cover;
+  background-position: center;
+  border-top-right-radius: 5px;
+  border-top-left-radius: 5px;
+  box-shadow: 1px 1px 10px lightgrey;
+}
+
+@media(max-width: 1000px) {
+  .wrapper {
+    grid-template-columns: 1fr;
+    grid-gap: 0px;
+  }
+  .chat-header {
+    display: none;
+  }
+  .booking-reminder {
+    grid-area: 1 / 1 / 1 / 1;
+    display: flex;
+    .card-dashboard {
+      border-top-right-radius: 5px;
+      border-top-left-radius: 5px;
+    }
+    .garage-card-info {
+      padding: 50px 20px 50px 20px;
+      p.larger-text {
+        font-size: 1em;
+        padding-bottom: 10px;
+      }
+      p {
+        font-size: 0.9em;
+      }
+    }
+    .bottom-right {
+      bottom: 10px;
+      right: 30px;
+    }
+    .top-right {
+      top: 8px;
+      right: 20px;
+    }
+  }
+}
+

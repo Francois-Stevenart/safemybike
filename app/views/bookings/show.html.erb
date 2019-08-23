@@ -1,49 +1,50 @@
-<h1>Hello World</h1>
-<p><%= @booking.status %></p>
+<div class="dashboard-container">
 
-<div class="container">
-  <div class="row">
-    <div class="col-sn-6 col-sn-offset-3">
-      <div class="chat-header"><h4>#<%= @booking.id %></h4></div>
-      <div class="messages">
-        <% @booking.chats.each do |message| %>
-          <%= render "chats/chat", message: message, user_is_messages_author: message.user == current_user %>
-        <% end %>
+  <div class="sidebar">
+    <%= render 'shared/dashboardsidebar'%>
+  </div>
+
+  <div class="dashboard-main">
+
+    <div class="wrapper">
+
+      <div class="chat-room">
+
+            <div class="chat-header">
+              <span>Your garage booking management with </span>
+                <% if @booking.bike.user == current_user %>
+                  <span><%= @booking.garage.user.first_name %> <%= @booking.garage.user.last_name %></span>
+                <% else %>
+                  <span><%= @booking.bike.user.first_name %> <%= @booking.bike.user.last_name %></span>
+                <% end %>
+            </div>
+
+            <div class="messages">
+              <% @booking.chats.each do |message| %>
+                <%= render "chats/chat", message: message, user_is_messages_author: message.user == current_user %>
+              <% end %>
+            </div>
+            <div id="create-message">
+              <%= simple_form_for [ current_user, @garage, @booking, @chat ], remote: true do |f| %>
+                <%= f.input :content, label: false %>
+                <%= f.button :submit, 'Send', class: "btn btn-flat" %>
+              <% end %>
+            </div>
+
       </div>
-      <div id="create-message">
-        <%= simple_form_for [ current_user, @garage, @booking, @chat ], remote: true do |f| %>
-          <%= f.input :content, label: false %>
-          <%= f.button :submit %>
-        <% end %>
+
+      <div class="booking-reminder">
+        <div class="chat-garage-image" style="background-image: url(<%= cl_image_path @booking.garage.profile_image %>);">
+        </div>
+        <%= render 'shared/booking-card', booking: @booking %>
       </div>
+
     </div>
+
   </div>
 </div>
 
-<!--
-<div id="chatbox">
-  <div id="chat-messages">
-    <% @chats.each do |message| %>
-      <% if message.user.first_name == current_user.first_name %>
-        <div class="message-content-left">
-          <p><%= message.user.first_name %> <%= message.user.last_name %>:</p>
-          <p><%= message.content %></p>
-        </div>
-      <% else %>
-        <div class="message-content-right">
-          <p><%= message.user.first_name %> <%= message.user.last_name %>:</p>
-          <p><%= message.content %></p>
-        </div>
-      <% end %>
-    <% end %>
-  </div>
-  <div id="form-send-message">
-    <%= simple_form_for([current_user, @garage, @booking, @chat], remote: true) do |f| %>
-      <%= f.input :content %>
-      <%= f.button :submit %>
-    <% end %>
-  </div>
-</div> -->
+
 <% content_for :after_js do %>
   <script>
     scrollLastMessageIntoView();
