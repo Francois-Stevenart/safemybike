@@ -22,7 +22,9 @@ const addMarkersToMap = (map, markers) => {
     element.style.padding = '10px 0';
     element.style.width = '40px';
     element.style.height = '30px';
-
+    element.addEventListener("click", (e) => {
+      fetch(`/users/${marker.user_id}/garages/${marker.id}/card.js`).then(response => response.text()).then(text => eval(text))
+    })
     new mapboxgl.Marker(element)
       .setLngLat([ marker.lng, marker.lat ])
       .setPopup(popup) // add this

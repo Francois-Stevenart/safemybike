@@ -1,26 +1,26 @@
 <div class="card-dashboard shadow">
   <%= link_to user_garage_path(booking.garage.user, booking.garage), class: 'garage-card-link' do %>
     <div class="garage-card-image" style="background-image: url(<%= cl_image_path booking.garage.profile_image %>);">
-      <div class="bike-image avatar-bordered garage-card-avatar" style="background-image: url(<%= cl_image_path booking.bike.bike_image %>);"></div>
     </div>
   <% end %>
   <div class="garage-card-info">
+    <% owner_name = "#{booking.garage.user.first_name.capitalize} #{booking.garage.user.last_name.capitalize}" %>
     <% if booking.status == 'pending' %>
       <p class="larger-text">You sent a request to rent <strong><%= booking.garage.name %></strong> for your bike <strong><%= booking.bike.name %></strong>.</p>
-      <p>Waiting for a response from garage owner <strong><%= booking.garage.user.first_name.capitalize %> <%= booking.garage.user.last_name.capitalize %></strong>...</p>
+      <p>Waiting for a response from garage owner <strong><%= owner_name %></strong>...</p>
     <% elsif booking.status == 'rejected' %>
-      <p class="larger-text"><strong><%= booking.garage.user.first_name.capitalize %> <%= booking.garage.user.last_name.capitalize %></strong> has rejected your rental request for garage <strong><%= booking.garage.name %></strong>.</p>
+      <p class="larger-text"><strong><%= owner_name %></strong> has rejected your rental request for garage <strong><%= booking.garage.name %></strong>.</p>
     <% elsif booking.status == 'accepted' %>
-      <p class="larger-text"><strong><%= booking.garage.user.first_name.capitalize %> <%= booking.garage.user.last_name.capitalize %></strong> has accepted your rental request for garage <strong><%= booking.garage.name %></strong>!</p>
-      <p>Contact <strong><%= booking.garage.user.first_name.capitalize %> <%= booking.garage.user.last_name.capitalize %></strong> to arrange the key exchange. Don't forget to pay!</p>
+      <p class="larger-text"><strong><%= owner_name %></strong> has accepted your rental request for garage <strong><%= booking.garage.name %></strong>!</p>
+      <p>Contact <strong><%= owner_name %></strong> to arrange the key exchange. Don't forget to pay!</p>
     <% elsif booking.status == 'paid' %>
       <p class="larger-text">Your payment has been accepted!</p>
       <p>Everything is good. You can safe your bike in <strong><%= booking.garage.name %></strong> starting on <strong><%= booking.start_date %></strong>.</p>
     <% elsif booking.status == 'active' %>
       <p class="larger-text">You are currently renting <strong><%= booking.garage.name %></strong> for your bike <strong><%= booking.bike.name %></strong>.</p>
-      <p>Garage owner <strong><%= booking.garage.user.first_name.capitalize %> <%= booking.garage.user.last_name.capitalize %></strong> says hi!</p>
-    <% elsif booking.status == 'cancelled_request' %>
-      <p class="larger-text">Garage owner <strong><%= booking.garage.user.first_name.capitalize %> <%= booking.garage.user.last_name.capitalize %></strong> has cancelled your request</p>
+      <p>Garage owner <strong><%= owner_name %></strong> says hi!</p>
+    <% elsif booking.status == 'cancelled_by_owner' %>
+      <p class="larger-text">Garage owner <strong><%= owner_name %></strong> has cancelled your request</p>
       <p>for garage <strong><%= booking.garage.name %></strong> for your bike <strong><%= booking.bike.name %></strong>.</p>
     <% elsif booking.status == 'done' %>
       <p class="larger-text">Your rental of <strong><%= booking.garage.name %></strong> for your bike <strong><%= booking.bike.name %></strong> ended on <strong><%= booking.end_date %></strong>.</p>
@@ -36,15 +36,21 @@
       <p class="tag tag-item"><%= booking.status %></p>
     <% end %>
     <p class='tag tag-item blue-tag'>€<%= booking.price %>/month</p>
+    <% unless booking.bike.bike_image.nil? %>
+      <div class="garage-card-avatar avatar-bordered tag-item" style="background-image: url(<%= cl_image_path booking.bike.bike_image %>);"></div>
+    <% end %>
     <div class="garage-card-avatar avatar-bordered tag-item" style="background-image: url(<%= cl_image_path booking.garage.user.profile_image %>);"></div>
   </div>
   <div class="bottom-right buttons-container">
     <% if %w(pending accepted).include? booking.status %>
-      <%= link_to "enter payment", '#', class: 'btn-flat' %>
+     <%= form_tag orders_path do %>
+       <%= hidden_field_tag 'booking_id', booking.id %>
+       <%= submit_tag 'Purchase', class: 'btn-flat blue-tag' %>
+     <% end %>
+    <% end %>
+    <% if %w(pending accepted paid active).include? booking.status %>
+      <%= link_to "cancel", cancel_by_biker_user_path(@user, booking), class: 'btn-flat red' %>
     <% end %>
     <%= link_to "contact owner", user_garage_booking_path(current_user, booking.garage, booking), class: 'btn-flat' %>
-    <% if %w(pending accepted paid active).include? booking.status %>
-      <%= link_to "cancel", '#', class: 'btn-flat red' %>
-    <% end %>
   </div>
 </div>

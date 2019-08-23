@@ -1,5 +1,5 @@
 class BookingsController < ApplicationController
-  before_action :set_booking, only: [:accept_request, :reject_request, :cancel_request, :destroy]
+  before_action :set_booking, only: [:accept_request, :reject_request, :cancel_request_by_owner, :cancel_request_by_biker, :destroy]
 
   def new
     @booking = Booking.new
@@ -45,8 +45,13 @@ class BookingsController < ApplicationController
     @booking.save ? (redirect_to dashboard_home_user_path(current_user)) : raise
   end
 
-  def cancel_request
-    @booking.status = "cancelled_request"
+  def cancel_request_by_owner
+    @booking.status = "cancelled_by_owner"
+    @booking.save ? (redirect_to dashboard_home_user_path(current_user)) : raise
+  end
+
+  def cancel_request_by_biker
+    @booking.status = "cancelled_by_biker"
     @booking.save ? (redirect_to dashboard_home_user_path(current_user)) : raise
   end
 
