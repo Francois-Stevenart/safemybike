@@ -12,19 +12,9 @@ class BookingsController < ApplicationController
     @booking.price = @booking.garage.price_large_bike if @booking.bike.bike_size == "cargo"
     @booking.price = @booking.garage.price_regular_bike if @booking.bike.bike_size == "regular"
     if @booking.save
-      redirect_to dashboard_home_user_path(current_user)
+      render json: { message: "booking created" }, status: 200
     else
-      @features = @garage.features
-      @bike = Bike.new
-      @markers = [@garage].map do |garage|
-        {
-          lat: garage.latitude,
-          lng: garage.longitude,
-          infoWindow: render_to_string(partial: "garages/info_window", locals: { garage: garage }),
-          image_url: helpers.asset_url("/map_marker.png")
-        }
-      end
-      render "garages/show"
+      render json: { message: "booking couldnt be saved" }, status: 400
     end
   end
 
