@@ -53,6 +53,9 @@
     <% if %w(pending accepted paid active).include? booking.status %>
       <%= link_to "cancel", cancel_request_by_biker_user_path(@user, booking), class: 'btn-flat red' %>
     <% end %>
+    <% if %w(cancelled_by_owner cancelled_by_biker rejected).include? booking.status %>
+      <%= link_to "hide", delete_request_user_path(@user, booking), :method => :delete, class: 'btn-flat red' %>
+    <% end %>
     <%= link_to "contact owner", user_garage_booking_path(current_user, booking.garage, booking), class: 'btn-flat' %>
   </div>
 </div>

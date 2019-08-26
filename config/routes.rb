@@ -15,7 +15,7 @@ Rails.application.routes.draw do
       get "bookings/:id/reject", to: "bookings#reject_request", as: "reject"
       get "bookings/:id/cancel_request_by_owner", to: "bookings#cancel_request_by_owner", as: "cancel_request_by_owner"
       get "bookings/:id/cancel_request_by_biker", to: "bookings#cancel_request_by_biker", as: "cancel_request_by_biker"
-      delete "bookings/:id/dismiss_cancel_request", to: "bookings#destroy", as: "dismiss_cancel_request"
+      delete "bookings/:id/delete_request", to: "bookings#destroy", as: "delete_request"
     end
     resources :garages, except: [:index, :destroy] do
       member do
