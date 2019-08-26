@@ -1,36 +1,41 @@
-<div class="dashboard-container" data-index="3">
+<% if current_user.id == @user.id %>
+  <div class="dashboard-container" data-index="3">
 
-  <div class="sidebar">
-    <%= render 'shared/dashboardsidebar'%>
-  </div>
+    <div class="sidebar">
+      <%= render 'shared/dashboardsidebar'%>
+    </div>
 
-  <div class="dashboard-main">
-    <h2>Rental agreements</h2>
-    <div>
+    <div class="dashboard-main">
+      <h2>Rental agreements</h2>
       <div>
-        <% if @biker_bookings.where(status: %w(pending rejected accepted paid)).any? %>
-          <h3>Pending requests:</h3>
-          <% @biker_bookings.where(status: %w(pending rejected accepted paid)).each do |booking| %>
-            <%= render 'biker-booking-card', booking: booking %>
+        <div>
+          <% if @biker_bookings.where(status: %w(pending rejected accepted paid)).any? %>
+            <h3>Pending requests:</h3>
+            <% @biker_bookings.where(status: %w(pending rejected accepted paid)).each do |booking| %>
+              <%= render 'biker-booking-card', booking: booking %>
+            <% end %>
           <% end %>
-        <% end %>
-      </div>
-      <div>
-        <% if @biker_bookings.where(status: "active").any? %>
-          <h3>Active rental agreements:</h3>
-          <% @biker_bookings.where(status: "active").each do |booking| %>
-            <%= render 'biker-booking-card', booking: booking %>
+        </div>
+        <div>
+          <% if @biker_bookings.where(status: "active").any? %>
+            <h3>Active rental agreements:</h3>
+            <% @biker_bookings.where(status: "active").each do |booking| %>
+              <%= render 'biker-booking-card', booking: booking %>
+            <% end %>
           <% end %>
-        <% end %>
-      </div>
-      <div>
-        <% if @biker_bookings.where(status: %w(cancelled_by_owner cancelled_by_biker done)).any? %>
-          <h3>Past rental agreements:</h3>
-          <% @biker_bookings.where(status: %w(cancelled_by_owner cancelled_by_biker done)).each do |booking| %>
-            <%= render 'biker-booking-card', booking: booking %>
+        </div>
+        <div>
+          <% if @biker_bookings.where(status: %w(cancelled_by_owner cancelled_by_biker done)).any? %>
+            <h3>Past rental agreements:</h3>
+            <% @biker_bookings.where(status: %w(cancelled_by_owner cancelled_by_biker done)).each do |booking| %>
+              <%= render 'biker-booking-card', booking: booking %>
+            <% end %>
           <% end %>
-        <% end %>
+        </div>
       </div>
     </div>
   </div>
-</div>
+<% else %>
+  <h2>Stop trying to break our website.</h2>
+  <h2>We're juniors, but we're not <em>that</em> junior.</h2>
+<% end %>
