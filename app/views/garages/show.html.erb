@@ -36,6 +36,30 @@
         <%= cl_image_tag @garage.profile_image, width: 400, height: 267, crop: :fill %>
       </div>
 
+      <div class="reviews-container">
+        <h4>Reviews</h4>
+        <div id="reviews">
+          <% @garage.bookings.each do |booking| %>
+            <% booking.reviews.each do |review| %>
+              <div class="review">
+                <p><%= review.content %></p>
+                <div class="reviewer-and-stars">
+                  <div id="review-rating">
+                    <% review.rating.times do %>
+                      <i class="fas fa-star review-stars"></i>
+                    <% end %>
+                    <% (5 - review.rating).times do %>
+                      <i class="far fa-star"></i>
+                    <% end %>
+                  </div>
+                  <div class="garage-card-avatar avatar-bordered tag-item" style="background-image: url(<%= cl_image_path review.booking.bike.user.profile_image %>);">
+                  </div>
+                </div>
+              </div>
+            <% end %>
+          <% end %>
+        </div>
+      </div>
     </div>
 
 
@@ -140,28 +164,6 @@
         </div>
       </div>
     </div>
-  </div>
-  <h4>Reviews</h4>
-  <div id="review-grid">
-    <% @garage.bookings.each do |booking| %>
-      <% booking.reviews.each do |review| %>
-      <div class="review">
-        <p><%= review.content %></p>
-        <div class="reviewer-and-stars">
-          <div class="garage-card-avatar avatar-bordered tag-item" style="background-image: url(<%= cl_image_path review.booking.bike.user.profile_image %>);">
-          </div>
-          <div>
-            <% review.rating.times do %>
-              <i class="fas fa-star review-stars"></i>
-            <% end %>
-            <% (5 - review.rating).times do %>
-              <i class="far fa-star"></i>
-            <% end %>
-          </div>
-        </div>
-      </div>
-      <% end %>
-    <% end %>
   </div>
 </div>
 

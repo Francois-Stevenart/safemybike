@@ -49,7 +49,7 @@
       <%= link_to "accept", accept_user_path(@user, booking), class: 'btn-flat' %>
       <%= link_to "reject", reject_user_path(@user, booking), class: 'btn-flat red' %>
     <% end %>
-    <% if %w(cancelled_by_owner cancelled_by_biker rejected).include? booking.status %>
+    <% if %w(cancelled_by_owner cancelled_by_biker rejected done).include? booking.status %>
       <%= link_to "hide", delete_request_user_path(@user, booking), :method => :delete, class: 'btn-flat red' %>
     <% end %>
     <%= link_to "contact biker", user_garage_booking_path(current_user, booking.garage, booking), class: 'btn-flat' %>

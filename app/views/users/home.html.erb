@@ -19,7 +19,7 @@
     <% end %>
 
     <!-- Display the income if he is an owner and how much he is paying if he has a bike -->
-    <% if @income_bookings.size > 0 || @paying_bookings > 0 %>
+    <% if @income_bookings.size > 0 || @paying_bookings.size > 0 %>
       <div class="price-container">
         <div id = "return-rents" class="account-card shadowed">
           <div id= "owner-income" class="price-card">
