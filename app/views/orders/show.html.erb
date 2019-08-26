@@ -1,7 +1,13 @@
-<h1>Order</h1>
-<ul>
-  <li>Status: <%= @order.state %></li>
-  <li>Amount: <%= humanized_money_with_symbol(@order.amount) %></li>
-<ul>
+<div class="form-container">
+  <div class="row justify-content-center">
+    <div class="col-12 col-sm-8 col-md-6 custom-form">
 
-<%= link_to "Back to my Dashboard", dashboard_home_user_path(current_user) %>
+      <h2>Your order</h2>
+      <ul>
+        <li>Status: <%= @order.state %></li>
+        <li>Amount: <%= humanized_money_with_symbol(@order.amount) %></li>
+      </ul>
+      <%= link_to "Back to my Dashboard", dashboard_home_user_path(current_user), class: "btn btn-flat" %>
+    </div>
+  </div>
+</div>
