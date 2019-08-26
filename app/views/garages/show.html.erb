@@ -215,14 +215,14 @@
             if (json.message === 'booking created') {
               swal(json.message, {
               icon: "success",
+              button: "Go to Dashboard"
               })
               document.querySelector(".swal-button").addEventListener("click", () =>{
                 redirectLink.click()
               })
             } else {
               swal(json.message, {
-              icon: "error",
-              button: "Go to Dashboard"
+              icon: "error"
               })
             }
           })
