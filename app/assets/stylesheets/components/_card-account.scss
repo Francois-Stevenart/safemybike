@@ -1,3 +1,24 @@
+.account-card {
+  background-color: $lightwhite;
+  margin: 30px auto;
+  padding: 30px;
+  max-width: 800px;
+  border-radius: 8px;
+}
+
+.account-title {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  h2 {
+    margin: 0;
+  }
+  .btn {
+    margin: 0;
+    margin-left: 30px;
+  }
+}
+
 .account-headline {
   display: flex;
   justify-content: space-between;
@@ -6,6 +27,8 @@
 
 .account-body {
   flex: 1 0 auto;
+  display: flex;
+  flex-direction: row-reverse;
   h2 {
     margin: 10px 0px 25px 0px;
   }
@@ -13,8 +36,11 @@
     margin-top: 30px;
   }
 }
-
+.account-info-list {
+  width: 100%
+}
 .account-info {
+  flex-grow: 1;
   padding: 10px 0px 0px 0px;
   margin: 0px;
   border-bottom: 1px solid $dark;
@@ -22,6 +48,10 @@
   .info {
     font-weight: bold;
     width: 160px;
+  }
+  .info-content {
+    flex-grow: 1;
+    text-align: right;
   }
 }
 

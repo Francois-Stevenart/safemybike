@@ -3,19 +3,19 @@
   <ul class="tabs">
 
     <%= link_to dashboard_home_user_path(current_user) do %>
-      <li class="sidebar-tab" data-target="tab.bar">Home</li>
-    <% end %>
-
-    <%= link_to dashboard_my_account_user_path(current_user) do %>
-      <li class="sidebar-tab" data-target="tab.bar">Account</li>
+      <li class="sidebar-tab" data-target="tab.bar">Dashboard</li>
     <% end %>
 
     <%= link_to dashboard_my_garages_user_path(current_user) do %>
-      <li class="sidebar-tab" data-target="tab.bar">My garage(s)</li>
+      <li class="sidebar-tab" data-target="tab.bar">My Garage(s)</li>
     <% end %>
 
     <%= link_to dashboard_my_bookings_user_path(current_user) do %>
-      <li class="sidebar-tab" data-target="tab.bar">My bike rent agreements</li>
+      <li class="sidebar-tab" data-target="tab.bar">My Rentals</li>
+    <% end %>
+
+    <%= link_to dashboard_add_review_user_path(current_user) do %>
+      <li class="sidebar-tab" data-target="tab.bar">Add A Review</li>
     <% end %>
   </ul>
 

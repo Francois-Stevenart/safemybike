@@ -40,5 +40,48 @@
         <h3> <%= bookings.sum == 0 ? 'You have no bike in a garage' : ("Monthly cost for your bike safes: €" + bookings.sum.to_s) %> </h3>
       </div>
     </div>
+    <div class="account-card shadowed">
+      <div class="account-title">
+        <h2>Your account information</h2>
+        <%= link_to "edit", edit_user_path(@user), class: "btn btn-flat" %>
+      </div>
+      <div class="account-body">
+        <div class="account-pic">
+          <% unless @user.profile_image.blank? %>
+            <%= cl_image_tag(@user.profile_image, height: 200, width: 200, crop: :fill, class: "avatar-very-large") %>
+          <% end %>
+        </div>
+        <div class="account-info-list">
+          <div class="account-info">
+            <p class="info">First name:</p>
+            <p class="info-content"><%= @user.first_name %></p>
+          </div>
+          <div class="account-info">
+            <p class="info">Last name:</p>
+            <p class="info-content"><%= @user.last_name %></p>
+          </div>
+          <div class="account-info">
+            <p class="info">Email:</p>
+            <p class="info-content"><%= @user.email %></p>
+          </div>
+          <div class="account-info">
+            <p class="info">Address:</p>
+            <p class="info-content"><%= @user.street_number %> <%= @user.street %></p>
+          </div>
+          <div class="account-info">
+            <p class="info">City:</p>
+            <p class="info-content"><%= @user.city %></p>
+          </div>
+          <div class="account-info">
+            <p class="info">Country</p>
+            <v><%= @user.country %></p>
+          </div>
+          <div class="account-info">
+            <p class="info">Payment info:</p>
+            <p class="info-content"><%= @user.payment_info %></p>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 </div>
