@@ -1,4 +1,5 @@
-<div id="banner-landing">
+<div id="banner-landing"
+style="background-image: linear-gradient(rgba(255,255,255,0.8),rgba(255,255,255,0.8)), url('<%= image_path "banner.jpg" %>');">
   <div id="search-landing">
     <%=  cl_image_tag('/logo.png') %>
     <h1>SafeMyBike</h1>
@@ -7,16 +8,89 @@
   <div class="arrow bounce-top"><i class="fas fa-angle-double-down"></i></div>
 </div>
 
+<div id="landing-title">
+  <div class="container">
+    <h2>Looking for a place to store your <i class="fas fa-bicycle"></i> ?</h2>
+    <h3>Rent a spot in a garage !</h3>
+  </div>
+</div>
 
+<div class="landing-cards">
+  <div class="container">
+    <div class="row">
+      <div class="col-12 col-md-4 grow">
+        <div class="step-nbr">1</div>
+        <div class="landing-card">
+          <i class="fas fa-search-location"></i>
+          <div class="explanation">
+          Look for a garage nearby your home or your office. Enter the desired date for the start of your leasing and wait for the garage owner to get in touch !
+          </div>
+        </div>
+      </div>
+      <div class="col-12  col-md-4 grow">
+        <div class="step-nbr">2</div>
+        <div class="landing-card">
+          <i class="fas fa-key"></i>
+          <div class="explanation">
+           The garage owner will confirm to you that the spot is yours, arrange the exchange of the keys and sign the lease agreement.
+          </div>
+        </div>
+      </div>
+      <div class="col-12  col-md-4 grow">
+        <div class="step-nbr">3</div>
+        <div class="landing-card">
+          <i class="fas fa-warehouse"></i>
+          <div class="explanation">
+          That's it !
+          <br>Store safely your bike in the garage whenever you're not cycling around the city.
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
 
-<div id="explanation">
+<div class="container">
+  <div class="row justify-content-around">
+    <div class="col-12 col-md-8 card-landing-product">
+      <div class="card-landing-image" style="background-image: url('<%= image_path "biker2.jpg" %>')">
+      </div>
+      <div class="card-landing-infos">
+        <h2>You don't need a whole garage. Do you?</h2>
+        <p>With <strong>SafeMyBike</strong>, you only rent a spot big enough to park your bicycle. You only pay a rent for a little portion of the garage, which is way cheaper than a regular garage leasing. </p>
+      </div>
+    </div>
+    <div class="col-12 col-md-8 card-landing-product">
+      <div class="card-landing-infos">
+        <h2>Peace of mind for bikers</h2>
+        <p>You don't want to leave your fancy electric bike in the street by night ? Don't want to carry it in your appartment ? SafeMyBike connects you with garage owners in order to find a <strong>safe shelter</strong> for your bicycle.</p>
+      </div>
+      <div class="card-landing-image" style="background-image: url('<%= image_path "biker1.jpg" %>')">
+      </div>
+    </div>
+    <div class="col-12 col-md-8 card-landing-product">
+      <div class="card-landing-image" style="background-image: url('<%= image_path "biker3.jpg" %>')">
+      </div>
+      <div class="card-landing-infos">
+        <h2>Get rid of the hassle</h2>
+        <p>SafeMyBike makes it easy for you : all the details regarding your leasing are centralized in your <strong>dashboard</strong>. Contact your garage owner in one click, stop or extend your rent whenever you need, and above all : enjoy cycling around the city without any worry ! </p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="landing-btn">
+  <%= link_to "Learn more", "#", class: "btn btn-flat" %>
+</div>
+
+<!-- <div id="explanation">
   <h2>Explanation</h2>
   <div class="row-landing">
     <div class="step-number"><div>1</div></div>
     <div class="explanation-text">
       <i class="fas fa-bicycle"></i>
       <div>
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+        Look for a garage nearby your home or your office. Enter the desired date for the start of your leasing and wait for the garage owner to confirm to you that the spot is booked for you !
       </div>
     </div>
   </div>
@@ -29,7 +103,7 @@
     <div class="explanation-text">
       <i class="fas fa-search-location"></i>
       <div>
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+        The garage owner will get in touch with you to arrange the exchange of the keys and sign the lease agreement.
       </div>
     </div>
   </div>
@@ -42,11 +116,12 @@
     <div class="explanation-text">
       <i class="fas fa-warehouse"></i>
       <div>
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+        That's it ! Store safely your bike in the garage whenever you're not cycling around the city.
       </div>
     </div>
   </div>
-</div>
+</div> -->
+
 
 
 
