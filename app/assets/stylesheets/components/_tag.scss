@@ -10,9 +10,15 @@
 .red-tag {
   background-color: $red;
   opacity: 0.8;
+  &:hover {
+    background-color: $red;
+  }
 }
 
 .blue-tag {
   background-color: $blue;
   opacity: 0.8;
+  &:hover {
+    background-color: $blue;
+  }
 }
