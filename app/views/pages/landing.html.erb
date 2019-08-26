@@ -50,7 +50,15 @@ style="background-image: linear-gradient(rgba(255,255,255,0.8),rgba(255,255,255,
   </div>
 </div>
 
+
 <div class="container">
+    <div>
+      <p class="btn-switch">
+        <input type="radio" id="yes" name="switch" class="btn-switch__radio btn-switch__radio_yes" />
+        <input type="radio" checked id="no" name="switch" class="btn-switch__radio btn-switch__radio_no" />
+        <label for="yes" class="btn-switch__label btn-switch__label_yes"><span class="btn-switch__txt">Biker</span></label>                 <label for="no" class="btn-switch__label btn-switch__label_no"><span class="btn-switch__txt">Owner</span></label>
+      </p>
+    </div>
   <div class="row justify-content-around">
     <div class="col-12 col-md-8 card-landing-product">
       <div class="card-landing-image" style="background-image: url('<%= image_path "biker2.jpg" %>')">

@@ -1,96 +1,101 @@
-<div class="dashboard-container" data-index="0">
-  <div class="sidebar">
-    <%= render 'shared/dashboardsidebar'%>
-  </div>
-  <!-- Display pending requests as a biker: -->
-  <div class="dashboard-main" id="home-display">
-    <% if @biker_pending_requests.any? %>
-    <h3>Pending rental requests for your bikes:</h3>
-      <% @biker_pending_requests.each do |booking| %>
-        <%= render 'biker-booking-card', booking: booking %>
+<% if current_user.id == @user.id %>
+  <div class="dashboard-container" data-index="0">
+    <div class="sidebar">
+      <%= render 'shared/dashboardsidebar'%>
+    </div>
+    <!-- Display pending requests as a biker: -->
+    <div class="dashboard-main" id="home-display">
+      <% if @biker_pending_requests.any? %>
+      <h3>Pending rental requests for your bikes:</h3>
+        <% @biker_pending_requests.each do |booking| %>
+          <%= render 'biker-booking-card', booking: booking %>
+        <% end %>
       <% end %>
-    <% end %>
-  <!-- Display received requests as an owner: -->
-    <% if @owner_pending_requests.any? %>
-    <h3>Pending requests for your garages:</h3>
-      <% @owner_pending_requests.each do |booking| %>
-        <%= render 'owner-booking-card', booking: booking %>
+    <!-- Display received requests as an owner: -->
+      <% if @owner_pending_requests.any? %>
+      <h3>Pending requests for your garages:</h3>
+        <% @owner_pending_requests.each do |booking| %>
+          <%= render 'owner-booking-card', booking: booking %>
+        <% end %>
       <% end %>
-    <% end %>
 
-    <!-- Display the income if he is an owner and how much he is paying if he has a bike -->
-    <% if @income_bookings.size > 0 || @paying_bookings.size > 0 %>
-      <div class="price-container">
-        <div id = "return-rents" class="account-card shadowed">
-          <div id= "owner-income" class="price-card">
-            <% bookings = [] %>
+      <!-- Display the income if he is an owner and how much he is paying if he has a bike -->
+      <% if @income_bookings.size > 0 || @paying_bookings.size > 0 %>
+        <div class="price-container">
+          <div id = "return-rents" class="account-card shadowed">
+            <div id= "owner-income" class="price-card">
+              <% bookings = [] %>
 
-            <!-- Owner calculations -->
-            <% @income_bookings.each do |booking|  %>
-              <% bookings << booking.price %>
-            <% end %>
-            <% if bookings.sum > 0 %>
-              <h1>€<%= bookings.sum %></h1>
-              <h3>Monthly income</h3>
-            <% end %>
-          </div>
-          <div id= "biker-price" class="price-card">
-            <% bookings = [] %>
+              <!-- Owner calculations -->
+              <% @income_bookings.each do |booking|  %>
+                <% bookings << booking.price %>
+              <% end %>
+              <% if bookings.sum > 0 %>
+                <h1>€<%= bookings.sum %></h1>
+                <h3>Monthly income</h3>
+              <% end %>
+            </div>
+            <div id= "biker-price" class="price-card">
+              <% bookings = [] %>
 
-            <!-- Biker calculations -->
-            <% @paying_bookings.each do |booking|  %>
-              <% bookings << booking.price %>
-            <% end %>
-            <% if bookings.sum > 0 %>
-              <h1>€<%= bookings.sum %></h1>
-              <h3>Monthly cost</h3>
-            <% end %>
+              <!-- Biker calculations -->
+              <% @paying_bookings.each do |booking|  %>
+                <% bookings << booking.price %>
+              <% end %>
+              <% if bookings.sum > 0 %>
+                <h1>€<%= bookings.sum %></h1>
+                <h3>Monthly cost</h3>
+              <% end %>
+            </div>
           </div>
         </div>
-      </div>
-    <% end %>
-    <div class="account-card shadowed">
-      <div class="account-title">
-        <h2>Your account information</h2>
-        <%= link_to "edit", edit_user_path(@user), class: "btn btn-flat" %>
-      </div>
-      <div class="account-body">
-        <div class="account-pic">
-          <% unless @user.profile_image.blank? %>
-            <%= cl_image_tag(@user.profile_image, height: 200, width: 200, crop: :fill, class: "avatar-very-large") %>
-          <% end %>
+      <% end %>
+      <div class="account-card shadowed">
+        <div class="account-title">
+          <h2>Your account information</h2>
+          <%= link_to "edit", edit_user_path(@user), class: "btn btn-flat" %>
         </div>
-        <div class="account-info-list">
-          <div class="account-info">
-            <p class="info">First name:</p>
-            <p class="info-content"><%= @user.first_name %></p>
+        <div class="account-body">
+          <div class="account-pic">
+            <% unless @user.profile_image.blank? %>
+              <%= cl_image_tag(@user.profile_image, height: 200, width: 200, crop: :fill, class: "avatar-very-large") %>
+            <% end %>
           </div>
-          <div class="account-info">
-            <p class="info">Last name:</p>
-            <p class="info-content"><%= @user.last_name %></p>
-          </div>
-          <div class="account-info">
-            <p class="info">Email:</p>
-            <p class="info-content"><%= @user.email %></p>
-          </div>
-          <div class="account-info">
-            <p class="info">Address:</p>
-            <p class="info-content"><%= @user.street_number %> <%= @user.street %></p>
-          </div>
-          <div class="account-info">
-            <p class="info">City:</p>
-            <p class="info-content"><%= @user.city %></p>
-          </div>
-          <div class="account-info">
-            <p class="info">Country</p>
-            <v><%= @user.country %></p>
-          </div>
-          <div class="account-info">
-            <p class="info">Payment info:</p>
-            <p class="info-content"><%= @user.payment_info %></p>
+          <div class="account-info-list">
+            <div class="account-info">
+              <p class="info">First name:</p>
+              <p class="info-content"><%= @user.first_name %></p>
+            </div>
+            <div class="account-info">
+              <p class="info">Last name:</p>
+              <p class="info-content"><%= @user.last_name %></p>
+            </div>
+            <div class="account-info">
+              <p class="info">Email:</p>
+              <p class="info-content"><%= @user.email %></p>
+            </div>
+            <div class="account-info">
+              <p class="info">Address:</p>
+              <p class="info-content"><%= @user.street_number %> <%= @user.street %></p>
+            </div>
+            <div class="account-info">
+              <p class="info">City:</p>
+              <p class="info-content"><%= @user.city %></p>
+            </div>
+            <div class="account-info">
+              <p class="info">Country</p>
+              <v><%= @user.country %></p>
+            </div>
+            <div class="account-info">
+              <p class="info">Payment info:</p>
+              <p class="info-content"><%= @user.payment_info %></p>
+            </div>
           </div>
         </div>
       </div>
     </div>
   </div>
-</div>
+<% else %>
+  <h2>Stop trying to break our website.</h2>
+  <h2>We're juniors, but we're not <em>that</em> junior.</h2>
+<% end %>

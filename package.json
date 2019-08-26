@@ -10,7 +10,8 @@
     "mapbox-gl": "^1.2.1",
     "places.js": "^1.16.4",
     "popper.js": "^1.15.0",
-    "stimulus": "^1.1.1"
+    "stimulus": "^1.1.1",
+    "sweetalert": "^2.1.2"
   },
   "devDependencies": {
     "webpack-dev-server": "^3.8.0"

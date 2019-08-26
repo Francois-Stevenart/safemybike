@@ -22,7 +22,6 @@
           <p><%= @garage.capacity_left_large %> large bikes</p>
         </div>
       </div>
-
       <div class="garage-features">
         <% @features.each do |feature| %>
           <div class="garage-feature">
@@ -36,6 +35,30 @@
         <%= cl_image_tag @garage.profile_image, width: 400, height: 267, crop: :fill %>
       </div>
 
+      <div class="reviews-container">
+        <h4>Reviews</h4>
+        <div id="reviews">
+          <% @garage.bookings.each do |booking| %>
+            <% booking.reviews.each do |review| %>
+              <div class="review">
+                <p><%= review.content %></p>
+                <div class="reviewer-and-stars">
+                  <div id="review-rating">
+                    <% review.rating.times do %>
+                      <i class="fas fa-star review-stars"></i>
+                    <% end %>
+                    <% (5 - review.rating).times do %>
+                      <i class="far fa-star"></i>
+                    <% end %>
+                  </div>
+                  <div class="garage-card-avatar avatar-bordered tag-item" style="background-image: url(<%= cl_image_path review.booking.bike.user.profile_image %>);">
+                  </div>
+                </div>
+              </div>
+            <% end %>
+          <% end %>
+        </div>
+      </div>
     </div>
 
 
@@ -53,64 +76,69 @@
           </div>
         </div>
         <% if user_signed_in?%>
-          <%= simple_form_for [current_user, @garage, @booking], html: {id: :appear_price} do |f| %>
-            <% if @booking.errors.any? %>
-              <div class="errors-container">
-                <ul>
-                  <% @booking.errors.full_messages.each do |message| %>
-                    <li><%= message %></li>
-                  <% end %>
-                </ul>
-              </div>
-            <% end %>
-            <%= f.input :start_date, as: :string, required: false, input_html: {class: "datepicker"}, label: "Desired start date" %>
-            <% if current_user.bikes.exists? %>
+          <% if current_user.id == @user.id %>
 
-              <!-- Check if the TOTAL capacity for the garage is == 0 then user cannot choose a bike-->
-
-              <% if @garage.capacity_left_regular <= 0 && @garage.capacity_left_large <= 0 %>
-                <h4>No spots left <i class="far fa-surprise"></i> Please choose another garage</h4>
-
-              <!-- Check if the large bike capacity is == 0 then user cannot choose a large bike-->
-
-              <% elsif @garage.capacity_left_large <= 0 %>
-                <div id="array_bike_node" data-bikes="<%= current_user.bikes.where(bike_size: "regular").map{|bike|{ id: bike.id, size: bike.bike_size  } }.to_json  %>" > </div>
-                <%= f.input :bike_id, collection: current_user.bikes.where(bike_size: "regular").map{|bike| [bike.name, bike.id] }, input_html: { :class => "selected-type" }, selected: 1  %>
-                <div>
-                  <button type="button" class="btn btn-bike" data-toggle="modal" data-target="#exampleModal">
-                    Add a new bike
-                  </button>
+            <%= simple_form_for [current_user, @garage, @booking], html: {id: :booking_form} do |f| %>
+              <% if @booking.errors.any? %>
+                <div class="errors-container">
+                  <ul>
+                    <% @booking.errors.full_messages.each do |message| %>
+                      <li><%= message %></li>
+                    <% end %>
+                  </ul>
                 </div>
-                <%= f.button :submit, 'Send booking request', class: "btn btn-booking" %>
-              <!-- Check if the regular bike capacity is == 0 then user cannot choose a regular bike-->
-
-              <% elsif @garage.capacity_left_regular <= 0%>
-                <div id="array_bike_node" data-bikes="<%= current_user.bikes.where(bike_size: "cargo").map{|bike|{ id: bike.id, size: bike.bike_size  } }.to_json  %>" > </div>
-                <%= f.input :bike_id, collection: current_user.bikes.where(bike_size: "cargo").map{|bike| [bike.name, bike.id] }, input_html: { :class => "selected-type" }, selected: 1  %>
-                <div>
-                  <button type="button" class="btn btn-bike" data-toggle="modal" data-target="#exampleModal">
-                    Add a new bike
-                  </button>
-                </div>
-                <%= f.button :submit, 'Send booking request', class: "btn btn-booking" %>
-              <!-- If both capacity are free user can choose any bike -->
-              <% else %>
-                <div id="array_bike_node" data-bikes="<%= current_user.bikes.map{|bike|{ id: bike.id, size: bike.bike_size  } }.to_json  %>" > </div>
-                <%= f.input :bike_id, collection: current_user.bikes.map{|bike| [bike.name, bike.id] }, input_html: { :class => "selected-type" },selected: 1 %>
-                <div>
-                  <button type="button" class="btn btn-bike" data-toggle="modal" data-target="#exampleModal">
-                    Add a new bike
-                  </button>
-                </div>
-                <%= f.button :submit, 'Send booking request', class: "btn btn-booking" %>
               <% end %>
-              <div class="show-price bike-price"></div>
-            <% else %>
-              <p>Create a bike before selecting a booking:</p>
-              <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
-                Create a new bike
-              </button>
+              <%= f.input :start_date, as: :string, required: false, input_html: {class: "datepicker"}, label: "Desired start date" %>
+              <% if current_user.bikes.exists? %>
+
+                <!-- Check if the TOTAL capacity for the garage is == 0 then user cannot choose a bike-->
+
+                <% if @garage.capacity_left_regular <= 0 && @garage.capacity_left_large <= 0 %>
+                  <h4>No spots left <i class="far fa-surprise"></i> Please choose another garage</h4>
+
+                <!-- Check if the large bike capacity is == 0 then user cannot choose a large bike-->
+
+                <% elsif @garage.capacity_left_large <= 0 %>
+                  <div id="array_bike_node" data-bikes="<%= current_user.bikes.where(bike_size: "regular").map{|bike|{ id: bike.id, size: bike.bike_size  } }.to_json  %>" > </div>
+                  <%= f.input :bike_id, collection: current_user.bikes.where(bike_size: "regular").map{|bike| [bike.name, bike.id] }, input_html: { :class => "selected-type" }, selected: 1  %>
+                  <div>
+                    <button type="button" class="btn btn-bike" data-toggle="modal" data-target="#exampleModal">
+                      Add a new bike
+                    </button>
+                  </div>
+                <!-- Check if the regular bike capacity is == 0 then user cannot choose a regular bike-->
+                  <button type="button" id="submit-booking" class="btn btn-booking"> Send booking request %></button>
+
+                <% elsif @garage.capacity_left_regular <= 0%>
+                  <div id="array_bike_node" data-bikes="<%= current_user.bikes.where(bike_size: "cargo").map{|bike|{ id: bike.id, size: bike.bike_size  } }.to_json  %>" > </div>
+                  <%= f.input :bike_id, collection: current_user.bikes.where(bike_size: "cargo").map{|bike| [bike.name, bike.id] }, input_html: { :class => "selected-type" }, selected: 1  %>
+                  <div>
+                    <button type="button" class="btn btn-bike" data-toggle="modal" data-target="#exampleModal">
+                      Add a new bike
+                    </button>
+                  </div>
+                  <button type="button" id="submit-booking" class="btn btn-booking"> Send booking request %></button>
+                <!-- If both capacity are free user can choose any bike -->
+                <% else %>
+                  <div id="array_bike_node" data-bikes="<%= current_user.bikes.map{|bike|{ id: bike.id, size: bike.bike_size  } }.to_json  %>" > </div>
+                  <%= f.input :bike_id, collection: current_user.bikes.map{|bike| [bike.name, bike.id] }, input_html: { :class => "selected-type" },selected: 1 %>
+                  <div>
+                    <button type="button" class="btn btn-bike" data-toggle="modal" data-target="#exampleModal">
+                      Add a new bike
+                    </button>
+                  </div>
+                  <button type="button" id="submit-booking" class="btn btn-booking"> Send booking request %></button>
+                <% end %>
+                <div class="show-price bike-price"></div>
+              <% else %>
+                <p>Create a bike before selecting a booking:</p>
+                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+                  Create a new bike
+                </button>
+              <% end %>
             <% end %>
+          <% else %>
+            <h2>Stop trying to book for another user</h2>
           <% end %>
         <% else %>
           <h2>LOGIN IF YOU WANNA BOOK OR EDOUARD IS GOING TO GET MAD</h2>
@@ -141,28 +169,9 @@
       </div>
     </div>
   </div>
-  <h4>Reviews</h4>
-  <div id="review-grid">
-    <% @garage.bookings.each do |booking| %>
-      <% booking.reviews.each do |review| %>
-      <div class="review">
-        <p><%= review.content %></p>
-        <div class="reviewer-and-stars">
-          <div class="garage-card-avatar avatar-bordered tag-item" style="background-image: url(<%= cl_image_path review.booking.bike.user.profile_image %>);">
-          </div>
-          <div>
-            <% review.rating.times do %>
-              <i class="fas fa-star review-stars"></i>
-            <% end %>
-            <% (5 - review.rating).times do %>
-              <i class="far fa-star"></i>
-            <% end %>
-          </div>
-        </div>
-      </div>
-      <% end %>
-    <% end %>
-  </div>
+  <% if user_signed_in? %>
+  <%= link_to "", dashboard_home_user_path(current_user), id: "redirection-link", class: "btn_hidden" %>
+  <% end %>
 </div>
 
 <script>
@@ -184,4 +193,48 @@
       }
     document.querySelector('.bike-price').textContent = price_to_pay;
     });
+
+
+
+  const submitBookingButton = document.querySelector('#submit-booking')
+
+  const submitBooking = () => {
+      const redirectLink = document.querySelector("#redirection-link")
+      let url = `${location.pathname}/bookings`
+      let tokenInput = document.querySelector('meta[name="csrf-token"]')
+      let init = {
+          method: "POST",
+          headers: {
+            'X-Requested-With': 'XMLHttpRequest',
+            'X-CSRF-Token': tokenInput.content,
+            'Content-Type': 'application/json',
+            'Accept': 'application/json'
+          },
+          body: JSON.stringify({
+            start_date: document.querySelector('.datepicker').value,
+            bike_id: document.querySelector('.selected-type').value
+          })
+      }
+
+      fetch(url, init)
+          .then(response => response.json())
+          .then(json => {
+            if (json.message === 'booking created') {
+              swal(json.message, {
+              icon: "success",
+              button: "Go to Dashboard"
+              })
+              document.querySelector(".swal-button").addEventListener("click", () =>{
+                redirectLink.click()
+              })
+            } else {
+              swal(json.message, {
+              icon: "error"
+              })
+            }
+          })
+  }
+
+  submitBookingButton.addEventListener("click", submitBooking)
+
 </script>

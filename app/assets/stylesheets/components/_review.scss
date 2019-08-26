@@ -8,19 +8,27 @@
   grid-column-gap: 3vw;
 }
 
+#reviews {
+  display: flex;
+  flex-flow: row wrap;
+  align-content: space-around;
+  overflow: auto;
+  margin: 20px 0;
+  z-index: 1000;
+}
+
 .review {
   background-color: white;
   box-shadow: 10px 10px 22px 0px rgba(179,179,179,0.3);
   margin:5px;
   padding: 5%;
   border-radius: 10px;
+  min-width: 250px;
+  flex: 1;
 }
 
 .reviewer-and-stars {
   display: flex;
   align-items: center;
-  padding: 5%;
-  .garage-card-avatar {
-    margin-right: 5%;
-  }
+  justify-content: space-between;
 }
