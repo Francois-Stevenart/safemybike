@@ -10,6 +10,7 @@ Rails.application.routes.draw do
       get "dashboard/my_account", to: "users#show"
       get "dashboard/my_garages", to: "users#mygarages"
       get "dashboard/my_bookings", to: "users#mybookings"
+      get "dashboard/add_review", to: "users#addareview"
       get "bookings/:id/accept", to: "bookings#accept_request", as: "accept"
       get "bookings/:id/reject", to: "bookings#reject_request", as: "reject"
       get "bookings/:id/cancel_request_by_owner", to: "bookings#cancel_request_by_owner", as: "cancel_request_by_owner"
@@ -20,6 +21,7 @@ Rails.application.routes.draw do
       member do
         get "card", to: "garages#show_card"
       end
+      resources :reviews, only: [:new, :create]
       resources :bookings, only: [:new, :edit, :create, :update, :show] do
         resources :chats, only: [ :new, :create ]
       end

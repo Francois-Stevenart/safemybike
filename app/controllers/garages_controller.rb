@@ -84,9 +84,7 @@ class GaragesController < ApplicationController
                                     :price_regular_bike,
                                     :feature_ids,
                                     :price_large_bike,
-                                    :profile_image,
-
+                                    :profile_image
                                   )
   end
-
 end

@@ -5,8 +5,11 @@ class BikesController < ApplicationController
   def create
     @bike = Bike.new(bike_params)
     @bike.user_id = params[:user_id]
-    @bike.save
-    redirect_to user_garage_path(current_user, params[:garage][:garage_id])
+    if @bike.save
+      redirect_to user_garage_path(current_user, params[:garage][:garage_id])
+    else
+      raise
+    end
   end
 
   private

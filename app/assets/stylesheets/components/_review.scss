@@ -1,0 +1,27 @@
+.review-stars {
+  color: #4ED191;
+}
+
+#review-grid {
+  display: grid;
+  grid-template-columns: 15vw 15vw;
+  grid-column-gap: 3vw;
+}
+
+.review {
+  background-color: white;
+  box-shadow: 10px 10px 22px 0px rgba(179,179,179,0.3);
+  margin:5px;
+  padding: 5%;
+  height: 20vh;
+  border-radius: 10px;
+}
+
+.reviewer-and-stars {
+  display: flex;
+  align-items: center;
+  padding: 5%;
+  .garage-card-avatar {
+    margin-right: 5%;
+  }
+}
