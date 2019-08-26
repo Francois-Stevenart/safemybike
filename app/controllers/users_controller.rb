@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_action :set_user, only: [:home, :show, :edit, :update, :mygarages, :mybookings]
+  before_action :set_user, only: [:home, :show, :edit, :update, :mygarages, :mybookings, :addareview]
 
   def home
     @biker_pending_requests = @user.biker_bookings.where(status: %w(pending rejected accepted paid cancelled_by_owner))
@@ -30,6 +30,10 @@ class UsersController < ApplicationController
     else
       render :edit
     end
+  end
+
+  def addareview
+
   end
 
   private
