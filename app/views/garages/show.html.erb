@@ -22,7 +22,6 @@
           <p><%= @garage.capacity_left_large %> large bikes</p>
         </div>
       </div>
-
       <div class="garage-features">
         <% @features.each do |feature| %>
           <div class="garage-feature">
@@ -77,7 +76,7 @@
           </div>
         </div>
         <% if user_signed_in?%>
-          <%= simple_form_for [current_user, @garage, @booking], html: {id: :appear_price} do |f| %>
+          <%= simple_form_for [current_user, @garage, @booking], html: {id: :booking_form} do |f| %>
             <% if @booking.errors.any? %>
               <div class="errors-container">
                 <ul>
@@ -105,8 +104,8 @@
                     Add a new bike
                   </button>
                 </div>
-                <%= f.button :submit, 'Send booking request', class: "btn btn-booking" %>
               <!-- Check if the regular bike capacity is == 0 then user cannot choose a regular bike-->
+                <button type="button" id="submit-booking" class="btn btn-booking"> Send booking request %></button>
 
               <% elsif @garage.capacity_left_regular <= 0%>
                 <div id="array_bike_node" data-bikes="<%= current_user.bikes.where(bike_size: "cargo").map{|bike|{ id: bike.id, size: bike.bike_size  } }.to_json  %>" > </div>
@@ -116,7 +115,7 @@
                     Add a new bike
                   </button>
                 </div>
-                <%= f.button :submit, 'Send booking request', class: "btn btn-booking" %>
+                <button type="button" id="submit-booking" class="btn btn-booking"> Send booking request %></button>
               <!-- If both capacity are free user can choose any bike -->
               <% else %>
                 <div id="array_bike_node" data-bikes="<%= current_user.bikes.map{|bike|{ id: bike.id, size: bike.bike_size  } }.to_json  %>" > </div>
@@ -126,7 +125,7 @@
                     Add a new bike
                   </button>
                 </div>
-                <%= f.button :submit, 'Send booking request', class: "btn btn-booking" %>
+                <button type="button" id="submit-booking" class="btn btn-booking"> Send booking request %></button>
               <% end %>
               <div class="show-price bike-price"></div>
             <% else %>
@@ -165,6 +164,7 @@
       </div>
     </div>
   </div>
+  <%= link_to "", dashboard_home_user_path(current_user), id: "redirection-link", class: "btn_hidden" %>
 </div>
 
 <script>
@@ -186,4 +186,48 @@
       }
     document.querySelector('.bike-price').textContent = price_to_pay;
     });
+
+
+
+  const submitBookingButton = document.querySelector('#submit-booking')
+
+  const submitBooking = () => {
+      const redirectLink = document.querySelector("#redirection-link")
+      let url = `${location.pathname}/bookings`
+      let tokenInput = document.querySelector('meta[name="csrf-token"]')
+      let init = {
+          method: "POST",
+          headers: {
+            'X-Requested-With': 'XMLHttpRequest',
+            'X-CSRF-Token': tokenInput.content,
+            'Content-Type': 'application/json',
+            'Accept': 'application/json'
+          },
+          body: JSON.stringify({
+            start_date: document.querySelector('.datepicker').value,
+            bike_id: document.querySelector('.selected-type').value
+          })
+      }
+
+      fetch(url, init)
+          .then(response => response.json())
+          .then(json => {
+            if (json.message === 'booking created') {
+              swal(json.message, {
+              icon: "success",
+              })
+              document.querySelector(".swal-button").addEventListener("click", () =>{
+                redirectLink.click()
+              })
+            } else {
+              swal(json.message, {
+              icon: "error",
+              button: "Go to Dashboard"
+              })
+            }
+          })
+  }
+
+  submitBookingButton.addEventListener("click", submitBooking)
+
 </script>
