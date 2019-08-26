@@ -19,27 +19,36 @@
     <% end %>
 
     <!-- Display the income if he is an owner and how much he is paying if he has a bike -->
+    <% if @income_bookings.size > 0 || @paying_bookings > 0 %>
+      <div class="price-container">
+        <div id = "return-rents" class="account-card shadowed">
+          <div id= "owner-income" class="price-card">
+            <% bookings = [] %>
 
-    <div id = "return-rents">
-      <div id= "owner-income">
-        <% bookings = [] %>
+            <!-- Owner calculations -->
+            <% @income_bookings.each do |booking|  %>
+              <% bookings << booking.price %>
+            <% end %>
+            <% if bookings.sum > 0 %>
+              <h1>€<%= bookings.sum %></h1>
+              <h3>Monthly income</h3>
+            <% end %>
+          </div>
+          <div id= "biker-price" class="price-card">
+            <% bookings = [] %>
 
-        <!-- Owner calculations -->
-        <% @income_bookings.each do |booking|  %>
-          <% bookings << booking.price %>
-        <% end %>
-        <h3> <%= bookings.sum == 0 ? 'No garages rent' : ("Monthly income from your garages: €" + bookings.sum.to_s) %> </h3>
+            <!-- Biker calculations -->
+            <% @paying_bookings.each do |booking|  %>
+              <% bookings << booking.price %>
+            <% end %>
+            <% if bookings.sum > 0 %>
+              <h1>€<%= bookings.sum %></h1>
+              <h3>Monthly cost</h3>
+            <% end %>
+          </div>
+        </div>
       </div>
-      <div id= "biker-price">
-        <% bookings = [] %>
-
-        <!-- Biker calculations -->
-        <% @paying_bookings.each do |booking|  %>
-          <% bookings << booking.price %>
-        <% end %>
-        <h3> <%= bookings.sum == 0 ? 'You have no bike in a garage' : ("Monthly cost for your bike safes: €" + bookings.sum.to_s) %> </h3>
-      </div>
-    </div>
+    <% end %>
     <div class="account-card shadowed">
       <div class="account-title">
         <h2>Your account information</h2>
