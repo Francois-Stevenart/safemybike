@@ -1,10 +1,12 @@
 #banner-landing {
   position: relative;
   height: calc(100vh - 56px);
+  background-size: cover;
   background-color: $white;
   display: flex;
   align-items: center;
   justify-content: center;
+  background-position: center;
 }
 
 .arrow {
@@ -17,7 +19,7 @@
 
 #search-landing {
   img {
-    width: 100px;
+    width: 150px;
   }
   text-align: center;
   i {
@@ -34,9 +36,12 @@
   .btn {
     margin-top: 20px;
     display: inline-block;
+    font-size: 22px;
   }
 }
 
 h1 {
   color: $green;
+  font-size: 56px;
 }
+

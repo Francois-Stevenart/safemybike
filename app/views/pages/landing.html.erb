@@ -1,4 +1,5 @@
-<div id="banner-landing">
+<div id="banner-landing"
+style="background-image: linear-gradient(rgba(255,255,255,0.8),rgba(255,255,255,0.8)), url('<%= image_path "banner.jpg" %>');">
   <div id="search-landing">
     <%=  cl_image_tag('/logo.png') %>
     <h1>SafeMyBike</h1>
@@ -8,15 +9,101 @@
 </div>
 
 
+<div id="landing-title">
+  <div class="container">
+    <h2>Looking for a place to store your <i class="fas fa-bicycle"></i> ?</h2>
+    <h3>Rent a spot in a garage !</h3>
+  </div>
+</div>
 
-<div id="explanation">
+<div class="landing-cards">
+
+  <div class="container">
+
+    <div class="row">
+
+      <div class="col-12 col-md-4 grow">
+        <div class="step-nbr">1</div>
+        <div class="landing-card">
+          <i class="fas fa-search-location"></i>
+          <div class="explanation">
+          Look for a garage nearby your home or your office. Enter the desired date for the start of your leasing and wait for the garage owner to get in touch !
+          </div>
+        </div>
+      </div>
+
+      <div class="col-12  col-md-4 grow">
+        <div class="step-nbr">2</div>
+        <div class="landing-card">
+          <i class="fas fa-key"></i>
+          <div class="explanation">
+           The garage owner will confirm to you that the spot is yours, arrange the exchange of the keys and sign the lease agreement.
+          </div>
+        </div>
+      </div>
+
+      <div class="col-12  col-md-4 grow">
+        <div class="step-nbr">3</div>
+        <div class="landing-card">
+          <i class="fas fa-warehouse"></i>
+          <div class="explanation">
+          That's it !
+          <br>Store safely your bike in the garage whenever you're not cycling around the city.
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+
+</div>
+
+
+<div class="container">
+
+  <div class="row justify-content-around">
+
+    <div class="col-12 col-md-8 card-landing-product">
+      <div class="card-landing-image" style="background-image: url('<%= image_path "biker1.jpg" %>')">
+      </div>
+      <div class="card-landing-infos">
+        <h2>Peace of mind for bikers</h2>
+        <p>Product description with <strong>relevant info</strong> only. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit</p>
+      </div>
+    </div>
+
+    <div class="col-12 col-md-8 card-landing-product">
+      <div class="card-landing-infos">
+        <h2>Peace of mind for bikers</h2>
+        <p>Product description with <strong>relevant info</strong> only. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit</p>
+      </div>
+      <div class="card-landing-image" style="background-image: url('<%= image_path "biker1.jpg" %>')">
+      </div>
+    </div>
+
+    <div class="col-12 col-md-8 card-landing-product">
+      <div class="card-landing-image" style="background-image: url('<%= image_path "biker1.jpg" %>')">
+      </div>
+      <div class="card-landing-infos">
+        <h2>Peace of mind for bikers</h2>
+        <p>Product description with <strong>relevant info</strong> only. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit</p>
+      </div>
+    </div>
+
+  </div>
+
+</div>
+
+
+<!-- <div id="explanation">
   <h2>Explanation</h2>
   <div class="row-landing">
     <div class="step-number"><div>1</div></div>
     <div class="explanation-text">
       <i class="fas fa-bicycle"></i>
       <div>
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+        Look for a garage nearby your home or your office. Enter the desired date for the start of your leasing and wait for the garage owner to confirm to you that the spot is booked for you !
       </div>
     </div>
   </div>
@@ -29,7 +116,7 @@
     <div class="explanation-text">
       <i class="fas fa-search-location"></i>
       <div>
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+        The garage owner will get in touch with you to arrange the exchange of the keys and sign the lease agreement.
       </div>
     </div>
   </div>
@@ -42,11 +129,12 @@
     <div class="explanation-text">
       <i class="fas fa-warehouse"></i>
       <div>
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+        That's it ! Store safely your bike in the garage whenever you're not cycling around the city.
       </div>
     </div>
   </div>
-</div>
+</div> -->
 
+</div>
 
 
