@@ -81,6 +81,7 @@
     display: flex;
     align-items: center;
     min-height: 130px;
+    opacity: .8;
   }
 }
 
@@ -186,15 +187,15 @@
 
 
 .card-landing-product {
-  height: 300px;
   background: white;
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-bottom: 50px;
+  margin: 0px 15px 50px 15px;
   padding: 0px;
   box-shadow: 0 0 15px rgba(0,0,0,0.2);
   border-radius: 10px;
+  overflow: hidden;
 }
 
 .card-landing-image {
@@ -206,23 +207,31 @@
 .card-landing-product h2 {
   font-size: 20px;
   font-weight: bold;
+  padding-bottom: 12px;
   margin: 0;
 }
 
 .card-landing-product p {
   font-size: 16px;
   line-height: 1.4;
-  opacity: .7;
+  opacity: .8;
   margin-top: 8px;
 }
 
 .card-landing-infos {
   flex-grow: 1;
-  padding: 0px 40px;
+  padding: 40px 40px;
 }
 
 @media(max-width: 1000px) {
   .card-landing-image {
     display: none;
   }
+}
+
+.landing-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 50px;
 }
