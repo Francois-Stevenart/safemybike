@@ -153,13 +153,14 @@
           <% end %>
         <% else %>
           <!-- Dumb form redirecting to new session form -->
-            <%= simple_form_for @booking, url: new_user_session_path do |f| %>
+            <%= simple_form_for @booking, url: garages_prompt_loggin_user_garage_path do |f| %>
             <%= f.input :start_date, as: :string, required: false, input_html: {class: "datepicker"}, label: "Desired start date", class: "datepicker"%>
             <p class="text-white">Add a bike before selecting a booking:</p>
-            <%= f.button :submit, "Add a new bike", class: "btn btn-bike"%>
+            <%= link_to "Add a new bike", garages_prompt_loggin_user_garage_path, class: "btn btn-bike" %>
           <% end %>
         <% end %>
       </div>
+
       <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
           <div class="modal-content">
