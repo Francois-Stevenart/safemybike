@@ -265,7 +265,7 @@ puts ''
 
 puts "Pulling reviews out of my buttocks... ⌨️"
 
-bookings = Booking.where.not(garage_id: master_user.garage.id)
+bookings = Booking.where.not(garage_id: master_user.garages.map { |garage| garage.id })
 
 bookings.each do |booking|
   if booking.status == 'done'
