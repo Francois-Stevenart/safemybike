@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   devise_for :users
   root to: 'pages#landing'
   get "garages/index", to: "garages#index"
-
+  get "/how_it_works", to: 'pages#how_it_works'
   resources :users, only: [:edit, :update] do
     resources :bikes, only: [:create, :new]
     member do
@@ -20,6 +20,7 @@ Rails.application.routes.draw do
     resources :garages, except: [:index, :destroy] do
       member do
         get "card", to: "garages#show_card"
+        get "garages-prompt-loggin", to: "garages#show_prompt_loggin"
       end
       resources :reviews, only: [:new, :create]
       resources :bookings, only: [:new, :edit, :create, :update, :show] do

@@ -1,2 +1,34 @@
 
 // Specific CSS for your home-page
+
+.search-page-container {
+  display: flex;
+  height: calc(100vh - 56px)
+}
+
+.index-map {
+  flex-grow: 1;
+}
+
+.index-cards {
+  height: 100%;
+  width: 300px;
+  display: flex;
+  flex-wrap: wrap;
+  margin: 0 auto;
+  justify-content: center;
+  overflow: auto;
+}
+
+#cards-position{
+  position: relative;
+}
+
+#biker {
+  position: absolute;
+}
+
+.hidden_cards {
+  visibility: hidden;
+}
+

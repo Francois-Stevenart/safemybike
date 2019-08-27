@@ -75,6 +75,10 @@ class GaragesController < ApplicationController
     @review_average = review_avarage(@garage)
   end
 
+  def show_prompt_loggin
+    redirect_to user_garage_path(current_user, params[:id])
+  end
+
   def garage_params
     params.require(:garage).permit(
                                     :name,

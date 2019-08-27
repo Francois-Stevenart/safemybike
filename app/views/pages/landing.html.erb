@@ -52,44 +52,96 @@ style="background-image: linear-gradient(rgba(255,255,255,0.8),rgba(255,255,255,
 
 
 <div class="container">
-    <div>
-      <p class="btn-switch">
-        <input type="radio" id="yes" name="switch" class="btn-switch__radio btn-switch__radio_yes" />
-        <input type="radio" checked id="no" name="switch" class="btn-switch__radio btn-switch__radio_no" />
-        <label for="yes" class="btn-switch__label btn-switch__label_yes"><span class="btn-switch__txt">Biker</span></label>                 <label for="no" class="btn-switch__label btn-switch__label_no"><span class="btn-switch__txt">Owner</span></label>
-      </p>
+  <div>
+    <form id = "form_toggle_button">
+     <div class="radio-group" id="btn-background">
+      <input type="radio" id="option-one" name="selector" checked><label class ="label-option" for="option-one">Biker</label><input type="radio" id="option-two" name="selector"><label class ="label-option" for="option-two">Owner</label>
+      </div>
+   </form>
+  </div>
+  <div id = "cards-position">
+    <div id = "biker">
+      <div class="row justify-content-around">
+        <div class="col-12 col-md-8 card-landing-product">
+          <div class="card-landing-image" style="background-image: url('<%= image_path "biker2.jpg" %>')">
+          </div>
+          <div class="card-landing-infos">
+            <h2>You don't need a whole garage. Do you?</h2>
+            <p>With <strong>SafeMyBike</strong>, you only rent a spot big enough to park your bicycle. You only pay a rent for a little portion of the garage, which is way cheaper than a regular garage leasing. </p>
+          </div>
+        </div>
+        <div class="col-12 col-md-8 card-landing-product">
+          <div class="card-landing-infos">
+            <h2>Peace of mind for bikers</h2>
+            <p>You don't want to leave your fancy electric bike in the street by night ? Don't want to carry it in your appartment ? SafeMyBike connects you with garage owners in order to find a <strong>safe shelter</strong> for your bicycle.</p>
+          </div>
+          <div class="card-landing-image" style="background-image: url('<%= image_path "biker1.jpg" %>')">
+          </div>
+        </div>
+        <div class="col-12 col-md-8 card-landing-product">
+          <div class="card-landing-image" style="background-image: url('<%= image_path "biker3.jpg" %>')">
+          </div>
+          <div class="card-landing-infos">
+            <h2>Get rid of the hassle</h2>
+            <p>SafeMyBike makes it easy for you : all the details regarding your leasing are centralized in your <strong>dashboard</strong>. Contact your garage owner in one click, stop or extend your rent whenever you need, and above all : enjoy cycling around the city without any worry ! </p>
+          </div>
+        </div>
+      </div>
+      <div class="landing-btn">
+        <%= link_to "Learn more", how_it_works_path, class: "btn btn-flat grow" %>
+      </div>
     </div>
-  <div class="row justify-content-around">
-    <div class="col-12 col-md-8 card-landing-product">
-      <div class="card-landing-image" style="background-image: url('<%= image_path "biker2.jpg" %>')">
+
+    <div id = "owner" class="hidden_cards">
+      <div class="row justify-content-around">
+        <div class="col-12 col-md-8 card-landing-product">
+          <div class="card-landing-infos">
+            <h2>Got extra room in your garage ? Rent it!</h2>
+            <p>For garage owners, <strong>SafeMyBike</strong> makes it easy to lease this unused space to enthusiast bikers. A cool way to make some extra-money and encourage better mobility in our cities.  </p>
+          </div>
+          <div class="card-landing-image" style="background-image: url('<%= image_path "biker4.jpg" %>')">
+          </div>
+        </div>
+        <div class="col-12 col-md-8 card-landing-product">
+          <div class="card-landing-image" style="background-image: url('<%= image_path "biker5.jpg" %>')">
+          </div>
+          <div class="card-landing-infos">
+            <h2>Optimize your income</h2>
+            <p>Imagine you would lease your garage to a dozen of bikers, you could quickly <strong>increase your monthly income</strong>, more than if you just lease it to a single car. You decide the price and the conditions.
+          </div>
+        </div>
+        <div class="col-12 col-md-8 card-landing-product">
+          <div class="card-landing-infos">
+            <h2>Easy to use</h2>
+            <p>With your dashboard, all the details about your leasing contracts and tennants are centralized in one place. In a few clicks, you can get in touch with any biker, manage your ongoing leases or change the amount of spots you want to offer</p>
+          </div>
+          <div class="card-landing-image" style="background-image: url('<%= image_path "biker6.jpg" %>')">
+          </div>
+        </div>
       </div>
-      <div class="card-landing-infos">
-        <h2>You don't need a whole garage. Do you?</h2>
-        <p>With <strong>SafeMyBike</strong>, you only rent a spot big enough to park your bicycle. You only pay a rent for a little portion of the garage, which is way cheaper than a regular garage leasing. </p>
+      <div class="landing-btn">
+        <%= link_to "Learn more", how_it_works_path, class: "btn btn-flat grow" %>
       </div>
     </div>
-    <div class="col-12 col-md-8 card-landing-product">
-      <div class="card-landing-infos">
-        <h2>Peace of mind for bikers</h2>
-        <p>You don't want to leave your fancy electric bike in the street by night ? Don't want to carry it in your appartment ? SafeMyBike connects you with garage owners in order to find a <strong>safe shelter</strong> for your bicycle.</p>
-      </div>
-      <div class="card-landing-image" style="background-image: url('<%= image_path "biker1.jpg" %>')">
-      </div>
-    </div>
-    <div class="col-12 col-md-8 card-landing-product">
-      <div class="card-landing-image" style="background-image: url('<%= image_path "biker3.jpg" %>')">
-      </div>
-      <div class="card-landing-infos">
-        <h2>Get rid of the hassle</h2>
-        <p>SafeMyBike makes it easy for you : all the details regarding your leasing are centralized in your <strong>dashboard</strong>. Contact your garage owner in one click, stop or extend your rent whenever you need, and above all : enjoy cycling around the city without any worry ! </p>
-      </div>
-    </div>
+
   </div>
 </div>
 
-<div class="landing-btn">
-  <%= link_to "Learn more", "#", class: "btn btn-flat grow" %>
-</div>
+
+<script>
+  const postionCardsOne = document.querySelector("#option-one")
+  const postionCardsTwo = document.querySelector("#option-two")
+  const biker = document.querySelector("#biker")
+  const owner = document.querySelector("#owner")
+  postionCardsOne.addEventListener("click", ()=> {
+    biker.classList.remove("hidden_cards");
+    owner.classList.add("hidden_cards")
+  })
+  postionCardsTwo.addEventListener("click", ()=> {
+    owner.classList.remove("hidden_cards");
+    biker.classList.add("hidden_cards")
+  })
+</script>
 
 <!-- <div id="explanation">
   <h2>Explanation</h2>
