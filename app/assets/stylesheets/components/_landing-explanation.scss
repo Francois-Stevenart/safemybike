@@ -235,3 +235,12 @@
   justify-content: center;
   margin-bottom: 50px;
 }
+.container {
+  height: 100%;
+}
+.cards-position {
+  height: fit-content;
+  #biker, #owner {
+    height: fit-content;
+  }
+}
