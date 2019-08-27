@@ -24,7 +24,9 @@ const addMarkersToMap = (map, markers) => {
     element.style.height = '30px';
     element.data = marker.features;
     element.addEventListener("click", (e) => {
-      fetch(`/users/${marker.user_id}/garages/${marker.id}/card.js`).then(response => response.text()).then(text => eval(text))
+      fetch(`/users/${marker.user_id}/garages/${marker.id}/card.js`)
+        .then(response => response.text())
+        .then(text => eval(text))
     })
     new mapboxgl.Marker(element)
       .setLngLat([ marker.lng, marker.lat ])
@@ -36,6 +38,7 @@ const addMarkersToMap = (map, markers) => {
 const filterMarkers = () => {
   const checkboxes = document.querySelectorAll(".checkbox");
   const markerElements = document.querySelectorAll(".marker");
+  const garageCards = document.querySelectorAll(".index-card");
 
   checkboxes.forEach((checkbox) => {
     checkbox.addEventListener('change', (event) => {

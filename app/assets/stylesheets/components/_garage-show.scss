@@ -1,7 +1,16 @@
+.garage-map > .mapboxgl-control-container > .mapboxgl-ctrl-top-right {
+  display: none;
+}
+
 .garage-show-body {
+  background-color: white;
+  border-radius: 10px;
+  margin: 20px 0 15px;
+  padding: 20px;
   text-align: justify;
   h2 {
-    padding: 15px 0px 10px 0px;
+    padding: 0px 0px 10px 0px;
+    color: $green;
   }
   h3 {
     font-size: 20px;
@@ -72,7 +81,7 @@
   background-color: white;
   border-radius: 10px;
   padding: 20px;
-  margin: 0px 0px 25px 0px;
+  margin: 0px 0px 15px 0px;
   font-weight: bold;
 }
 
@@ -94,4 +103,10 @@
 
 .spots-available {
   margin-top: 30px;
+}
+
+.reviews-container {
+  h4 > i {
+    font-size: 0.75em;
+  }
 }

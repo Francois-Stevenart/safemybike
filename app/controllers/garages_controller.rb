@@ -50,7 +50,7 @@ class GaragesController < ApplicationController
     @garage = Garage.find(params[:id])
     @garage.update(garage_params)
     @garage.feature_presences.destroy_all
-    @garage.features <<  params[:garage][:feature_ids].compact.map{|id| Feature.find_by id: id }.compact.flatten
+    @garage.features << params[:garage][:feature_ids].compact.map{|id| Feature.find_by id: id }.compact.flatten
     if @garage.save
       redirect_to user_garage_path(current_user, @garage)
     else
