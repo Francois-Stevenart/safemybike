@@ -58,6 +58,7 @@ class GaragesController < ApplicationController
 
   def show
     @garage = Garage.find(params[:id])
+    @user = User.find(params[:user_id])
     @features = @garage.features
     @booking = Booking.new
     @bike = Bike.new
@@ -69,6 +70,7 @@ class GaragesController < ApplicationController
         image_url: helpers.asset_url("/map_marker.png")
       }
     end
+    @review_average = review_avarage(@garage)
   end
 
   def garage_params
@@ -86,5 +88,15 @@ class GaragesController < ApplicationController
                                     :price_large_bike,
                                     :profile_image
                                   )
+  end
+
+  def review_avarage(garage)
+    reviews_rating = []
+    garage.bookings.each do |booking|
+      booking.reviews.each do |review|
+        reviews_rating << review.rating
+      end
+    end
+    return reviews_rating.any? ? (reviews_rating.sum.to_f / reviews_rating.length.to_f).round(0) : 0
   end
 end

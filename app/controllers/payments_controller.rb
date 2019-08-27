@@ -2,6 +2,9 @@ class PaymentsController < ApplicationController
   before_action :set_order
 
   def new
+    @user = current_user
+    @booking = @order.booking
+    @garage = @order.booking.garage
   end
 
   def create

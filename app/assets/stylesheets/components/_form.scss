@@ -1,9 +1,14 @@
+.form-container {
+  min-height: calc(100vh - 131px);
+}
+
 .custom-form {
   background-color: white;
   border-radius: 10px;
   padding: 25px 35px;
   max-width: 600px;
-  margin: 30px 0px;
+  margin: 40px 0px;
+  text-align: center;
   h2 {
     text-align: center;
     color: $green;
@@ -11,5 +16,31 @@
   label {
     color: $darkgreen;
   }
+  ul {
+    list-style: none;
+    padding: 0px;
+    margin-bottom: 20px;
+    li {
+      line-height: 2;
+    }
+  }
 }
 
+.payment-form {
+  line-height: 1.8;
+  p {
+    text-align: left;
+  }
+  .payment-amount {
+    margin: 10px;
+    color: white;
+    text-align: center;
+  }
+   article {
+    text-align: center;
+   }
+}
+
+.payment-card {
+  margin: 35px 0px;
+}
