@@ -20,15 +20,7 @@
   overflow: auto;
 }
 
-#cards-position{
-  position: relative;
-}
-
-#biker {
-  position: absolute;
-}
-
 .hidden_cards {
-  visibility: hidden;
+  display: none;
 }
 
