@@ -27,3 +27,30 @@
 #title_HIW {
   text-align: center;
 }
+
+@media(max-width: 700px) {
+  .how_it_works {
+    display: grid;
+    grid-template-columns: 1fr;
+  }
+  .description_step {
+    width: 60vw;
+    text-align: justify;
+    margin: 0 auto;
+  }
+  .img_step{
+    visibility: hidden;
+  }
+}
+
+@media(max-width: 1000px) {
+  .how_it_works {
+    display: grid;
+    grid-template-columns: 1fr;
+  }
+  .description_step {
+    width: 90vw;
+    text-align: justify;
+    margin: 0 auto;
+  }
+}
