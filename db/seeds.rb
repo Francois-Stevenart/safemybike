@@ -156,7 +156,7 @@ Feature.new(name: 'bicycle rack', icon_image: '<i class="fas fa-stream"></i>').s
 Feature.new(name: 'charging station', icon_image: '<i class="fas fa-charging-station"></i>').save!
 Feature.new(name: 'tire pump', icon_image: '<i class="fas fa-wind"></i>').save!
 Feature.new(name: 'electric tire pump', icon_image: '<i class="fas fa-bolt"></i>').save!
-Feature.new(name: 'accessible through pin-code', icon_image: '<i class="fas fa-lock"></i>').save!
+Feature.new(name: 'pin-code', icon_image: '<i class="fas fa-lock"></i>').save!
 Feature.new(name: 'camera security', icon_image: '<i class="fas fa-video"></i>').save!
 
 

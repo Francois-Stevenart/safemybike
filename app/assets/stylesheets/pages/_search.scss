@@ -1,0 +1,61 @@
+.index-map {
+  position: relative;
+  flex-grow: 1;
+}
+
+.left-sidebar-map {
+  position: absolute;
+  background: $green;
+  width: fit-content;
+  height: fit-content;
+  z-index: 1000;
+  border-radius: 5px;
+  top: 10px;
+  left: 10px;
+  h3 {
+    margin: 10px 0 5px 0;
+    font-size: 2em;
+    color: white;
+    text-align: center;
+  }
+}
+.search-page-container {
+  display: flex;
+  height: calc(100vh - 56px);
+}
+
+
+.index-cards {
+  background: $green;
+  height: 100%;
+  width: 300px;
+  display: flex;
+  flex-wrap: wrap;
+  margin: 0 auto;
+  justify-content: center;
+  overflow: auto;
+}
+
+.search-garage-features {
+  margin: 0 10px 10px 10px;
+  width: fit-content;
+  p {
+    font-size: 1.25em;
+    color: white;
+  }
+}
+
+.search-garage-feature {
+  width: fit-content;
+  display: flex;
+  align-items: center;
+}
+
+.search-feature-icon {
+  width: 25px;
+  color: white;
+}
+
+.hide {
+  display: none;
+}
