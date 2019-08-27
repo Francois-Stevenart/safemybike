@@ -28,26 +28,26 @@ class BookingsController < ApplicationController
 
   def accept_request
     @booking.status = "accepted"
-    @booking.save ? (redirect_to dashboard_home_user_path(current_user)) : raise
+    @booking.save ? (redirect_to request.referrer) : raise
   end
 
   def reject_request
     @booking.status = "rejected"
-    @booking.save ? (redirect_to dashboard_home_user_path(current_user)) : raise
+    @booking.save ? (redirect_to request.referrer) : raise
   end
 
   def cancel_request_by_owner
     @booking.status = "cancelled_by_owner"
-    @booking.save ? (redirect_to dashboard_home_user_path(current_user)) : raise
+    @booking.save ? (redirect_to request.referrer) : raise
   end
 
   def cancel_request_by_biker
     @booking.status = "cancelled_by_biker"
-    @booking.save ? (redirect_to dashboard_home_user_path(current_user)) : raise
+    @booking.save ? (redirect_to request.referrer) : raise
   end
 
   def destroy
-    @booking.destroy ? (redirect_to dashboard_home_user_path(current_user)) : raise
+    @booking.destroy ? (redirect_to request.referrer) : raise
   end
 
   private
