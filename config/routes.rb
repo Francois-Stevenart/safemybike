@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   devise_for :users
   root to: 'pages#landing'
   get "garages/index", to: "garages#index"
-
+  get "/how_it_works", to: 'pages#how_it_works'
   resources :users, only: [:edit, :update] do
     resources :bikes, only: [:create, :new]
     member do
