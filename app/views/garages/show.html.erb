@@ -15,13 +15,15 @@
         <h2><%= @garage.name %></h2>
         <h3><%= @garage.street_number %> <%= @garage.street_address %>, <%= @garage.city %>, <%= @garage.country %></h3>
         <p><%= @garage.description %></p>
-        <div class="garage-show-card spots-available">
-          <i class="fas fa-warehouse"></i>
-          <h4>Spots available :</h4>
-          <p><%= @garage.capacity_left_regular %> regular bikes</p>
-          <p><%= @garage.capacity_left_large %> large bikes</p>
-        </div>
       </div>
+
+      <div class="garage-show-card spots-available">
+        <i class="fas fa-warehouse"></i>
+        <h4>Spots available :</h4>
+        <p><%= @garage.capacity_left_regular %> regular bikes</p>
+        <p><%= @garage.capacity_left_large %> large bikes</p>
+      </div>
+
       <div class="garage-features">
         <% @features.each do |feature| %>
           <div class="garage-feature">
