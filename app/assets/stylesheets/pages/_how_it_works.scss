@@ -2,10 +2,15 @@
   display: flex;
   margin: 5vh 0;
   justify-content: center;
+  color: rgba(108, 122, 137, 1);
+  align-items: center;
 }
 
 .description_step {
-  width: 40vw;
+  width: 30vw;
+  div {
+    margin: 5vh 0;
+  }
 }
 
 .title_step {
