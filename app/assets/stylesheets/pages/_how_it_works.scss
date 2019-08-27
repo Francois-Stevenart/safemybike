@@ -28,6 +28,21 @@
   text-align: center;
 }
 
+// toggle
+
+.hidden_tutorial {
+  visibility: hidden;
+}
+
+#tutorial-position{
+  position: relative;
+}
+
+#tutorial-biker {
+  position: absolute
+}
+
+
 @media(max-width: 700px) {
   .how_it_works {
     display: grid;
@@ -54,3 +69,4 @@
     margin: 0 auto;
   }
 }
+
