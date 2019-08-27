@@ -3,6 +3,7 @@ class GaragesController < ApplicationController
   skip_before_action :authenticate_user!, only: [:index, :show]
 
   def index
+    @features = Feature.all
     @garages = Garage.all
     @garages = Garage.geocoded #returns garages with coordinates
     @markers = @garages.map do |garage|
@@ -12,7 +13,8 @@ class GaragesController < ApplicationController
         id: garage.id,
         user_id: garage.user_id,
         infoWindow: render_to_string(partial: "info_window", locals: { garage: garage }),
-        image_url: helpers.asset_url('/map_marker.png')
+        image_url: helpers.asset_url('/map_marker.png'),
+        features: garage.feature_presences.map { |feature_presence| feature_presence.feature.name }
       }
     end
   end

@@ -1,5 +1,5 @@
 <% if user_signed_in? %>
-  <%= link_to user_garage_path(current_user, garage), class: 'index-card' do %>
+  <%= link_to user_garage_path(current_user, garage), class: 'index-card grow' do %>
     <div class="index-card-img-top" style="background-image: url(<%= cl_image_path garage.profile_image %>);"></div>
     <div class="index-card-body">
       <h5 class="index-card-title"><%= garage.name %></h5>
@@ -8,7 +8,7 @@
     </div>
   <% end %>
 <% else %>
-  <%= link_to user_garage_path(garage.user, garage), class: 'index-card' do %>
+  <%= link_to user_garage_path(garage.user, garage), class: 'index-card grow' do %>
     <div class="index-card-img-top" style="background-image: url(<%= cl_image_path garage.profile_image %>);"></div>
     <div class="index-card-body">
       <h5 class="index-card-title"><%= garage.name %></h5>

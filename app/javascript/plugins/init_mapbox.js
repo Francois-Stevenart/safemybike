@@ -22,16 +22,38 @@ const addMarkersToMap = (map, markers) => {
     element.style.padding = '10px 0';
     element.style.width = '40px';
     element.style.height = '30px';
+    element.data = marker.features;
     element.addEventListener("click", (e) => {
       fetch(`/users/${marker.user_id}/garages/${marker.id}/card.js`).then(response => response.text()).then(text => eval(text))
     })
     new mapboxgl.Marker(element)
       .setLngLat([ marker.lng, marker.lat ])
-      .setPopup(popup) // add this
+      .setPopup(popup)
       .addTo(map);
   });
 };
 
+const filterMarkers = () => {
+  const checkboxes = document.querySelectorAll(".checkbox");
+  const markerElements = document.querySelectorAll(".marker");
+
+  checkboxes.forEach((checkbox) => {
+    checkbox.addEventListener('change', (event) => {
+      if(checkbox.checked) {
+        markerElements.forEach((markerElement) =>  {
+          if(!(markerElement.data.includes(checkbox.id))) {
+            markerElement.classList.add('hide');
+          }})
+      } else {
+        markerElements.forEach((markerElement) =>  {
+          if(!(markerElement.data.includes(checkbox.id))) {
+            markerElement.classList.remove('hide');
+          }
+        });
+      };
+    });
+  });
+};
 
 const initMapbox = () => {
   const mapElement = document.getElementById('map');
@@ -45,12 +67,12 @@ const initMapbox = () => {
     const markers = JSON.parse(mapElement.dataset.markers);
     addMarkersToMap(map, markers);
     fitMapToMarkers(map, markers);
-    console.log(mapElement);
     map.addControl(new MapboxGeocoder({
       accessToken: mapboxgl.accessToken,
       mapboxgl: mapboxgl
     }));
   }
+  filterMarkers();
 };
 
 export { initMapbox };
