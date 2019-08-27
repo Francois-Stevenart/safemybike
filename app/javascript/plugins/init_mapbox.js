@@ -27,7 +27,7 @@ const addMarkersToMap = (map, markers) => {
       fetch(`/users/${marker.user_id}/garages/${marker.id}/card.js`)
         .then(response => response.text())
         .then(text => eval(text))
-    })
+    });
     new mapboxgl.Marker(element)
       .setLngLat([ marker.lng, marker.lat ])
       .setPopup(popup)
