@@ -23,30 +23,34 @@
       <% if @income_bookings.size > 0 || @paying_bookings.size > 0 %>
         <div class="price-container">
           <div id = "return-rents" class="account-card shadowed grow">
-            <div id= "owner-income" class="price-card">
-              <% bookings = [] %>
+            <% if @income_bookings.size > 0 %>
+              <div id= "owner-income" class="price-card">
+                <% bookings = [] %>
 
-              <!-- Owner calculations -->
-              <% @income_bookings.each do |booking|  %>
-                <% bookings << booking.price %>
-              <% end %>
-              <% if bookings.sum > 0 %>
-                <h1>€<%= bookings.sum %></h1>
-                <h3>Monthly income</h3>
-              <% end %>
-            </div>
-            <div id= "biker-price" class="price-card">
-              <% bookings = [] %>
+                <!-- Owner calculations -->
+                <% @income_bookings.each do |booking|  %>
+                  <% bookings << booking.price %>
+                <% end %>
+                <% if bookings.sum > 0 %>
+                  <h1>€<%= bookings.sum %></h1>
+                  <h3>Monthly income</h3>
+                <% end %>
+              </div>
+            <% end %>
+            <% if @paying_bookings.size > 0 %>
+              <div id= "biker-price" class="price-card">
+                <% bookings = [] %>
 
-              <!-- Biker calculations -->
-              <% @paying_bookings.each do |booking|  %>
-                <% bookings << booking.price %>
-              <% end %>
-              <% if bookings.sum > 0 %>
-                <h1>€<%= bookings.sum %></h1>
-                <h3>Monthly cost</h3>
-              <% end %>
-            </div>
+                <!-- Biker calculations -->
+                <% @paying_bookings.each do |booking|  %>
+                  <% bookings << booking.price %>
+                <% end %>
+                <% if bookings.sum > 0 %>
+                  <h1>€<%= bookings.sum %></h1>
+                  <h3>Monthly cost</h3>
+                <% end %>
+              </div>
+            <% end %>
           </div>
         </div>
       <% end %>

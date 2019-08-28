@@ -1,0 +1,619 @@
+
+
+#bike-landing {
+  background-color: $green;
+  position:relative;
+  height: calc(100vh - 56px);
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding-bottom: 10vh;
+  .arrow {
+    color: white;
+  }
+  #bike-landing-title {
+    background-color: $green;
+    padding: 30px;
+    border-radius: 10px;
+    text-align: center;
+    h1 {
+      color: white;
+    }
+    .btn {
+      margin-top: 12px;
+      font-size: 1.5em;
+      padding: 8px 20px;
+      border-radius: 30px;
+      color: $green;
+      background-color: white;
+    }
+  }
+}
+.animation-container {
+  margin-top: 5vh;
+  width: 100%;
+  overflow: hidden;
+  position: relative;
+  font-size: 10px;
+}
+.garage {
+  margin: 20px auto;
+  width: 20em;
+  height: 20em;
+  background-color: transparent;
+  .wall {
+    z-index: 10;
+    position: relative;
+    background-color: $green;
+    width: 20em;
+    height: 12em;
+    border: solid 1em white;
+    border-width: 0 0.5em 0.5em 0.5em;
+    border-radius: 0 0 1em 1em;
+    .wall-cover {
+      z-index: 5000;
+      position: absolute;
+      top: 0;
+      left: 2.5em;
+      width: 14em;
+      height: 2.5em;
+      background-color: $green;
+      border: solid 1em white;
+      border-width: 0 0 0.5em 0;
+    }
+    .wall-cover-top {
+      z-index: 5000;
+      position: absolute;
+      bottom: 13em;
+      left: 2.5em;
+      width: 14em;
+      height: 5em;
+      background-color: $green;
+    }
+    .garage-content {
+      z-index: 11;
+      position: absolute;
+      bottom: -0.5em;
+      left: 2.5em;
+      width: 14em;
+      height: 10em;
+      border: solid 1em white;
+      border-width: 0.5em 0.5em 0.5em 0.5em;
+      border-color: white white $green white;
+      background-color: $green;
+      border-radius: 0;
+    }
+    .garage-door {
+      z-index: 4000;
+      position: absolute;
+      bottom: -0.5em;
+      left: 2.5em;
+      width: 14em;
+      height: 10em;
+      border: solid 1em white;
+      border-width: 0.5em 0.5em 0.5em 0.5em;
+      background-color: $green;
+      border-radius: 0;
+      .door-lines {
+        position: absolute;
+        border: solid 1em white;
+        border-width: 0.5em 0 0.5em 0;
+        top: 2.75em;
+        height: 3.5em;
+        width: 13em;
+        z-index: 11;
+      }
+    }
+  }
+  .roof-container {
+    z-index: 5000;
+    position: relative;
+    .roof {
+      position: relative;
+      border-left: 10em solid transparent;
+      border-right: 10em solid transparent;
+      border-bottom: 6em solid white;
+    }
+    .inside-roof {
+      position: absolute;
+      bottom: -0.5em;
+      left: 0;
+      border-left: 10em solid transparent;
+      border-right: 10em solid transparent;
+      border-bottom: 6em solid $green;
+    }
+  }
+}
+
+.bicycle {
+  position: absolute;
+  left: 6em;
+  bottom: -0.5em;
+  display: grid;
+  margin: 0;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  background: transparent;
+  font-size: 6px;
+  z-index: 3000;
+}
+
+.bike-container {
+  margin: auto;
+  width: 18em;
+  height: 12.5em;
+
+}
+
+.frame {
+  position: absolute;
+  z-index: 1;
+  background: $bicycle-frame;
+  &.one {
+    top: 6.3em;
+    left: 2.45em;
+    width: 6.2em;
+    height: 0.5em;
+    -webkit-transform: rotate(-50deg);
+    -ms-transform: rotate(-50deg);
+    transform: rotate(-50deg);
+  }
+  &.two {
+    top: 8.7em;
+    left: 3.3em;
+    width: 6em;
+    height: 0.5em;
+    border-radius: 1em 0 0 1em;
+  }
+  &.three {
+    top: 5.5em;
+    left: 4.25em;
+    width: 7.5em;
+    height: 0.5em;
+    border-radius: 1em;
+    -webkit-transform: rotate(72deg);
+    -ms-transform: rotate(72deg);
+    transform: rotate(72deg);
+  }
+  &.four {
+    top: 4em;
+    left: 7.5em;
+    width: 5.5em;
+    height: 0.5em;
+  }
+  &.five {
+    top: 6.5em;
+    left: 8em;
+    width: 6em;
+    height: 0.5em;
+    -webkit-transform: rotate(-50deg);
+    -ms-transform: rotate(-50deg);
+    transform: rotate(-50deg);
+  }
+  &.six {
+    top: 4.7em;
+    left: 8.8em;
+    width: 8.8em;
+    height: 0.5em;
+    border-radius: 1em;
+    -webkit-transform: rotate(72deg);
+    -ms-transform: rotate(72deg);
+    transform: rotate(72deg);
+  }
+  &.seat {
+    top: 1.5em;
+    left: 5.25em;
+    width: 3em;
+    height: 1.25em;
+    background: #25262a;
+    border-radius: 50% 100% 100% 50% / 50% 60% 100% 100%;
+  }
+  &.pedal {
+    top: 8.4em;
+    left: 8.6em;
+    width: 1em;
+    height: 1em;
+    background: transparent;
+    border: 0.5em solid #a59c85;
+    border-radius: 100%;
+    -webkit-animation: wheelSpin 1s linear infinite;
+    animation: wheelSpin 1s linear infinite;
+    &:before {
+      top: -0.15em;
+      left: -0.25em;
+      width: 0.5em;
+      height: 1.23em;
+      background: $bicycle-wheel;
+      border-radius: 1em 1em 0 0;
+    }
+    &:after {
+      top: 0.75em;
+      left: -0.5em;
+      width: 1em;
+      height: 0.5em;
+      background: #25262a;
+      border-radius: 1em;
+      -webkit-animation: pedalSpin 1s linear infinite;
+      animation: pedalSpin 1s linear infinite;
+    }
+  }
+  &.handle {
+    top: 0.5em;
+    left: 11.7em;
+    width: 1.5em;
+    height: 0.5em;
+    border-radius: 1em;
+    -webkit-transform: rotate(-25deg);
+    -ms-transform: rotate(-25deg);
+    transform: rotate(-25deg);
+    &:before {
+      top: -0.35em;
+      left: 0.2em;
+      width: inherit;
+      height: inherit;
+      background: #25262a;
+      border-radius: inherit;
+      -webkit-transform: rotate(45deg);
+      -ms-transform: rotate(45deg);
+      transform: rotate(45deg);
+    }
+  }
+}
+
+.wheel {
+  position: absolute;
+  z-index: -1;
+  &.left, &.right {
+    top: 5.5em;
+    width: 7em;
+    height: 7em;
+    border: 0.5em solid #25262a;
+    border-radius: 100%;
+    -webkit-box-shadow: inset 0 0 0 0.5em $bicycle-wheel;
+    box-shadow: inset 0 0 0 0.5em $bicycle-wheel;
+  }
+  &.left:after {
+    z-index: 1;
+    top: 2.5em;
+    left: 2.5em;
+    width: 1em;
+    height: 1em;
+    background: transparent;
+    border: 0.5em solid #a59c85;
+    border-radius: 100%;
+  }
+  &.right {
+    &:after {
+      z-index: 1;
+      top: 2.5em;
+      left: 2.5em;
+      width: 1em;
+      height: 1em;
+      background: transparent;
+      border: 0.5em solid #a59c85;
+      border-radius: 100%;
+    }
+    left: 11em;
+  }
+}
+
+.spokes {
+  position: absolute;
+  top: 0.25em;
+  left: 2.85em;
+  width: 0.3em;
+  height: 5.5em;
+  -webkit-animation: wheelSpin 1.5s linear infinite;
+  animation: wheelSpin 1.5s linear infinite;
+}
+
+.spoke {
+  position: absolute;
+  top: 0;
+  width: inherit;
+  height: inherit;
+  background: $bicycle-wheel;
+  &:nth-child(1) {
+    -webkit-transform: rotate(0deg);
+    -ms-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+  &:nth-child(2) {
+    -webkit-transform: rotate(30deg);
+    -ms-transform: rotate(30deg);
+    transform: rotate(30deg);
+  }
+  &:nth-child(3) {
+    -webkit-transform: rotate(60deg);
+    -ms-transform: rotate(60deg);
+    transform: rotate(60deg);
+  }
+  &:nth-child(4) {
+    -webkit-transform: rotate(120deg);
+    -ms-transform: rotate(120deg);
+    transform: rotate(120deg);
+  }
+  &:nth-child(5) {
+    -webkit-transform: rotate(150deg);
+    -ms-transform: rotate(150deg);
+    transform: rotate(150deg);
+  }
+  &:nth-child(6) {
+    -webkit-transform: rotate(90deg);
+    -ms-transform: rotate(90deg);
+    transform: rotate(90deg);
+  }
+}
+
+@-webkit-keyframes wheelSpin {
+  0% {
+    -webkit-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+
+  100% {
+    -webkit-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+}
+
+
+@keyframes wheelSpin {
+  0% {
+    -webkit-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+
+  100% {
+    -webkit-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+}
+
+
+@-webkit-keyframes pedalSpin {
+  0% {
+    -webkit-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+
+  100% {
+    -webkit-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+}
+
+
+@keyframes pedalSpin {
+  0% {
+    -webkit-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+
+  100% {
+    -webkit-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+}
+
+.bike-slide {
+  -webkit-animation-name: bike-slider; /* Safari 4.0 - 8.0 */
+  -webkit-animation-duration: 10s; /* Safari 4.0 - 8.0 */
+  animation-name: bike-slider;
+  animation-duration: 16s;
+  animation-iteration-count: infinite;
+}
+
+.garage-door-slide {
+  -webkit-animation-name: door-slide; /* Safari 4.0 - 8.0 */
+  -webkit-animation-duration: 10s; /* Safari 4.0 - 8.0 */
+  animation-name: door-slide;
+  animation-duration: 16s;
+  animation-iteration-count: infinite;
+}
+
+/* Safari 4.0 - 8.0 */
+@-webkit-keyframes bike-slider {
+  0% { left: -80vw; }
+  25% { left: 6em; }
+  90% { left: 6em; }
+  100% { left: 100vw; }
+}
+
+/* Standard syntax */
+@keyframes bike-slider {
+  0% { left: -70vw; }
+  25% { left: 6em; }
+  75% { left: 6em; }
+  100% { left: 70vw; }
+}
+
+/* Safari 4.0 - 8.0 */
+@-webkit-keyframes door-slide {
+  0% {}
+  40% { bottom: -0.5em; }
+  50% { bottom: 9em; }
+  60% { bottom: -0.5em; }
+  100% {}
+}
+
+/* Standard syntax */
+@keyframes door-slide {
+  0% {}
+  8% { bottom: -0.5em; }
+  15% { bottom: 8em; }
+  25% { bottom: 8em; }
+  32% { bottom: -0.5em; }
+  65% { bottom: -0.5em; }
+  75% { bottom: 8em; }
+  85% { bottom: 8em; }
+  100% { bottom: -0.5em; }
+}
+
+.landing-cards-bicycle {
+  height: 85vh;
+  background-position: center;
+  background-size: cover;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  .landing-cards {
+    background-color: transparent;
+    padding-top: 30px;
+    margin-bottom: 40px;
+  }
+  .landing-card {
+    background-color: $green;
+    box-shadow: 0 0 15px rgba(0,0,0,0.2);
+    border-radius: 10px;
+    padding: 20px;
+    margin: 0px 15px 70px 15px;
+    text-align: center;
+    position: relative;
+    i {
+      color: white;
+      padding-bottom: 20px;
+      font-size: 2.7em;
+    }
+    .explanation {
+      display: flex;
+      align-items: center;
+      min-height: 130px;
+      opacity: .8;
+      color: white;
+    }
+  }
+
+  @media(max-width: 1000px) {
+    .landing-card {
+      .explanation {
+        min-height: 220px;
+      }
+    }
+  }
+  @media(max-width: 768px) {
+    .landing-card {
+      .explanation {
+        min-height: auto;
+      }
+    }
+  }
+
+
+  .step-nbr {
+    display: flex;
+    border-radius: 50%;
+    border: 3px solid $green;
+    width: 40px;
+    height: 40px;
+    padding: 10px;
+    align-items: center;
+    justify-content: center;
+    background-color: white;
+    font-size: 20px;
+    font-weight: 600;
+    color: $green;
+    position: absolute;
+    z-index: 10;
+    top: -15px;
+    left: 10px;
+  }
+
+  .landing-cards > .container > .row > #landing-title {
+    width: 100vw;
+    box-shadow: none;
+    padding: 30px;
+    line-height: 1;
+    color: $white;
+    text-align: center;
+    padding: 30px;
+    line-height: 1;
+    color: $green;
+    text-align: center;
+    background-color: transparent;
+    // margin-bottom: 55px;
+    h2, h3 {
+      padding-left: 30px;
+    }
+    h2 {
+      font-weight: bold;
+      font-size: 2em;
+      padding-bottom: 8px;
+      padding-top: 16px;
+    }
+    h3 {
+      font-size: 1.8em;
+    }
+  }
+
+  .card-landing-product {
+    background: $green;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0px 15px 50px 15px;
+    padding: 0px;
+    box-shadow: 0 0 15px rgba(0,0,0,0.2);
+    border-radius: 10px;
+    overflow: hidden;
+  }
+
+  .card-landing-image {
+    height: 100%;
+    min-width: 300px;
+    background-size: cover;
+  }
+
+  .card-landing-product h2 {
+    font-size: 20px;
+    font-weight: bold;
+    padding-bottom: 12px;
+    margin: 0;
+  }
+
+  .card-landing-product p {
+    font-size: 16px;
+    line-height: 1.4;
+    opacity: .8;
+    margin-top: 8px;
+  }
+
+  .card-landing-infos {
+    flex-grow: 1;
+    padding: 40px 40px;
+  }
+
+  @media(max-width: 1000px) {
+    .card-landing-image {
+      display: none;
+    }
+  }
+
+  .landing-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 50px;
+  }
+  .container {
+    height: 100%;
+  }
+  .cards-position {
+    height: fit-content;
+    #biker, #owner {
+      height: fit-content;
+    }
+  }
+}
