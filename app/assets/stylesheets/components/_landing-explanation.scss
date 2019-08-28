@@ -1,8 +1,22 @@
+.explanation-card-container {
+  width: 100vw;
+  height: fit-content;
+  background-color: $green;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 40px 0 60px 0;
+}
+
 
 .landing-cards {
-  background-color: $green;
+  background-position: center;
+  background-size: cover;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   padding-top: 30px;
-  margin-bottom: 50px;
 }
 
 .landing-card {
@@ -10,7 +24,7 @@
   box-shadow: 0 0 15px rgba(0,0,0,0.2);
   border-radius: 10px;
   padding: 20px;
-  margin: 0px 15px 70px 15px;
+  margin: 0px 15px 0 15px;
   text-align: center;
   position: relative;
   i {
@@ -23,6 +37,7 @@
     align-items: center;
     min-height: 130px;
     opacity: .8;
+    color: $green;
   }
 }
 
@@ -45,16 +60,16 @@
 .step-nbr {
   display: flex;
   border-radius: 50%;
-  border: 3px solid $green;
+  border: 3px solid white;
   width: 40px;
   height: 40px;
   padding: 10px;
   align-items: center;
   justify-content: center;
-  background-color: white;
+  background-color: $green;
   font-size: 20px;
   font-weight: 600;
-  color: $green;
+  color: white;
   position: absolute;
   z-index: 10;
   top: -15px;
@@ -62,12 +77,12 @@
 }
 
 #landing-title {
-  background-color: $green;
-  box-shadow: 0 0 15px rgba(0,0,0,0.2);
-  padding: 30px;
+  width: 100vw;
+  box-shadow: none;
   line-height: 1;
-  color: $white;
+  color: white;
   text-align: center;
+  background-color: transparent;
   // margin-bottom: 55px;
   h2, h3 {
     padding-left: 30px;
@@ -84,7 +99,7 @@
 }
 
 .card-landing-product {
-  background: white;
+  background: $green;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -118,6 +133,10 @@
 .card-landing-infos {
   flex-grow: 1;
   padding: 40px 40px;
+  color: white;
+  p {
+    color: white;
+  }
 }
 
 @media(max-width: 1000px) {

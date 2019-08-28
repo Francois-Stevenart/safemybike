@@ -32,7 +32,6 @@
   }
 }
 .animation-container {
-  margin-top: 5vh;
   width: 100%;
   overflow: hidden;
   position: relative;
@@ -315,6 +314,7 @@
   left: 2.85em;
   width: 0.3em;
   height: 5.5em;
+  background-color: $bicycle-wheel;
   -webkit-animation: wheelSpin 1.5s linear infinite;
   animation: wheelSpin 1.5s linear infinite;
 }
@@ -324,7 +324,7 @@
   top: 0;
   width: inherit;
   height: inherit;
-  background: $bicycle-wheel;
+  background-color: $bicycle-wheel !important;
   &:nth-child(1) {
     -webkit-transform: rotate(0deg);
     -ms-transform: rotate(0deg);
@@ -462,158 +462,4 @@
   100% { bottom: -0.5em; }
 }
 
-.landing-cards-bicycle {
-  height: 85vh;
-  background-position: center;
-  background-size: cover;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  .landing-cards {
-    background-color: transparent;
-    padding-top: 30px;
-    margin-bottom: 40px;
-  }
-  .landing-card {
-    background-color: $green;
-    box-shadow: 0 0 15px rgba(0,0,0,0.2);
-    border-radius: 10px;
-    padding: 20px;
-    margin: 0px 15px 70px 15px;
-    text-align: center;
-    position: relative;
-    i {
-      color: white;
-      padding-bottom: 20px;
-      font-size: 2.7em;
-    }
-    .explanation {
-      display: flex;
-      align-items: center;
-      min-height: 130px;
-      opacity: .8;
-      color: white;
-    }
-  }
 
-  @media(max-width: 1000px) {
-    .landing-card {
-      .explanation {
-        min-height: 220px;
-      }
-    }
-  }
-  @media(max-width: 768px) {
-    .landing-card {
-      .explanation {
-        min-height: auto;
-      }
-    }
-  }
-
-
-  .step-nbr {
-    display: flex;
-    border-radius: 50%;
-    border: 3px solid $green;
-    width: 40px;
-    height: 40px;
-    padding: 10px;
-    align-items: center;
-    justify-content: center;
-    background-color: white;
-    font-size: 20px;
-    font-weight: 600;
-    color: $green;
-    position: absolute;
-    z-index: 10;
-    top: -15px;
-    left: 10px;
-  }
-
-  .landing-cards > .container > .row > #landing-title {
-    width: 100vw;
-    box-shadow: none;
-    padding: 30px;
-    line-height: 1;
-    color: $white;
-    text-align: center;
-    padding: 30px;
-    line-height: 1;
-    color: $green;
-    text-align: center;
-    background-color: transparent;
-    // margin-bottom: 55px;
-    h2, h3 {
-      padding-left: 30px;
-    }
-    h2 {
-      font-weight: bold;
-      font-size: 2em;
-      padding-bottom: 8px;
-      padding-top: 16px;
-    }
-    h3 {
-      font-size: 1.8em;
-    }
-  }
-
-  .card-landing-product {
-    background: $green;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin: 0px 15px 50px 15px;
-    padding: 0px;
-    box-shadow: 0 0 15px rgba(0,0,0,0.2);
-    border-radius: 10px;
-    overflow: hidden;
-  }
-
-  .card-landing-image {
-    height: 100%;
-    min-width: 300px;
-    background-size: cover;
-  }
-
-  .card-landing-product h2 {
-    font-size: 20px;
-    font-weight: bold;
-    padding-bottom: 12px;
-    margin: 0;
-  }
-
-  .card-landing-product p {
-    font-size: 16px;
-    line-height: 1.4;
-    opacity: .8;
-    margin-top: 8px;
-  }
-
-  .card-landing-infos {
-    flex-grow: 1;
-    padding: 40px 40px;
-  }
-
-  @media(max-width: 1000px) {
-    .card-landing-image {
-      display: none;
-    }
-  }
-
-  .landing-btn {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-bottom: 50px;
-  }
-  .container {
-    height: 100%;
-  }
-  .cards-position {
-    height: fit-content;
-    #biker, #owner {
-      height: fit-content;
-    }
-  }
-}
