@@ -6,21 +6,24 @@
     <div class="dashboard-main">
       <h2>Drop a Review</h2>
       <% @user.bikes.each do |bike| %>
-        <% bike.bookings.where(status: "done").each do |booking| %>
-          <div class="card-dashboard">
-            <div class="card-dashboard-body">
+        <% bike.bookings.where(status: ["paid", "done"]).each do |booking| %>
+          <% if booking.reviews.blank? %>
+          <div class="card-dashboard shadow">
+            <%= link_to user_garage_path(booking.garage.user, booking.garage), class: 'garage-card-link' do %>
+              <div class="garage-card-image" style="background-image: url(<%= cl_image_path booking.garage.profile_image %>);">
+              </div>
+            <% end %>
+            <div class="garage-card-info">
               <h3><%= link_to booking.garage.name, user_garage_path(current_user, booking.garage_id) %></h3>
-              <p><%= booking.start_date %> - <%= booking.end_date %></p>
-              <p>Status: <%= booking.status %></p>
-              <% if booking.reviews.any? %>
-                <p> You alredy droped a review</p>
-              <% else %>
-                <div class="buttons buttons-right">
-                  <button type="button" class="btn btn-main buttons buttons-right" data-toggle="modal" data-target="#modal-<%=booking.garage.id %>">
-                    REVIEW
+              <p class="py-2">Leasing dates: <%= booking.start_date %> - <%= booking.end_date %></p>
+              <p class="top-right tag tag-item"><%= booking.status %></p>
+                <div>
+                  <button type="button" class="btn btn-flat" data-toggle="modal" data-target="#modal-<%=booking.garage.id %>">
+                    Review garage
                   </button>
                 </div>
-              <% end %>
+            <% end %>
+
               <div class="modal fade" id="modal-<%=booking.garage.id %>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                 <div class="modal-dialog" role="document">
                   <div class="modal-content">
@@ -35,7 +38,7 @@
                         <%= f.input :booking_id, as: :hidden, :input_html => { :value => "#{booking.id}" }  %>
                         <%= f.input :rating %>
                         <%= f.input :content %>
-                        <%= f.button :submit, class: "btn btn-main" %>
+                        <%= f.button :submit, class: "btn btn-flat" %>
                       <% end %>
                     </div>
                   </div>
