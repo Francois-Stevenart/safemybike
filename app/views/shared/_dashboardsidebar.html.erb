@@ -32,7 +32,7 @@
     <% end %>
 
     <% bookings_done = [] %>
-    <% current_user.garages.each {|garage| garage.bookings.where(status: "done").any? ? bookings_done << 1 : bookings_done << 0} %>
+    <% current_user.bikes.each {|bike| bike.bookings.where(status: "done").any? ? bookings_done << 1 : bookings_done << 0} %>
     <% if bookings_done.sum > 0 %>
       <%= link_to dashboard_add_review_user_path(current_user) do %>
         <li class="sidebar-tab" data-target="tab.bar">

@@ -6,7 +6,7 @@
     <div class="dashboard-main">
       <h2>Drop a Review</h2>
       <% @user.bikes.each do |bike| %>
-        <% bike.bookings.where(status: "done").each do |booking| %>
+        <% bike.bookings.where(status: ["done", "paid"]).each do |booking| %>
           <div class="card-dashboard">
             <div class="card-dashboard-body">
               <h3><%= link_to booking.garage.name, user_garage_path(current_user, booking.garage_id) %></h3>
