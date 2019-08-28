@@ -41,6 +41,9 @@
 }
 
 @media(max-width: 1000px) {
+  .sidebar {
+    position: relative;
+  }
   .sidebar-body {
     min-height: 48px;
     height: auto;
