@@ -6,11 +6,10 @@
     </div>
 
     <div class="dashboard-main">
-      <h2>Rental agreements</h2>
       <div>
         <div>
           <% if @biker_bookings.where(status: %w(pending rejected accepted paid)).any? %>
-            <h3>Pending requests:</h3>
+            <h3 class="dashboard-header">Pending requests:</h3>
             <% @biker_bookings.where(status: %w(pending rejected accepted paid)).each do |booking| %>
               <%= render 'biker-booking-card', booking: booking %>
             <% end %>
@@ -18,7 +17,7 @@
         </div>
         <div>
           <% if @biker_bookings.where(status: "active").any? %>
-            <h3>Active rental agreements:</h3>
+            <h3 class="dashboard-header">Active rental agreements:</h3>
             <% @biker_bookings.where(status: "active").each do |booking| %>
               <%= render 'biker-booking-card', booking: booking %>
             <% end %>
@@ -26,7 +25,7 @@
         </div>
         <div>
           <% if @biker_bookings.where(status: %w(cancelled_by_owner cancelled_by_biker done)).any? %>
-            <h3>Past rental agreements:</h3>
+            <h3 class="dashboard-header">Past rental agreements:</h3>
             <% @biker_bookings.where(status: %w(cancelled_by_owner cancelled_by_biker done)).each do |booking| %>
               <%= render 'biker-booking-card', booking: booking %>
             <% end %>

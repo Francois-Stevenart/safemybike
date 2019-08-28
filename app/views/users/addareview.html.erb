@@ -4,7 +4,7 @@
       <%= render 'shared/dashboardsidebar'%>
     </div>
     <div class="dashboard-main">
-      <h2>Drop a Review</h2>
+      <h3 class="dashboard-header">Drop a Review</h3>
       <% @user.bikes.each do |bike| %>
 
         <% bike.bookings.where(status: ["paid", "done"]).each do |booking| %>

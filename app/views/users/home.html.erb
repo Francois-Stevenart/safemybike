@@ -6,14 +6,14 @@
     <!-- Display pending requests as a biker: -->
     <div class="dashboard-main" id="home-display">
       <% if @biker_pending_requests.any? %>
-      <h3>Pending rental requests for your bikes:</h3>
+      <h3 class="dashboard-header">Pending rental requests for your bikes:</h3>
         <% @biker_pending_requests.each do |booking| %>
           <%= render 'biker-booking-card', booking: booking %>
         <% end %>
       <% end %>
     <!-- Display received requests as an owner: -->
       <% if @owner_pending_requests.any? %>
-      <h3>Pending requests for your garages:</h3>
+      <h3 class="dashboard-header">Pending requests for your garages:</h3>
         <% @owner_pending_requests.each do |booking| %>
           <%= render 'owner-booking-card', booking: booking %>
         <% end %>
