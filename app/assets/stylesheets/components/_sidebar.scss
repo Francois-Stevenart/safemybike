@@ -1,5 +1,5 @@
 .sidebar {
-  min-width: 175px;
+  min-width: 210px;
   position: sticky;
   top: 0px;
 }
@@ -18,8 +18,17 @@
 }
 .sidebar-tab {
   padding: 12px;
-  text-align: center;
+  text-align: left;
   color: $white;
+  display: flex;
+  align-items: center;
+  i {
+    width: 40px;
+    padding-left: 5px;
+  }
+  p {
+    color: $white;
+  }
   &:hover {
     background-color: $darkgreen;
     opacity: 1;
@@ -29,4 +38,30 @@
 .tab-active {
   background-color: $darkgreen;
   opacity: 1;
+}
+
+@media(max-width: 1000px) {
+  .sidebar-body {
+    min-height: 48px;
+    height: auto;
+    display: flex;
+    justify-content: center;
+    ul#dashboard-menu .sidebar-tab {
+      height: 48px;
+    }
+    ul#dashboard-menu {
+      display: flex;
+      align-items: center;
+      padding: 0px;
+      margin: 0px;
+    }
+  }
+}
+
+@media(max-width: 660px) {
+  .sidebar-tab {
+    p {
+      display: none;
+    }
+  }
 }

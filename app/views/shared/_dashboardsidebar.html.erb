@@ -1,21 +1,33 @@
 <div class="sidebar-body" data-controller="tab">
 
-  <ul class="tabs">
+  <ul class="tabs" id="dashboard-menu">
 
     <%= link_to dashboard_home_user_path(current_user) do %>
-      <li class="sidebar-tab" data-target="tab.bar">Dashboard</li>
+      <li class="sidebar-tab" data-target="tab.bar">
+        <i class="fas fa-tachometer-alt"></i>
+        <p>Dashboard</p>
+      </li>
     <% end %>
 
     <%= link_to dashboard_my_garages_user_path(current_user) do %>
-      <li class="sidebar-tab" data-target="tab.bar">My Garage(s)</li>
+      <li class="sidebar-tab" data-target="tab.bar">
+        <i class="fas fa-warehouse"></i>
+        <p>My Garage(s)</p>
+      </li>
     <% end %>
 
     <%= link_to dashboard_my_bookings_user_path(current_user) do %>
-      <li class="sidebar-tab" data-target="tab.bar">My Rentals</li>
+      <li class="sidebar-tab" data-target="tab.bar">
+        <i class="far fa-copy"></i>
+        <p>My Rentals</p>
+      </li>
     <% end %>
 
     <%= link_to dashboard_add_review_user_path(current_user) do %>
-      <li class="sidebar-tab" data-target="tab.bar">Add A Review</li>
+      <li class="sidebar-tab" data-target="tab.bar">
+        <i class="far fa-star"></i>
+        <p>Add A Review</p>
+      </li>
     <% end %>
   </ul>
 
