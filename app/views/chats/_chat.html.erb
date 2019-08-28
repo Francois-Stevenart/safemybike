@@ -1,4 +1,4 @@
-<div class="message <%= user_is_messages_author ? "right" : "" %>">
-  <%#= image_tag chat.user.avatar_url, class: "avatar" %>
+<div class="message <%= user_is_messages_author ? "right" : "left" %>">
+  <%= cl_image_tag  message.user.profile_image, class: "avatar-bordered" %>
   <div class="message-content"><%= message.content %></div>
 </div>
