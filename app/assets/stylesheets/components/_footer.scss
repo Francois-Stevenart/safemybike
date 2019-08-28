@@ -53,4 +53,17 @@
   text-decoration: none;
 }
 
-
+@media(max-width: 660px) {
+  .footer {
+    height: 100%;
+    padding: 10px 20px 20px 20px;
+    width: 100%;
+  }
+  .footer-links a {
+    font-size: 22px;
+    padding: 0px 5px;
+  }
+  .footer-text > ul > li {
+    display: block;
+  }
+}

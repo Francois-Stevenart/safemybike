@@ -91,3 +91,35 @@
     }
   }
 }
+
+@media(max-width: 660px) {
+  .card-dashboard, .card-dashboard-request {
+    min-height: 310px;
+  a > .garage-card-image {
+    width: 85px;
+    height: 85px;
+    border-radius: 50%;
+    position: relative;
+    top: 60px;
+    right: 30px;
+    border: 1px solid $white;
+    box-shadow: 0px 0px 2px rgba(0,0,0,0.3);
+    z-index: 2;
+    }
+  a.garage-card-link {
+    background-color: $lightwhite;
+    width: 60px;
+    }
+  .garage-card-info {
+    justify-content: left;
+    padding-top: 50px;
+    }
+  .bottom-right {
+    right: 5px;
+    font-size: 0.9em;
+    }
+  div.top-right {
+    font-size: 0.9em;
+    }
+  }
+}
