@@ -6,6 +6,7 @@
     <div class="dashboard-main">
       <h2>Drop a Review</h2>
       <% @user.bikes.each do |bike| %>
+
         <% bike.bookings.where(status: ["paid", "done"]).each do |booking| %>
           <% if booking.reviews.blank? %>
           <div class="card-dashboard shadow">
@@ -14,6 +15,7 @@
               </div>
             <% end %>
             <div class="garage-card-info">
+
               <h3><%= link_to booking.garage.name, user_garage_path(current_user, booking.garage_id) %></h3>
               <p class="py-2">Leasing dates: <%= booking.start_date %> - <%= booking.end_date %></p>
               <p class="top-right tag tag-item"><%= booking.status %></p>
