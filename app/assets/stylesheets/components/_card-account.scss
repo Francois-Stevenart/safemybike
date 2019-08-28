@@ -1,7 +1,7 @@
 .account-card {
   background-color: $lightwhite;
   margin: 30px auto;
-  padding: 30px;
+  padding: 40px;
   width: object-fit;
   max-width: 800px;
   border-radius: 8px;
@@ -11,6 +11,7 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
+  margin-bottom: 30px;
   h2 {
     margin: 0;
   }
@@ -44,8 +45,9 @@
   flex-grow: 1;
   padding: 10px 0px 0px 0px;
   margin: 0px;
-  border-bottom: 1px solid $dark;
+  border-bottom: 1px solid rgba(77, 209, 145, 0.4);
   display: flex;
+  opacity: 0.9;
   .info {
     font-weight: bold;
     width: 160px;
@@ -64,5 +66,23 @@
   margin-top: 30px;
   .avatar-very-large {
     border: solid 1px $green;
+  }
+}
+
+@media(max-width: 660px) {
+  .account-body {
+    display:block;
+  }
+  .account-pic {
+    padding-left: 0px;
+    width: 130px;
+    min-width: 130px;
+    margin: 0px auto;
+    img {
+    position: relative;
+    width: 130px;
+    height: 130px;
+    margin: 10px 0px;
+    }
   }
 }

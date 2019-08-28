@@ -23,7 +23,6 @@
       <% if @income_bookings.size > 0 || @paying_bookings.size > 0 %>
         <div class="price-container">
           <div id = "return-rents" class="account-card shadowed grow">
-            <div id= "owner-income" class="price-card">
               <% bookings = [] %>
 
               <!-- Owner calculations -->
@@ -31,11 +30,11 @@
                 <% bookings << booking.price %>
               <% end %>
               <% if bookings.sum > 0 %>
+            <div id= "owner-income" class="price-card">
                 <h1>€<%= bookings.sum %></h1>
                 <h3>Monthly income</h3>
-              <% end %>
             </div>
-            <div id= "biker-price" class="price-card">
+              <% end %>
               <% bookings = [] %>
 
               <!-- Biker calculations -->
@@ -43,16 +42,17 @@
                 <% bookings << booking.price %>
               <% end %>
               <% if bookings.sum > 0 %>
+            <div id= "biker-price" class="price-card">
                 <h1>€<%= bookings.sum %></h1>
                 <h3>Monthly cost</h3>
-              <% end %>
             </div>
+              <% end %>
           </div>
         </div>
       <% end %>
       <div class="account-card shadowed">
         <div class="account-title">
-          <h2>Your account information</h2>
+          <h2 class="dashboard-header">Your account information</h2>
           <%= link_to "edit", edit_user_path(@user), class: "btn btn-flat" %>
         </div>
         <div class="account-body">
