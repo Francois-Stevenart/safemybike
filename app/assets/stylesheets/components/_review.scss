@@ -32,3 +32,18 @@
   align-items: center;
   justify-content: space-between;
 }
+
+
+.modal-title {
+  color: $green;
+}
+
+.modal-body {
+  label {
+    color: $green;
+  }
+}
+
+.modal-content {
+  border-radius: 10px;
+}
