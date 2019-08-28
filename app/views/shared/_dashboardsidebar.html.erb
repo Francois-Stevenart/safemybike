@@ -9,25 +9,37 @@
       </li>
     <% end %>
 
-    <%= link_to dashboard_my_garages_user_path(current_user) do %>
-      <li class="sidebar-tab" data-target="tab.bar">
-        <i class="fas fa-warehouse"></i>
-        <p>My Garage(s)</p>
-      </li>
+    <% if current_user.garages.any? %>
+      <%= link_to dashboard_my_garages_user_path(current_user) do %>
+        <li class="sidebar-tab" data-target="tab.bar">
+          <i class="fas fa-warehouse"></i>
+          <p>My Garage(s)</p>
+        </li>
+      <% end %>
     <% end %>
 
-    <%= link_to dashboard_my_bookings_user_path(current_user) do %>
-      <li class="sidebar-tab" data-target="tab.bar">
-        <i class="far fa-copy"></i>
-        <p>My Rentals</p>
-      </li>
+    <% bookings_garage = [] %>
+    <% bookings_bike = [] %>
+    <% current_user.garages.each {|garage| garage.bookings.any? ? bookings_garage << 1 : bookings_garage << 0} %>
+    <% current_user.bikes.each {|bike| bike.bookings.any? ? bookings_bike << 1 : bookings_bike << 0} %>
+    <% if bookings_garage.sum > 0 || bookings_bike.sum > 0 %>
+      <%= link_to dashboard_my_bookings_user_path(current_user) do %>
+        <li class="sidebar-tab" data-target="tab.bar">
+          <i class="far fa-copy"></i>
+          <p>My Rentals</p>
+        </li>
+      <% end %>
     <% end %>
 
-    <%= link_to dashboard_add_review_user_path(current_user) do %>
-      <li class="sidebar-tab" data-target="tab.bar">
-        <i class="far fa-star"></i>
-        <p>Add A Review</p>
-      </li>
+    <% bookings_done = [] %>
+    <% current_user.garages.each {|garage| garage.bookings.where(status: "done").any? ? bookings_done << 1 : bookings_done << 0} %>
+    <% if bookings_done.sum > 0 %>
+      <%= link_to dashboard_add_review_user_path(current_user) do %>
+        <li class="sidebar-tab" data-target="tab.bar">
+          <i class="far fa-star"></i>
+          <p>Add A Review</p>
+        </li>
+      <% end %>
     <% end %>
   </ul>
 
