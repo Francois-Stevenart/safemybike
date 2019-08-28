@@ -1,23 +1,39 @@
 .price-container {
-  margin: 0 auto;
+  margin: 50px auto;
 }
 
 #return-rents {
   display: flex;
   width: fit-content;
   padding: 20px 0;
+  background-color: $green;
   .price-card {
-    background-color: white;
+    color: $white;
     border-radius: 5px;
-    padding: 20px;
     margin: 0 20px;
+    width: 220px;
+    text-align: center;
     h1 {
       text-align: center;
       margin-bottom: 15px;
+      color: $white;
+      font-size: 48px;
     }
 
     h3 {
       margin: 0;
+    }
+  }
+}
+
+@media(max-width: 660px) {
+  #return-rents > .price-card {
+    width: 110px;
+    h1 {
+      font-size: 36px;
+    }
+    h3 {
+      font-size: 24px;
     }
   }
 }
