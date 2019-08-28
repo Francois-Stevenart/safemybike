@@ -53,3 +53,40 @@
 .shadow {
   box-shadow: 1px 1px 50px lightgrey;
 }
+
+
+@media(max-width: 1400px) {
+  .card-dashboard, .card-dashboard-request {
+    min-height: 180px;
+    a > .garage-card-image {
+      width: 200px;
+    }
+    .garage-card-info {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      .larger-text {
+        padding-top: 20px;
+      }
+    }
+  }
+}
+
+@media(max-width: 800px) {
+    .card-dashboard, .card-dashboard-request {
+    min-height: 250px;
+    a > .garage-card-image {
+    width: 170px;
+    }
+     .garage-card-info {
+      .larger-text {
+        font-size: 1.1em;
+        padding-bottom: 10px;
+        padding-top: 20px;
+      }
+      p {
+        font-size: 0.9em;
+      }
+    }
+  }
+}
