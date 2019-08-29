@@ -34,20 +34,31 @@ label + input[type=radio] + label {
   margin: 20px;
   border-radius: 10px;
   overflow: hidden;
-  width: 15vw;
-  height: 5vh;
+  width: 20%;
+  height: 10%;
 }
 
 .label-option{
   margin-bottom: 0;
   width: 50%;
-  height: 100%;
-  font-size: 20px;
+  font-size: 1.2em;
 }
 
 #form_toggle_button {
   text-align: center;
   margin-bottom: 20px;
+}
+
+@media(max-width: 700px) {
+  .radio-group {
+    width: 60%;
+  }
+}
+
+@media(max-width: 1200px) {
+  .radio-group {
+    width: 30%;
+  }
 }
 
 @import url('https://fonts.googleapis.com/css?family=Roboto');
