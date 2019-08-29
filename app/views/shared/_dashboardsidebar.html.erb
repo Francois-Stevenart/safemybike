@@ -16,6 +16,13 @@
           <p>My Garage(s)</p>
         </li>
       <% end %>
+    <% else %>
+      <%= link_to dashboard_my_garages_user_path(current_user) do %>
+        <li class="sidebar-tab hidden-tab" data-target="tab.bar">
+          <i class="fas fa-warehouse"></i>
+          <p>My Garage(s)</p>
+        </li>
+      <% end %>
     <% end %>
 
     <% bookings_garage = [] %>
@@ -25,6 +32,13 @@
     <% if bookings_garage.sum > 0 || bookings_bike.sum > 0 %>
       <%= link_to dashboard_my_bookings_user_path(current_user) do %>
         <li class="sidebar-tab" data-target="tab.bar">
+          <i class="far fa-copy"></i>
+          <p>My Rentals</p>
+        </li>
+      <% end %>
+    <% else %>
+      <%= link_to dashboard_my_bookings_user_path(current_user) do %>
+        <li class="sidebar-tab hidden-tab" data-target="tab.bar">
           <i class="far fa-copy"></i>
           <p>My Rentals</p>
         </li>
@@ -42,7 +56,15 @@
           <p>Add A Review</p>
         </li>
       <% end %>
+    <% else %>
+      <%= link_to dashboard_add_review_user_path(current_user) do %>
+        <li class="sidebar-tab hidden-tab" data-target="tab.bar">
+          <i class="far fa-star"></i>
+          <p>Add A Review</p>
+        </li>
+      <% end %>
     <% end %>
   </ul>
 
 </div>
+
