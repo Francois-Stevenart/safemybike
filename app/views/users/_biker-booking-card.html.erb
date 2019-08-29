@@ -30,8 +30,14 @@
     <p><%= booking.garage.street_number %> <%= booking.garage.street_address %>, <%= booking.garage.city %></p>
   </div>
   <div class="top-right">
-    <% if %w(rejected cancelled_request done).include? booking.status %>
-      <p class="tag tag-item red-tag"><%= booking.status %></p>
+    <% if %w(rejected cancelled_by_owner cancelled_by_biker done).include? booking.status %>
+      <% if booking.status.include? "cancelled_by_owner" %>
+        <p class="tag tag-item red-tag">cancelled by owner</p>
+      <% elsif booking.status.include? "cancelled_by_biker" %>
+        <p class="tag tag-item red-tag">cancelled by biker</p>
+      <% else %>
+        <p class="tag tag-item red-tag"><%= booking.status %></p>
+      <% end %>
     <% else %>
       <p class="tag tag-item"><%= booking.status %></p>
     <% end %>
