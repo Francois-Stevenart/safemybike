@@ -1,5 +1,5 @@
 .sidebar {
-  min-width: 210px;
+  min-width: 220px;
   position: sticky;
   top: 0px;
 }
@@ -14,14 +14,16 @@
   list-style-type: none;
   a {
     text-decoration: none;
+    font-weight: 600;
   }
 }
 .sidebar-tab {
-  padding: 12px;
+  padding: 16px;
   text-align: left;
   color: $white;
   display: flex;
   align-items: center;
+  border-bottom: 2px solid #6FD8A4;
   i {
     width: 40px;
     padding-left: 5px;
@@ -38,6 +40,10 @@
 .tab-active {
   background-color: $darkgreen;
   opacity: 1;
+}
+
+.hidden-tab {
+  display: none;
 }
 
 @media(max-width: 1000px) {
@@ -61,7 +67,7 @@
   }
 }
 
-@media(max-width: 660px) {
+@media(max-width: 700px) {
   .sidebar-tab {
     p {
       display: none;
