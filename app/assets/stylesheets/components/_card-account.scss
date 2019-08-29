@@ -70,8 +70,16 @@
 }
 
 @media(max-width: 660px) {
+  .account-title {
+    display: block;
+    text-align: center;
+    a.btn-flat {
+      margin: 20px 0px 0px 0px;
+    }
+  }
   .account-body {
     display:block;
+    font-size: 12px;
   }
   .account-pic {
     padding-left: 0px;
@@ -80,8 +88,8 @@
     margin: 0px auto;
     img {
     position: relative;
-    width: 130px;
-    height: 130px;
+    width: 90px;
+    height: 90px;
     margin: 10px 0px;
     }
   }
