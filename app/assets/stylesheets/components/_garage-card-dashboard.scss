@@ -64,6 +64,7 @@
   }
   .bike-booking-card-info {
     display: flex;
+    align-items: center;
     flex-grow: 1;
     padding-left: 10px;
     p {
@@ -165,6 +166,76 @@
   border-bottom-right-radius: 7px;
   padding: .5rem 1rem;
 }
+@media(max-width: 1500px) {
+  .bike-booking-card-info {
+  }
+  .collapsible-content {
+    overflow: auto;
+  }
+  .buttons-container {
+    min-width: 210px;
+  }
+}
 
 
+@media(max-width: 800px) {
+  .top-content {
+    height: 200px;
+    .garage-card-link {
+      width: 40px;
+    }
+    .garage-card-image {
+    width: 75px;
+    height: 75px;
+    border-radius: 50%;
+    position: relative;
+    top: 60px;
+    right: 35px;
+    border: 1px solid $white;
+    box-shadow: 0px 0px 2px rgba(0,0,0,0.3);
+    z-index: 2;
+    }
+    .top-right {
+    position: relative;
+    top: 20px;
+    justify-content: center;
+    a, p {
+      font-size: 14px;
+      }
+    }
+    .garage-card-image {
+      background-position-x: center;
+    }
+  }
+  .collapsible-content {
+    overflow: auto;
+  }
+  .wrap-collabsible {
+    height: 100%;
+    .bike-booking-card {
+    display: flex;
+    flex-direction: column;
+    padding: 8px 15px;
+    margin-bottom: 8px;
+      img:nth-child(2) {
+        display: none;
+      }
+      .tag {
+        font-size: 14px;
+      }
+      .bike-booking-card-info {
+        display: block;
+        text-align: center;
+        margin: 5px 0px;
+        flex-grow: 0;
+        p {
+          margin-bottom: 5px;
+        }
+      }
+    .buttons-container {
+      font-size: 14px;
+    }
+    }
+  }
+}
 

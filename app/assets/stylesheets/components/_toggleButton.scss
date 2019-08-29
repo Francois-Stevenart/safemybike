@@ -34,10 +34,15 @@ label + input[type=radio] + label {
   margin: 20px;
   border-radius: 10px;
   overflow: hidden;
+  width: 15vw;
+  height: 5vh;
 }
 
 .label-option{
   margin-bottom: 0;
+  width: 50%;
+  height: 100%;
+  font-size: 20px;
 }
 
 #form_toggle_button {
