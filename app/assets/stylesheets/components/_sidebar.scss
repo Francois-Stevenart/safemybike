@@ -1,12 +1,15 @@
 .sidebar {
-  min-width: 220px;
+  min-width: 230px;
   position: sticky;
   top: 0px;
+  background-color: $green;
 }
 .sidebar-body {
   background-color: $green;
   min-height: calc(100vh - 133px);
-  height: 100%;
+  height: fill;
+  top: 0px;
+  position: sticky;
 }
 
 .tabs {
