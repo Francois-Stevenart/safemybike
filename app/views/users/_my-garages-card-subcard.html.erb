@@ -20,8 +20,12 @@
     <% else %>
       <p class="larger-text">error</p>
     <% end %>
-    <p class='tag'><%= booking.status %></p>
-    <p class='tag blue-tag'>€<%= booking.price %>/month</p>
+    <div>
+      <p class='tag'><%= booking.status %></p>
+    </div>
+    <div>
+      <p class='tag blue-tag'>€<%= booking.price %>/month</p>
+    </div>
   </div>
   <div class="buttons-container">
     <% if booking.status == 'pending'%>
