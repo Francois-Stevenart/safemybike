@@ -97,7 +97,7 @@
 }
 
 .card-landing-product {
-  background: $green;
+  background: white;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -131,9 +131,9 @@
 .card-landing-infos {
   flex-grow: 1;
   padding: 40px 40px;
-  color: white;
+  color: $green;
   p {
-    color: white;
+    color: $dark;
   }
 }
 
