@@ -39,6 +39,8 @@
       <% else %>
         <p class="tag tag-item red-tag"><%= booking.status %></p>
       <% end %>
+    <% elsif booking.status == "pending" %>
+      <p class="tag tag-item yellow-tag">pending</p>
     <% else %>
       <p class="tag tag-item"><%= booking.status %></p>
     <% end %>

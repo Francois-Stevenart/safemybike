@@ -17,8 +17,16 @@
 
 .blue-tag {
   background-color: $blue;
-  opacity: 0.8;
+  opacity: 1;
   &:hover {
     background-color: $blue;
+  }
+}
+
+.yellow-tag {
+  background-color: $bicycle-frame;
+  opacity: 1;
+  &:hover {
+    background-color: $bicycle-frame;
   }
 }
