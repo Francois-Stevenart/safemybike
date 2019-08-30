@@ -17,7 +17,7 @@ Rails.application.routes.draw do
       get "bookings/:id/cancel_request_by_biker", to: "bookings#cancel_request_by_biker", as: "cancel_request_by_biker"
       delete "bookings/:id/delete_request", to: "bookings#destroy", as: "delete_request"
     end
-    resources :garages, except: [:index, :destroy] do
+    resources :garages, except: [:index] do
       member do
         get "card", to: "garages#show_card"
         get "garages-prompt-loggin", to: "garages#show_prompt_loggin"

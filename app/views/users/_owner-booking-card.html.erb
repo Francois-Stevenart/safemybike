@@ -55,6 +55,9 @@
       <%= link_to "accept", accept_user_path(@user, booking), class: 'btn-flat' %>
       <%= link_to "reject", reject_user_path(@user, booking), class: 'btn-flat red' %>
     <% end %>
+    <% if %w(accepted paid active).include? booking.status %>
+      <%= link_to "cancel", cancel_request_by_owner_user_path(@user, booking), class: 'btn-flat red' %>
+    <% end %>
     <% if %w(cancelled_by_owner cancelled_by_biker rejected done).include? booking.status %>
       <%= link_to "hide", delete_request_user_path(@user, booking), :method => :delete, class: 'btn-flat red' %>
     <% end %>

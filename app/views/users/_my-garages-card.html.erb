@@ -11,7 +11,7 @@
         <div class="buttons-container">
           <%= link_to "garage page", user_garage_path(current_user, garage), class: 'btn-flat' %>
           <%= link_to "edit", edit_user_garage_path(current_user, garage), class: 'btn-flat' %>
-          <%= link_to "delete", user_garage_path(current_user, garage), class: 'btn-flat red' %>
+          <%= link_to "delete", user_garage_path(current_user, garage), method: :delete, class: 'btn-flat red' %>
         </div>
         <% garage_bookings = [] %>
         <% garage.bookings.where(status: 'active').each do |booking|  %>
