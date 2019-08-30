@@ -1,7 +1,7 @@
 require 'faker'
 
 user_images = [
-  'https://nbocdn.akamaized.net/Assets/Images_Upload/2011/10/06/21-25810-actualite-apple-steve-jobs.jpg',
+  'https://res.cloudinary.com/di1eyazrv/image/upload/v1565968705/bzknkshbcq77fqsnhoyz.png',
   'https://avatars0.githubusercontent.com/u/52085295?v=4',
   'https://avatars0.githubusercontent.com/u/51639218?v=4',
   'https://avatars2.githubusercontent.com/u/51084422?v=4',
@@ -10,7 +10,7 @@ user_images = [
   'https://avatars2.githubusercontent.com/u/51087021?v=4',
   'https://avatars2.githubusercontent.com/u/52207783?v=4',
   'https://avatars0.githubusercontent.com/u/50140032?v=4',
-  'https://avatars2.githubusercontent.com/u/43496861?v=4'
+  'https://res.cloudinary.com/di1eyazrv/image/upload/v1565968701/spx6tozwqi69thksnbiw.jpg'
 ]
 
 garage_images = [
@@ -22,17 +22,35 @@ garage_images = [
   'https://res.cloudinary.com/di1eyazrv/image/upload/v1566230780/safemybike/garage_0_xl4wwn.jpg',
   'https://res.cloudinary.com/di1eyazrv/image/upload/v1566230821/safemybike/garage-bouwen-bijgebouw-1_xjevq0.jpg',
   'https://www.bronafon.org.uk/wp-content/uploads/2018/03/Garage.jpg',
+  'https://gensteel.com/wp-content/uploads/2018/05/Charcoal-Gray-Garage-by-General-Steel.jpg',
+  "https://versatile-ss-prod.imgix.net/assets/gallery/3eca01e015/IMG_2650.JPG?&fit=crop&auto=format",
+  'https://upload.wikimedia.org/wikipedia/en/1/1d/Sectional-type_overhead_garage_door.JPG',
+  'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTL2fzaTrGXrD6eUt8lt0_lMtGlFyPs3m4gPvbFNbM1nLrM8mwJTg',
+  'https://ortnerdoor.com/wp-content/uploads/2018/09/garage-door-promotions.jpg',
+  'http://3cdn.skarabee.net/Public/FileStore.ashx?noError=true&reference=044189236136059060228004174223167041227211123020&width=360&height=270&backgroundcolor=FFFFFF&enlargeIfSmaller=true',
+  'https://images.zimmo.be/panden/5084/5658.foto_zimmo_65b7323fe05b9da56bb147983c0a030a_310x231.jpg',
+  'https://www.rmodul.com/sites/default/files/uploads/garage.portable._modular_buildings1.jpg',
+  'https://www.chassishuygens.be/images/photo-porte-garage3.jpg'
 ]
 
 addresses = [
   {street_number: '100', street_address: 'Horzelstraat', city: 'Brussel', country: 'Belgium'},
   {street_number: '950', street_address: 'Waversesteenweg', city: 'Etterbeek', country: 'Belgium'},
   {street_number: '9', street_address: 'Idaliestraat', city: 'Elsene', country: 'Belgium'},
-  {street_number: '1', street_address: 'Vandenbrandenstraat', city: 'Brussel', country: 'Belgium'},
-  {street_number: '1', street_address: 'Croydonlaan', city: 'Brussel', country: 'Belgium'},
-  {street_number: '345', street_address: 'Keizer Karellaan', city: 'Ganshoren', country: 'Belgium'},
-  {street_number: '23', street_address: 'Brabançonnelaan', city: 'Brussel', country: 'Belgium'},
-  {street_number: '31', street_address: 'Verheydenstraat', city: 'Anderlecht', country: 'Belgium'}
+  {street_number: '31', street_address: 'Verheydenstraat', city: 'Anderlecht', country: 'Belgium'},
+  {street_number: '437', street_address: 'Brixtonlaan', city: 'Chassepierre', country: 'Belgium'},
+  {street_number: '10', street_address: 'Aldestraat', city: 'Hasselt', country: 'Belgium'},
+  {street_number: '110', street_address: 'Rue de Berloz', city: 'Liège', country: 'Belgium'},
+  {street_number: '4', street_address: 'Aaigemstraat', city: 'Ghent', country: 'Belgium'},
+  {street_number: '15', street_address: 'Lemorinierestraat', city: 'Antwerp', country: 'Belgium'},
+  {street_number: '15', street_address: 'Muntstraat', city: 'Leuven', country: 'Belgium'},
+  {street_number: '15', street_address: 'Collegeberg', city: 'Leuven', country: 'Belgium'},
+  {street_number: '15', street_address: 'Avenue du Roi Soleil', city: 'Waterloo', country: 'Belgium'},
+  {street_number: '15', street_address: 'Hopmarkt', city: 'Aalst', country: 'Belgium'},
+  {street_number: '15', street_address: 'Vismarkt', city: 'Mechelen', country: 'Belgium'},
+  {street_number: '15', street_address: 'Rue des Muriers', city: 'Namur', country: 'Belgium'},
+  {street_number: '15', street_address: 'Rue de Namur', city: 'Nivelles', country: 'Belgium'},
+  {street_number: '15', street_address: 'Rue de la Source', city: 'Wavre', country: 'Belgium'},
 ]
 
 bike_images = [
@@ -53,7 +71,7 @@ puts '-'*40
 
 puts 'Creating master user... 🤴'
 
-master_user = User.new(first_name: 'Federico', last_name: 'Puface', email: 'master@user.com', password: 'master', password_confirmation: 'master')
+master_user = User.new(first_name: 'Federico', last_name: 'De Martino', email: 'master@user.com', password: 'master', password_confirmation: 'master')
 master_user.remote_profile_image_url = user_images[0]
 master_user.save!
 puts 'email: master@user.com'
@@ -154,8 +172,8 @@ puts 'Creating garage feature list... ⛽'
 
 Feature.new(name: 'bicycle rack', icon_image: '<i class="fas fa-stream"></i>').save!
 Feature.new(name: 'charging station', icon_image: '<i class="fas fa-charging-station"></i>').save!
-Feature.new(name: 'tire pump', icon_image: '<i class="fas fa-wind"></i>').save!
 Feature.new(name: 'electric tire pump', icon_image: '<i class="fas fa-bolt"></i>').save!
+Feature.new(name: 'tire pump', icon_image: '<i class="fas fa-wind"></i>').save!
 Feature.new(name: 'pin-code', icon_image: '<i class="fas fa-lock"></i>').save!
 Feature.new(name: 'camera security', icon_image: '<i class="fas fa-video"></i>').save!
 
@@ -167,9 +185,9 @@ description = 'A residential garage is a walled, roofed structure for storing a 
 features = Feature.all
 
 i = 0
-8.times do
+17.times do
   garage = Garage.new(
-    name: Faker::Name.first_name,
+    name: "#{Faker::Name.first_name}'s garage",
     description: description,
     street_number: addresses[i][:street_number],
     street_address: addresses[i][:street_address],
@@ -286,7 +304,7 @@ puts ''
 
 puts '-'*40
 puts 'Creating demo owner...'
-demo_owner_user = User.new(first_name: 'Steve', last_name: 'Jobs', email: 'demo_owner@user.com', password: 'master', password_confirmation: 'master')
+demo_owner_user = User.new(first_name: 'Federico', last_name: 'De Martino', email: 'demo_owner@user.com', password: 'master', password_confirmation: 'master')
 demo_owner_user.remote_profile_image_url = user_images[0]
 demo_owner_user.save!
 puts 'demo_owner@user.com'
@@ -294,7 +312,7 @@ puts 'password: master'
 puts '-'*40
 
 puts 'Creating demo biker...'
-demo_biker_user = User.new(first_name: 'Tariq', last_name: 'Von Pitch', email: 'demo_biker@user.com', password: 'master', password_confirmation: 'master')
+demo_biker_user = User.new(first_name: 'Edouard', last_name: 'De Prez', email: 'demo_biker@user.com', password: 'master', password_confirmation: 'master')
 demo_biker_user.remote_profile_image_url = user_images[9]
 demo_biker_user.save!
 puts 'demo_biker@user.com'
@@ -304,8 +322,8 @@ puts '-'*40
 puts 'Creating garage for demo owner...'
 
 garage = Garage.new(
-  name: Faker::Name.first_name,
-  description: description,
+  name: "#{demo_owner_user.first_name}'s garage",
+  description: "A big garage in center of Brussels. Secured with pin code and camera surveillance. Accessible 24/7.",
   street_number: '23',
   street_address: 'Philippe de Champagnestraat',
   city: 'Brussel',
@@ -318,8 +336,8 @@ garage = Garage.new(
 garage.user = demo_owner_user
 garage.remote_profile_image_url = 'https://res.cloudinary.com/di1eyazrv/image/upload/v1566564896/Car-garage-GettyImages-528098460-58a1fba93df78c475869ff29_cwbto4.jpg'
 garage.save!
-o = 0
-rand(2..6).times do
+o = 3
+3.times do
   feature_presence = FeaturePresence.new
   feature_presence.garage = garage
   feature_presence.feature = features[o]

@@ -20,8 +20,8 @@
       <div class="garage-show-card spots-available">
         <i class="fas fa-warehouse"></i>
         <h4>Spots available :</h4>
-        <p><%= @garage.capacity_left_regular %> regular bikes</p>
-        <p><%= @garage.capacity_left_large %> large bikes</p>
+        <p><%= @garage.capacity_left_regular < 0 ? 0 : @garage.capacity_left_regular %> regular bikes</p>
+        <p><%= @garage.capacity_left_large < 0 ? 0 : @garage.capacity_left_large %> large bikes</p>
       </div>
 
       <div class="garage-features">
