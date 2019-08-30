@@ -39,6 +39,35 @@
   margin: 50px 0px 20px 0px;
 }
 
+#tutorial-biker, #tutorial-owner {
+  h2 {
+    text-align: center;
+    font-size: 24px;
+    color: $green;
+    margin-bottom: 20px;
+    padding-top: 30px;
+  }
+}
+
+.tutorial-links {
+  text-align: center;
+  font-size: 16px;
+  margin-bottom: 60px;
+  ul {
+    list-style: none;
+    padding-left: 0px;
+    padding-bottom: 20px;
+    max-width: 400px;
+    border-bottom: 1px solid $green;
+    margin: 0px auto;
+  }
+  a {
+    line-height: 2;
+  }
+  a:hover {
+    text-decoration: none;
+  }
+}
 // toggle
 
 .hidden_tutorial {

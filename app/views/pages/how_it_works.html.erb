@@ -12,18 +12,38 @@
 
   <div id="tutorial-biker">
 
+    <div class="tutorial-links">
+      <ul>
+        <li><a href="#bike-what-is">What is SafeMyBike ?</a></li>
+        <li><a href="#bike-how-to">How do I book a garage for my bike ?</a></li>
+        <li><a href="#bike-how-safe">How safe is my bike ?</a></li>
+      </ul>
+    </div>
+
+    <section id="bike-what-is"><h2>What is SafeMyBike ?</h2></section>
+    <div class="card-landing-product">
+      <div class="card-landing-infos">
+        <strong>SafeMyBike</strong> is a platform that aims at connecting bikers and garage owners. Because you don't want to leave your bicycle outside at night. Because you don't want to carry it in your appartment. We believe that cycling is the best way to commute it cities, and so it has to remain a pleasure : you should therefore have an easy and cheap way to store your bike safely when you don't use it. <br>
+        <br>
+        SafeMyBike helps you to get in touch with garage owners, in order to rent a small portion of a garage, just a spot big enough to store safely your bike, close to where you live. And this for a cheap price.
+      </div>
+    </div>
+
+    <section id="bike-how-to"><h2>How do I book a garage for my bike ?</h2></section>
     <div class="card-landing-product">
       <div class="card-landing-infos">
         <div class="title_step">
           <div><h3>Step 1</h3></div>
-          <div><h4>SignUp!</h4></div>
+          <div><h4>Find a garage!</h4></div>
         </div>
-        First thing to do is to search a garage that fits your likes.<br>
+        First thing to do is to <strong>search for a garage</strong> that fits your likes.<br>
         Enter your address in the search bar and browse through all the garages availables. Don't hesistate to use the filters to find one offering the features you're looking for.<br>
-        Once you've found the perfect garage, start filling the booking form by adding your bike on the platform. Select the start date that you wish for the beginning of the rent.<br>
-        And that's it! Your request was sent to the owner of the garage. You now just have to wait for him to confirm that the spot is yours.
+        <br>
+        Once you've found the perfect garage, start <strong>filling the booking form</strong> by adding your bike on the platform. Select the start date that you wish for the beginning of the rent.<br>
+        <br>
+        And that's it! <strong>Your request was sent to the garage's owner</strong>. You now just have to wait for him to confirm that the spot is yours.
       </div>
-      <div class="card-landing-image img_step" style="background-image: url('<%= image_path "ipad.jpg" %>'); background-repeat: no-repeat; width: 20vw; height: 30vh">
+      <div class="card-landing-image img_step" style="background-image: url('<%= image_path "map.png" %>'); background-repeat: no-repeat; width: 20vw; height: 30vh">
       </div>
     </div>
 
@@ -31,18 +51,26 @@
       <div class="card-landing-infos">
         <div class="title_step">
           <div><h3>Step 2</h3></div>
-          <div><h4>Waiting for confirmation</h4></div>
+          <div><h4>Wait for confirmation</h4></div>
         </div>
-          You can see in your Dashboard the booking requests you have made. For each booking you have different options: <br>
-          1 - You can directly enter your payment information. <br>
-          If afterwards the owner rejects your request you will, obviously, not be billed. <br>
-          You can also pay after the owner has confirmed your request. <br>
-          2 - You can contact the owner. You want to know more information about the garage? <br>
-          You have other questions? use the builtin chat to talk with the owner.
-          3 - cancel your request. You can cancel a rent at any time before the starting date. <br>
-          Once the starting date has passed you will have to wait for the beginning of the next month to finish the rent.
+          You can see in your <strong>Dashboard</strong> the booking requests you have made. For each booking you have different options: <br>
+          <br>
+          <ol>
+            <li>
+              You can directly enter your payment information. <br>
+              If afterwards the owner rejects your request,  you won't be billed.
+              You can also pay after the owner has confirmed your request.
+            </li>
+            <li>
+              You can contact the owner. You want to know more about the garage?
+              You have other questions? Use the built-in chat to talk with the owner.
+            </li>
+            <li>
+              Cancel your request. You can cancel a rent at any time before the starting date.
+            </li>
+          </ol>
       </div>
-      <div class="card-landing-image img_step" style="background-image: url('<%= image_path "ipad.jpg" %>'); background-repeat: no-repeat; width: 20vw; height: 30vh">
+      <div class="card-landing-image img_step" style="background-image: url('<%= image_path "pending.png" %>'); background-repeat: no-repeat; width: 20vw; height: 30vh">
       </div>
     </div>
 
@@ -52,9 +80,16 @@
         <div><h3>Step 3</h3></div>
         <div><h4>Safe your bike!</h4></div>
       </div>
-          Once both the owner has confirmed the booking and the biker has entered the payment info you don't have to do anything else! You can contact the owner and organize a location for you to meet and exchange the keys.
+          Once both the owner has confirmed the booking and the biker has entered the payment info you don't have to do anything else! You can <strong>contact the owner</strong> and organize a moment for you to meet and exchange the keys.
       </div>
-      <div class="card-landing-image img_step" style="background-image: url('<%= image_path "ipad.jpg" %>'); background-repeat: no-repeat; width: 20vw; height: 30vh">
+      <div class="card-landing-image img_step" style="background-image: url('<%= image_path "keys.jpg" %>'); background-repeat: no-repeat; width: 20vw; height: 30vh">
+      </div>
+    </div>
+
+    <section id="bike-how-safe"><h2>How safe is my bike ?</h2></section>
+    <div class="card-landing-product">
+      <div class="card-landing-infos">
+        <strong>SafeMyBike</strong> makes it easy to get in touch with garage owners in your neighborhood. It is not an insurance against thief though, so always make sure your bike is properly insured, and that you have a written leasing agreement between you and the garage owner. You'll then just have to enjoy cycling around without any worry.
       </div>
     </div>
 
@@ -62,6 +97,24 @@
 
   <div id="tutorial-owner" class="hidden_tutorial">
 
+    <div class="tutorial-links">
+      <ul>
+        <li><a href="#owner-what-is">What is SafeMyBike ?</a></li>
+        <li><a href="#owner-how-to">How do I lease my garage ?</a></li>
+        <li><a href="#owner-how-safe">What are my obligations ?</a></li>
+      </ul>
+    </div>
+
+    <section id="owner-what-is"><h2>What is SafeMyBike ?</h2></section>
+    <div class="card-landing-product">
+      <div class="card-landing-infos">
+        <strong>SafeMyBike</strong> is a platform that aims at connecting bikers and garage owners. A lot of bikers have issues storing safely their bike, especially when they live in an appartment. SafeMyBike allows them to rent a portion of a garage.<br>
+        <br>
+        As a garage owner, you can offer the extra-room you have in your garage to bikers, for a small rent. An easy way to make some extra-cash out of your garage. You could even decide to go up to the next level, and lease your garage to a dozen of bikers instead of leasing it to a single car. A nice way to optimize your income, and to bring your contribution towards a better & greener mobility in our cities.
+      </div>
+    </div>
+
+    <section id="owner-how-to"><h2>How do I lease my garage ?</h2></section>
     <div class="card-landing-product">
       <div class="card-landing-infos">
         <div class="title_step">
@@ -74,7 +127,7 @@
         Don't forget to specify if you garage offers some special features (tyre pump, bicycle rack, etc)<br>
         Click on "submit" and that's it! Your garage is now online an available to be booked by other bikers!
         </div>
-      <div class="card-landing-image img_step" style="background-image: url('<%= image_path "ipad.jpg" %>'); background-repeat: no-repeat; width: 20vw; height: 30vh">
+      <div class="card-landing-image img_step" style="background-image: url('<%= image_path "biker4.jpg" %>'); background-repeat: no-repeat; width: 20vw; height: 30vh">
       </div>
     </div>
 
@@ -93,7 +146,7 @@
             You can reject a request at any time before the biker enters his payment info. <br>
             You can contact the biker at any time during the rent. <br>
       </div>
-      <div class="card-landing-image img_step" style="background-image: url('<%= image_path "ipad.jpg" %>'); background-repeat: no-repeat; width: 20vw; height: 30vh">
+      <div class="card-landing-image img_step" style="background-image: url('<%= image_path "request.png" %>'); background-repeat: no-repeat; width: 20vw; height: 30vh">
       </div>
     </div>
 
@@ -105,7 +158,14 @@
       </div>
           Once both the owner has confirmed the booking and the biker has entered the payment info, you don't have to do anything else! You can contact the biker and organize a location for you to meet and exchange the keys.
       </div>
-      <div class="card-landing-image img_step" style="background-image: url('<%= image_path "ipad.jpg" %>'); background-repeat: no-repeat; width: 20vw; height: 30vh">
+      <div class="card-landing-image img_step" style="background-image: url('<%= image_path "keys.jpg" %>'); background-repeat: no-repeat; width: 20vw; height: 30vh">
+      </div>
+    </div>
+
+    <section id="owner-how-safe"><h2>What are my obligations ?</h2></section>
+    <div class="card-landing-product">
+      <div class="card-landing-infos">
+        <strong>SafeMyBike</strong> makes it easy to connect bikers and garage owners living in the same neighborhood. It is not an insurance against thief though, so you might want to cover yourself by signing a regular leasing agreement with your tenants, and taking the usual legal real-estate insurances. It's the biker's responsability to cover their bikes with a bicycle insurance.
       </div>
     </div>
 
