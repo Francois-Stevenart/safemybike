@@ -9,16 +9,16 @@
       <p class="larger-text"><strong><%= biker_name %></strong> sent you a request to rent <strong><%= booking.garage.name %></strong>.</p>
       <p><strong><%= biker_name %></strong> wants to safe their <strong><%= booking.bike.bike_size %> <%= booking.bike.bike_type %></strong> starting from <strong><%= booking.start_date %></strong>.</p>
     <% elsif booking.status == 'rejected' %>
-      <p class="larger-text">You have rejected <strong><%= biker_name %></strong>'s request to rent your garage <strong><%= booking.garage.name %></strong>.</p>
+      <p class="larger-text">You have rejected <strong><%= biker_name %></strong>'s request to rent your garage.</p>
     <% elsif booking.status == 'accepted' %>
-      <p class="larger-text">You have accepted <strong><%= biker_name %></strong>'s request to rent your garage <strong><%= booking.garage.name %></strong>.</p>
+      <p class="larger-text">You have accepted <strong><%= biker_name %></strong>'s request to rent your garage.</p>
       <p>We are watiting for <strong><%= booking.garage.user.first_name.capitalize %> <%= booking.garage.user.last_name.capitalize %></strong> to process their payment information.</p>
     <% elsif booking.status == 'paid' %>
       <p class="larger-text"><strong><%= biker_name %></strong>'s payment information has been processed!</p>
       <p>You can now arrange the key exchange with <strong><%= biker_name %></strong> through our chatbox!</p>
       <p>The rental starts on <strong><%= booking.start_date %></strong></p>
     <% elsif booking.status == 'active' %>
-      <p class="larger-text"><strong><%= biker_name %></strong> is currently renting your garage <strong><%= booking.garage.name %></strong></p>
+      <p class="larger-text"><strong><%= biker_name %></strong> is currently renting your garage</p>
       <p>for their <strong><%= booking.bike.name %></strong>.
     <% elsif booking.status == 'cancelled_by_biker' %>
       <p class="larger-text">Biker <strong><%= biker_name %></strong> has cancelled the agreement</p>
@@ -26,7 +26,7 @@
     <% elsif booking.status == 'done' %>
       <p class="larger-text"><strong><%= biker_name %></strong>'s rental of <strong><%= booking.garage.name %></strong> for their bike <strong><%= booking.bike.name %></strong> ended on <strong><%= booking.end_date %></strong>.</p>
     <% else %>
-      <p class="larger-text">error</p>
+      <p class="larger-text"></p>
     <% end %>
     <p><%= booking.garage.street_number %> <%= booking.garage.street_address %>, <%= booking.garage.city %></p>
   </div>
