@@ -1,4 +1,23 @@
 <div class="search-page-container">
+  <div id="search-filter" class="left-sidebar-map">
+    <div class="search-garage-features wrap-collabsible">
+      <input id="collapsible-feature-list" class="toggle" type="checkbox">
+      <label for="collapsible-feature-list" class="lbl-toggle expand filter-toggle"><h3>Filters</h3></label>
+      <div class="collapsible-content">
+        <div class="content-inner">
+          <% @features.each do |feature| %>
+            <div class="search-garage-feature">
+              <div class="inputGroup">
+                <input type="checkbox" class="checkbox" id="<%= feature.name %>" name="<%= feature.name %>" value="<%= feature.name %>">
+                <label for="<%= feature.name %>"><%= render inline: feature.icon_image %> <%= feature.name.capitalize %></label>
+              </div>
+            </div>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+
   <div
     id="map"
     class="index-map"
@@ -6,21 +25,10 @@
     height: 100%;"
     data-markers="<%= @markers.to_json %>"
     data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>"
-  >
-    <div id="search-filter" class="left-sidebar-map">
-      <h3>Filters</h3>
-      <div class="search-garage-features">
-        <% @features.each do |feature| %>
-          <div class="search-garage-feature">
-            <div class="inputGroup">
-              <input type="checkbox" class="checkbox" id="<%= feature.name %>" name="<%= feature.name %>" value="<%= feature.name %>">
-              <label for="<%= feature.name %>"><%= render inline: feature.icon_image %> <%= feature.name.capitalize %></label>
-            </div>
-          </div>
-        <% end %>
-      </div>
-    </div>
-  </div>
+  ></div>
+
+
+
   <div class="index-cards" id="garage-card-list">
     <% @garages.last(5).each do |garage| %>
       <%= render "map_card", garage: garage %>
