@@ -53,6 +53,7 @@
 @media(max-width: 1000px) {
   .sidebar {
     position: relative;
+    min-height: 46px;
   }
   .sidebar-body {
     min-height: 48px;
@@ -61,6 +62,7 @@
     justify-content: center;
     ul#dashboard-menu .sidebar-tab {
       height: 48px;
+      border-bottom: 0px solid #6FD8A4;
     }
     ul#dashboard-menu {
       display: flex;
