@@ -4,7 +4,6 @@
   background-color: $green;
   position:relative;
   height: calc(100vh - 56px);
-  width: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -32,7 +31,6 @@
   }
 }
 .animation-container {
-  width: 100%;
   overflow: hidden;
   position: relative;
   font-size: 10px;
