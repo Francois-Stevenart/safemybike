@@ -3,7 +3,7 @@ class Booking < ApplicationRecord
 
   belongs_to :bike
   belongs_to :garage
-  has_many :chats, dependent: :destroy
+  has_many :chats, -> { order(id: :asc) }, dependent: :destroy
   has_many :reviews, dependent: :destroy
   has_one :order
 
