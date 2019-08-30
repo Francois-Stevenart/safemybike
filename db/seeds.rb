@@ -13,6 +13,13 @@ user_images = [
   'https://res.cloudinary.com/di1eyazrv/image/upload/v1565968701/spx6tozwqi69thksnbiw.jpg'
 ]
 
+booking_reviews = [
+  "Really nice Garage. It's close to the city center and quite safe. Owner is really friendly as well",
+  "The process was really quick and now my I can safemybike in a safe place!",
+  "This changed my life! I can finally go to work with my bike!",
+  "I could finally buy my electric bike and know it's safe at night!"
+]
+
 garage_images = [
   'https://res.cloudinary.com/di1eyazrv/image/upload/v1566230623/safemybike/14_grdt5w.jpg',
   'https://res.cloudinary.com/di1eyazrv/image/upload/v1566230618/safemybike/7_g7lyep.jpg',
@@ -361,6 +368,28 @@ bikes = Bike.all
   booking.save!
   print '🗓️ '
 end
+
+puts 'Creating reviews for this new garage'
+
+a = 0
+garage.bookings.each do |booking|
+  if booking.status == 'done'
+    booking.end_date = Faker::Date.between(from: 2.year.ago, to: 1.month.ago)
+  end
+  booking.save!
+  date = Faker::Date.between(from: 2.year.ago, to: 1.month.ago)
+  review = Review.create(
+    content:    booking_reviews[a],
+    rating:     rand(3..5)
+    )
+  review.booking = booking
+  review.save!
+  print '⌨️ '
+  a += 1
+end
+puts ''
+
+puts ''
 
 puts 'Success! Database seeded! ✨💥🔥'
 
