@@ -37,7 +37,10 @@ garage_images = [
   'http://3cdn.skarabee.net/Public/FileStore.ashx?noError=true&reference=044189236136059060228004174223167041227211123020&width=360&height=270&backgroundcolor=FFFFFF&enlargeIfSmaller=true',
   'https://images.zimmo.be/panden/5084/5658.foto_zimmo_65b7323fe05b9da56bb147983c0a030a_310x231.jpg',
   'https://www.rmodul.com/sites/default/files/uploads/garage.portable._modular_buildings1.jpg',
-  'https://www.chassishuygens.be/images/photo-porte-garage3.jpg'
+  'https://www.chassishuygens.be/images/photo-porte-garage3.jpg',
+  'https://images3.persgroep.net/rcs/E_L8PTKAEdUGPpbbQ0hb5Ct_8Ac/diocontent/46197371/_fitwidth/763?appId=2dc96dd3f167e919913d808324cbfeb2&quality=0.8',
+  'https://storage.googleapis.com/static.omnibox.be/firstimmo/46384AS.jpg',
+  'https://static.immoweb.be/photos/0/8/2/9/4/5/6/1/8294561_1.jpg?cache=20190819221440'
 ]
 
 addresses = [
@@ -58,6 +61,9 @@ addresses = [
   {street_number: '15', street_address: 'Rue des Muriers', city: 'Namur', country: 'Belgium'},
   {street_number: '15', street_address: 'Rue de Namur', city: 'Nivelles', country: 'Belgium'},
   {street_number: '15', street_address: 'Rue de la Source', city: 'Wavre', country: 'Belgium'},
+  {street_number: '139', street_address: 'Avenue des Nerviens', city: 'Bruxelles', country: 'Belgium'},
+  {street_number: '10', street_address: 'Rue de Rome', city: 'Bruxelles', country: 'Belgium'},
+  {street_number: '10', street_address: 'Rue Van Hammee', city: 'Bruxelles', country: 'Belgium'}
 ]
 
 bike_images = [
@@ -192,7 +198,7 @@ description = 'A residential garage is a walled, roofed structure for storing a 
 features = Feature.all
 
 i = 0
-17.times do
+20.times do
   garage = Garage.new(
     name: "#{Faker::Name.first_name}'s garage",
     description: description,
