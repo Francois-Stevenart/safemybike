@@ -184,9 +184,9 @@ puts ''
 puts 'Creating garage feature list... ⛽'
 
 Feature.new(name: 'bicycle rack', icon_image: '<i class="fas fa-stream"></i>').save!
-Feature.new(name: 'charging station', icon_image: '<i class="fas fa-charging-station"></i>').save!
-Feature.new(name: 'electric tire pump', icon_image: '<i class="fas fa-bolt"></i>').save!
 Feature.new(name: 'tire pump', icon_image: '<i class="fas fa-wind"></i>').save!
+Feature.new(name: 'electric tire pump', icon_image: '<i class="fas fa-bolt"></i>').save!
+Feature.new(name: 'charging station', icon_image: '<i class="fas fa-charging-station"></i>').save!
 Feature.new(name: 'pin-code', icon_image: '<i class="fas fa-lock"></i>').save!
 Feature.new(name: 'camera security', icon_image: '<i class="fas fa-video"></i>').save!
 
@@ -349,8 +349,8 @@ garage = Garage.new(
 garage.user = demo_owner_user
 garage.remote_profile_image_url = 'https://res.cloudinary.com/di1eyazrv/image/upload/v1566564896/Car-garage-GettyImages-528098460-58a1fba93df78c475869ff29_cwbto4.jpg'
 garage.save!
-o = 3
-3.times do
+o = 2
+4.times do
   feature_presence = FeaturePresence.new
   feature_presence.garage = garage
   feature_presence.feature = features[o]
