@@ -197,10 +197,12 @@ description = 'A residential garage is a walled, roofed structure for storing a 
 
 features = Feature.all
 
+garage_names = %w(George Ana Clémentine Daphne Thomas Wim Guillaume Charlotte Marie Tarig Benoit Justine Louis Leen Steven Christof Miguel Louise Lino Thibault)
+
 i = 0
 20.times do
   garage = Garage.new(
-    name: "#{Faker::Name.first_name}'s garage",
+    name: "#{garage_names[i]}'s garage",
     description: description,
     street_number: addresses[i][:street_number],
     street_address: addresses[i][:street_address],
