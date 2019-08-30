@@ -4,12 +4,12 @@ user_images = [
   'https://res.cloudinary.com/di1eyazrv/image/upload/v1565968705/bzknkshbcq77fqsnhoyz.png',
   'https://avatars0.githubusercontent.com/u/52085295?v=4',
   'https://avatars0.githubusercontent.com/u/51639218?v=4',
-  'https://avatars2.githubusercontent.com/u/51084422?v=4',
-  'https://avatars3.githubusercontent.com/u/51128673?v=4',
   'https://avatars1.githubusercontent.com/u/52044985?v=4',
   'https://avatars2.githubusercontent.com/u/51087021?v=4',
   'https://avatars2.githubusercontent.com/u/52207783?v=4',
   'https://avatars0.githubusercontent.com/u/50140032?v=4',
+  'https://avatars2.githubusercontent.com/u/51084422?v=4',
+  'https://avatars3.githubusercontent.com/u/51128673?v=4',
   'https://res.cloudinary.com/di1eyazrv/image/upload/v1565968701/spx6tozwqi69thksnbiw.jpg'
 ]
 
@@ -206,8 +206,8 @@ i = 0
     street_address: addresses[i][:street_address],
     city: addresses[i][:city],
     country: addresses[i][:country],
-    capacity_reg_bikes: rand(1..6),
-    capacity_large_bikes: rand(1..2),
+    capacity_reg_bikes: rand(5..8),
+    capacity_large_bikes: rand(2..4),
     price_regular_bike: rand(15..22),
     price_large_bike: rand(25..32)
   )
@@ -363,17 +363,37 @@ puts ''
 
 puts 'Creating active bookings for garage for demo owner...'
 
+users = User.all
+users = users[4..7]
 bikes = Bike.all
 
+i = 0
+users.each do |user|
+  bike = Bike.new(
+    name: bike_names[i],
+    bike_size: 'regular',
+    bike_type: ['electric', 'non-electric'].sample
+    )
+  bike.user = user
+  bike.remote_bike_image_url = bike_images.sample
+  bike.save!
+  i += 1
+  print '🚲'
+end
+puts ''
+
+a = 0
 4.times do
   date = Faker::Date.between(from: 1.year.ago, to: 1.month.ago)
   booking = Booking.new(start_date: date, status: 'active')
   booking.garage = garage
-  booking.bike = bikes.sample
+  booking.bike = users[a].bikes.sample
   booking.price = bike.bike_size == 'regular' ? garage.price_regular_bike : garage.price_regular_bike
   booking.save!
+  a += 1
   print '🗓️ '
 end
+puts ''
 
 puts 'Creating reviews for this new garage'
 
