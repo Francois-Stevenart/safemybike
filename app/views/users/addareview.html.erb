@@ -1,58 +1,56 @@
-<% if current_user.id == @user.id %>
-  <div class="dashboard-container" data-index="3">
-    <div class="sidebar">
-      <%= render 'shared/dashboardsidebar'%>
-    </div>
-    <div class="dashboard-main">
-      <h3 class="dashboard-header">Drop a Review</h3>
-      <% @user.bikes.each do |bike| %>
-
-        <% bike.bookings.where(status: ["paid", "done"]).each do |booking| %>
-          <% if booking.reviews.blank? %>
-          <div class="card-dashboard shadow">
-            <%= link_to user_garage_path(booking.garage.user, booking.garage), class: 'garage-card-link' do %>
-              <div class="garage-card-image" style="background-image: url(<%= cl_image_path booking.garage.profile_image %>);">
-              </div>
-            <% end %>
-            <div class="garage-card-info">
-
-              <h3><%= link_to booking.garage.name, user_garage_path(current_user, booking.garage_id) %></h3>
-              <p class="py-2">Leasing dates: <%= booking.start_date %> - <%= booking.end_date %></p>
-              <p class="top-right tag tag-item"><%= booking.status %></p>
-                <div>
-                  <button type="button" class="btn btn-flat" data-toggle="modal" data-target="#modal-<%=booking.garage.id %>">
-                    Review garage
-                  </button>
+<div>
+  <% if current_user.id == @user.id %>
+    <div class="dashboard-container" data-index="3">
+      <div class="sidebar">
+        <%= render 'shared/dashboardsidebar'%>
+      </div>
+      <div class="dashboard-main">
+        <h3 class="dashboard-header">Drop a Review</h3>
+        <% @user.bikes.each do |bike| %>
+          <% bike.bookings.where(status: ["paid", "done"]).each do |booking| %>
+            <% if booking.reviews.blank? %>
+              <div class="card-dashboard shadow">
+                <%= link_to user_garage_path(booking.garage.user, booking.garage), class: 'garage-card-link' do %>
+                  <div class="garage-card-image" style="background-image: url(<%= cl_image_path booking.garage.profile_image %>);">
+                  </div>
+                <% end %>
+                <div class="garage-card-info">
+                  <h3><%= link_to booking.garage.name, user_garage_path(current_user, booking.garage_id) %></h3>
+                  <p class="py-2">Leasing dates: <%= booking.start_date %> - <%= booking.end_date %></p>
+                  <p class="top-right tag tag-item"><%= booking.status %></p>
+                  <div>
+                    <button type="button" class="btn btn-flat" data-toggle="modal" data-target="#modal-<%=booking.garage.id %>">
+                      Review garage
+                    </button>
+                  </div>
                 </div>
             <% end %>
-
-              <div class="modal fade" id="modal-<%=booking.garage.id %>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                <div class="modal-dialog" role="document">
-                  <div class="modal-content">
-                    <div class="modal-header">
-                      <h5 class="modal-title" id="exampleModalLabel">DROP A REVIEW</h5>
-                      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                      </button>
-                    </div>
-                    <div class="modal-body">
-                      <%= simple_form_for([current_user, booking.garage, Review.new]) do |f| %>
-                        <%= f.input :booking_id, as: :hidden, :input_html => { :value => "#{booking.id}" }  %>
-                        <%= f.input :rating %>
-                        <%= f.input :content %>
-                        <%= f.button :submit, class: "btn btn-flat" %>
-                      <% end %>
-                    </div>
+            <div class="modal fade" id="modal-<%=booking.garage.id %>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+              <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">DROP A REVIEW</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                  </div>
+                  <div class="modal-body">
+                    <%= simple_form_for([current_user, booking.garage, Review.new]) do |f| %>
+                      <%= f.input :booking_id, as: :hidden, :input_html => { :value => "#{booking.id}" }  %>
+                      <%= f.input :rating %>
+                      <%= f.input :content %>
+                      <%= f.button :submit, class: "btn btn-flat" %>
+                    <% end %>
                   </div>
                 </div>
               </div>
             </div>
-          </div>
+          <% end %>
         <% end %>
-      <% end %>
+      </div>
     </div>
-  </div>
-<% else %>
-  <h2>Stop trying to break our website.</h2>
-  <h2>We're juniors, but we're not <em>that</em> junior.</h2>
-<% end %>
+  <% else %>
+    <h2>Stop trying to break our website.</h2>
+    <h2>We're juniors, but we're not <em>that</em> junior.</h2>
+  <% end %>
+</div>
