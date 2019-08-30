@@ -11,6 +11,9 @@
 
 }
 
+.dark-text {
+  color: $dark;
+}
 .card-landing-infos {
   text-align:justify;
 }
@@ -23,6 +26,7 @@
 }
 
 .title_step {
+  color: $green;
   text-align: center;
   margin-bottom: 20px;
 }
