@@ -23,7 +23,7 @@ class BookingsController < ApplicationController
     @user = current_user
     @garage = Garage.find(@booking.garage_id)
     @chat = Chat.new
-    @chats = Chat.where(booking_id: @booking).order(created_at: :asc)
+    @chats = Chat.where(booking_id: @booking).order(id: :desc)
   end
 
   def accept_request
