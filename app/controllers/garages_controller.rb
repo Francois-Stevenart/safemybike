@@ -79,6 +79,11 @@ class GaragesController < ApplicationController
     redirect_to user_garage_path(current_user, params[:id])
   end
 
+  def destroy
+    @garage = Garage.find(params[:id])
+    @garage.destroy ? (redirect_to request.referrer) : raise
+  end
+
   def garage_params
     params.require(:garage).permit(
                                     :name,
