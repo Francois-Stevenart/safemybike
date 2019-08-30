@@ -341,8 +341,8 @@ garage = Garage.new(
   street_address: 'Philippe de Champagnestraat',
   city: 'Brussel',
   country: 'Belgium',
-  capacity_reg_bikes: rand(1..6),
-  capacity_large_bikes: rand(1..2),
+  capacity_reg_bikes: 6,
+  capacity_large_bikes: 2,
   price_regular_bike: rand(15..22),
   price_large_bike: rand(25..32)
 )
