@@ -3,11 +3,12 @@
   position: sticky;
   top: 0px;
   background-color: $green;
+  min-height: calc(100vh - 133px);
 }
 .sidebar-body {
   background-color: $green;
-  min-height: calc(100vh - 133px);
-  height: fill;
+  // min-height: calc(100vh - 133px);
+  // height: fill;
   top: 0px;
   position: sticky;
 }
